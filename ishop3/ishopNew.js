@@ -29609,11 +29609,9 @@ var IShop3 = function (_React$Component) {
             _react2.default.createElement(
               'tr',
               { className: 'ColumnName' },
-              cG,
-              ' '
+              cG
             ),
-            stringSelect,
-            '),'
+            stringSelect
           )
         )
       );
