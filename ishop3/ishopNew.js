@@ -21396,7 +21396,7 @@ var IShopTr3 = function (_React$Component) {
       console.log(classGoodName);
 
       return _react2.default.createElement(
-        'tr',
+        Fragment,
         { className: 'classGoodName', key: this.props.codeGood, onClick: this.selectedGoodClicked },
         _react2.default.createElement(
           'td',
@@ -21437,7 +21437,7 @@ exports.default = IShopTr3;
 /* 36 */
 /***/ (function(module, exports) {
 
-module.exports = [{"nameGood":"чашка","priceGood":"2","urlGood":"https://s2-goods.ozstatic.by/2000/753/502/10/10502753_0.jpg","quantityGood":"20","codeGood":"0"},{"nameGood":"тарелка","priceGood":"3","urlGood":"https://static.kulturologia.ru/files/u1866/Angela_Rossi_2.jpg","quantityGood":"10","codeGood":"1"},{"nameGood":"блюдо","priceGood":"5","urlGood":"https://static.kulturologia.ru/files/u1866/Angela_Rossi_4.jpg","quantityGood":"15","codeGood":"2"}]
+module.exports = [{"nameGood":"чашка","priceGood":"2","urlGood":"https://s2-goods.ozstatic.by/2000/753/502/10/10502753_0.jpg","quantityGood":"20","codeGood":"0"},{"nameGood":"тарелка","priceGood":"3","urlGood":"https://static.kulturologia.ru/files/u1866/Angela_Rossi_2.jpg","quantityGood":"10","codeGood":"1"},{"nameGood":"блюдо","priceGood":"5","urlGood":"https://static.kulturologia.ru/files/u1866/Angela_Rossi_4.jpg","quantityGood":"15","codeGood":"2"},{"nameGood":"блюдо","priceGood":"5","urlGood":"https://static.kulturologia.ru/files/u1866/Angela_Rossi_4.jpg","quantityGood":"15","codeGood":"3"}]
 
 /***/ })
 /******/ ]);
