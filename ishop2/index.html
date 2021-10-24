@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta charset="utf-8" />
+  <title>Магазин</title>
+</head> 
+<body> 
+  <div id="container"></div> 
+      
+  <script src="https://unpkg.com/react@15/dist/react.js"></script> 
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
+      
+  <script src="iShop2.js"></script>
+  <link rel="stylesheet" type="text/css" href="iShop2.css" />
+  <script src="iShopTr.js"></script>
+  <link rel="stylesheet" type="text/css" href="iShopTr.css" />
+  <script>
+
+    var marketNameText='Яблыка на талерке';
+    var goods=[
+      {nameGood:'чашка',priceGood:'2',urlGood:'https://s2-goods.ozstatic.by/2000/753/502/10/10502753_0.jpg',quantityGood:'20',codeGood:'0'},
+      {nameGood:'тарелка',priceGood:'3',urlGood:'https://static.kulturologia.ru/files/u1866/Angela_Rossi_2.jpg',quantityGood:'10',codeGood:'1'},
+      {nameGood:'блюдо',priceGood:'5',urlGood:'https://static.kulturologia.ru/files/u1866/Angela_Rossi_4.jpg',quantityGood:'15',codeGood:'2'}
+    ];
+    var columnGoods=[ 
+      {text:'название',code:1}, 
+      {text:'цена',code:2}, 
+      {text:'URL фото',code:3},
+      {text:'единиц на складе',code:4} 
+    ];
+
+    ReactDOM.render(
+      React.createElement(iShop2,{marketName:marketNameText,rowG:goods,columnG:columnGoods}), 
+      document.getElementById('container') 
+    );
+
+  </script>
+
+</body> 
+</html>

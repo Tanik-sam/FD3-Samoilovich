@@ -1,0 +1,44 @@
+﻿.iShop
+{
+  border: double gray 3px;
+  width: 600px;
+  padding: 3px 7px;
+  background-color: #F0F0F0;
+}
+.MarketName
+{
+  font-weight: bold;
+  margin: 0px 10px 10px 10px;
+}
+.ColumnName
+{
+  font-weight: bold;
+  text-align: center;
+}
+.RowName
+{
+  display:table-row;
+  font-weight: bold;
+  text-align: center;
+}
+.ColumnName .ColumnN
+{
+  margin: 5px 5px 5px 5px;
+  width: 80px;
+}
+.RowName .RowN
+{
+  float:left;
+  margin: 5px 5px 5px 5px;
+  width: 80px;
+}
+.Row .RowN .RowNN
+{
+  text-align:center;
+  margin: 5px 5px 5px 5px;
+  width: 80px;
+}
+.tableIshop
+{
+  border-bottom-width: 1px;
+}

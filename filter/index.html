@@ -1,0 +1,49 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta charset="utf-8" />
+  <title>Фильтр</title>
+</head> 
+<body> 
+    <div id="container"></div> 
+      
+  <script src="https://unpkg.com/react@15/dist/react.js"></script> 
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
+ 
+     
+  <script src="SelectionBuild.js"></script>
+  <link rel="stylesheet" type="text/css" href="SelectionBuild.css" />
+
+ 
+
+  <script>
+    var wordText='Введите термин';
+
+    function buildFilter() {
+
+      var wordsArr=[ 
+        {text:'нежеланный',code:1}, 
+        {text:'негаданный',code:2},
+        {text:'нежданный',code:3},
+        {text:'неведанный',code:4},
+        {text:'ненадёванный',code:5},
+        {text:'неожиданный',code:6},
+        {text:'неслыханный',code:7},
+        {text:'нечаянный',code:8},
+        
+      ];
+
+      ReactDOM.render(
+     
+          React.createElement(SelectionBuild,{word:wordText,wordsArray:wordsArr, selectSize:wordsArr.length}), 
+          document.getElementById('container') );
+                 
+          }
+
+  buildFilter()
+
+
+  </script>
+
+</body> 
+</html>
