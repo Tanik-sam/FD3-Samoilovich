@@ -29612,11 +29612,7 @@ var IShop3 = function (_React$Component) {
               cG,
               ' '
             ),
-            _react2.default.createElement(
-              'tr',
-              { className: 'classGoodName' },
-              stringSelect
-            ),
+            stringSelect,
             '),'
           )
         )
@@ -30390,7 +30386,7 @@ var IShopTr3 = function (_React$Component) {
       console.log(classGoodName);
 
       return _react2.default.createElement(
-        Fragment,
+        'tr',
         { className: 'classGoodName', key: this.props.codeGood, onClick: this.selectedGoodClicked },
         _react2.default.createElement(
           'td',

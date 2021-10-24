@@ -25,7 +25,7 @@ class IShopTr3 extends React.Component {
 
 
     return (
-      <Fragment  className='classGoodName' key={this.props.codeGood} onClick={this.selectedGoodClicked }>
+      <tr  className='classGoodName' key={this.props.codeGood} onClick={this.selectedGoodClicked }>
 
       <td className='RowN'>{this.props.priceGood}</td>
       <td className='RowN'>
@@ -34,7 +34,7 @@ class IShopTr3 extends React.Component {
       <td className='RowN'>{this.props.quantityGood}</td>
       <td className='RowN'><input type='button' value='delete' onClick={this.deleteRow}/>
       </td>   
-      </Fragment>
+      </tr>
     )        
   }
 }

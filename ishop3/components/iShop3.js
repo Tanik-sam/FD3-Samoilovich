@@ -58,7 +58,7 @@ class IShop3 extends React.Component {
       <caption className='MarketName'>{this.props.marketName}</caption>
         <tbody className='tableBody'> 
         <tr className='ColumnName'>{cG} </tr> 
-        <tr className='classGoodName'>{stringSelect}</tr>
+         {stringSelect} 
                   ),
                   </tbody>
                   </table>
