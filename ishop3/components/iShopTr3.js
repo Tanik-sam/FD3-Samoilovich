@@ -25,7 +25,7 @@ class IShopTr3 extends React.Component {
 
 
     return (
-      <tr  className='classGoodName' key={this.props.codeGood} onClick={this.selectedGoodClicked }>
+      <tr  className={classGoodName} key={this.props.codeGood} onClick={this.selectedGoodClicked }>
 
       <td className='RowN'>{this.props.priceGood}</td>
       <td className='RowN'>
