@@ -62,6 +62,9 @@ class IShop3 extends React.Component {
                   
                   </tbody>
                   </table>
+                  <div className='GoodCard'>
+                    <p>{this.state.selectedGoodId}</p>
+                  </div>
       </div>
     );
   }

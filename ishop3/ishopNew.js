@@ -29613,6 +29613,15 @@ var IShop3 = function (_React$Component) {
             ),
             stringSelect
           )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'GoodCard' },
+          _react2.default.createElement(
+            'p',
+            null,
+            this.state.selectedGoodId
+          )
         )
       );
     }
