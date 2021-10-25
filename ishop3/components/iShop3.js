@@ -19,15 +19,17 @@ class IShop3 extends React.Component {
       
         selectedGoodId: 23,
         rowG2: this.props.rowG.slice(),
-        cardShown:''
+        cardShown: [],
+        cardMode:1, // 1 - отображение, 2 - редакция
+
     }
 
     selectedGood = (cdVl) => {
   
     this.setState({selectedGoodId: cdVl} ); 
     console.log("this.state.selectedGoodId=",this.state.selectedGoodId,);
-    function ffff(v,i,a){return v.codeGood=cdVl}
-    var l=this.state.rowG2.filter(fff);
+    function ffff(v,i,a){return v.codeGood==cdVl}
+    var l=this.state.rowG2.filter(ffff);
     this.setState ({cardShown:l})
   }
   deleteGood = (delCdVl) => {
@@ -40,26 +42,34 @@ class IShop3 extends React.Component {
     console.log("длина",this.state.rowG2.length)
   }
 
+  editGood = (edtCdVl) => {
+   this.setState({cardMode:2})
+    
+    console.log("ха-ха, вот облом", edtCdVl)
+  }
+
   render() {
     var b=1;
     var cG=[];
     for ( var a=0; a<this.props.columnG.length; a++ ) {
       var columnGood=this.props.columnG[a];
-      let cGs = <th  key="columnGood.code" className='ColumnN'>  {columnGood.text}</th>
+      let cGs = <th  key={columnGood.code} className='ColumnN'>  {columnGood.text}</th>
       
       cG.push(cGs);
     }
     var stringSelect=this.state.rowG2.map( v =>
-      <IShopTr3 key={v.codeGood} codeValue={v.codeGood}
+      <IShopTr3  codeValue={v.codeGood}
         nameGood={v.nameGood} priceGood={v.priceGood} urlGood={v.urlGood} quantityGood={v.quantityGood} 
         selectedGoodId={this.state.selectedGoodId}
         cbselectedGood={this.selectedGood}
         cbdeleteGood={this.deleteGood}
+        cbeditGood={this.editGood}
       />)
-      var cardSelected=this.state.cardShown.map(v=>
-        <IShopCard key={v.codeGood} codeValue={v.codeGood}
-        nameGood={v.nameGood} priceGood={v.priceGood} urlGood={v.urlGood} quantityGood={v.quantityGood}
-        />)
+      if (this.state.cardShown!=[]) {var cardSelected=this.state.cardShown.map(v=>
+        <IShopCard   
+        nameGood={v.nameGood} priceGood={v.priceGood} urlGood={v.urlGood} quantityGood={v.quantityGood} cardMode={this.state.cardMode}
+        nameRow={this.props.columnG}
+        />)}
       return (
         <div  className='IShop3'>
       <table className='tableIshop'> 

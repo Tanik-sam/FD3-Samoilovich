@@ -8,5 +8,13 @@
   background-color:  #dd5454;
   background: linear-gradient(45deg, #dd5454, #faea5e);
   transition: 1s;
+}.IShopCard
+{
+  background:  #ebd3d3;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: large;
+  font-weight: bold;
+  transition: 1s;
+  border-width: 2px;
 }
 /*# sourceMappingURL=ishopNew.css.map*/

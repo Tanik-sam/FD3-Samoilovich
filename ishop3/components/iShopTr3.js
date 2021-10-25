@@ -17,23 +17,28 @@ class IShopTr3 extends React.Component {
     console.log("ты меня нажал", "я", this.props.codeValue);
     this.props.cbdeleteGood(this.props.codeValue);
   }
+  editRow=(eo)=>{
+    eo.stopPropagation();
+    console.log("жду редакции", "я", this.props.codeValue);
+    this.props.cbeditGood(this.props.codeValue);
+  }
 
   render() {
     var classGoodName="IShopTr3"
     if (this.props.selectedGoodId==this.props.codeValue) {classGoodName="IShopTrRed"} else classGoodName="IShopTr3"
-    console.log(classGoodName)
+    console.log('выбрали строку',classGoodName)
 
 
     return (
-      <tr  className={classGoodName} key={this.props.codeGood} onClick={this.selectedGoodClicked }>
+      <tr  className={classGoodName} key={this.props.codeValue} onClick={this.selectedGoodClicked }>
 
       <td className='RowN'>{this.props.priceGood}</td>
       <td className='RowN'>
         <img className='Img' src={this.props.urlGood} width={150} height={150}/> 
       </td>
       <td className='RowN'>{this.props.quantityGood}</td>
-      <td className='RowN'><input type='button' value='delete' onClick={this.deleteRow}/>
-      </td>   
+      <td className='RowN'><input type='button' value='delete' onClick={this.deleteRow}/></td>   
+      <td className='RowN'><input type='button' value='edit' onClick={this.editRow}/></td>   
       </tr>
     )        
   }
