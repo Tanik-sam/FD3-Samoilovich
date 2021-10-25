@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import './IShop3.css';
 
 import IShopTr3 from './IShopTr3';
+import IShopCard from './IShopCard';
  
 class IShop3 extends React.Component {
 
@@ -17,13 +18,17 @@ class IShop3 extends React.Component {
     state = {
       
         selectedGoodId: 23,
-        rowG2: this.props.rowG.slice() 
+        rowG2: this.props.rowG.slice(),
+        cardShown:''
     }
 
     selectedGood = (cdVl) => {
   
     this.setState({selectedGoodId: cdVl} ); 
-    console.log("this.state.selectedGoodId=",this.state.selectedGoodId,)
+    console.log("this.state.selectedGoodId=",this.state.selectedGoodId,);
+    function ffff(v,i,a){return v.codeGood=cdVl}
+    var l=this.state.rowG2.filter(fff);
+    this.setState ({cardShown:l})
   }
   deleteGood = (delCdVl) => {
    
@@ -51,7 +56,10 @@ class IShop3 extends React.Component {
         cbselectedGood={this.selectedGood}
         cbdeleteGood={this.deleteGood}
       />)
-        
+      var cardSelected=this.state.cardShown.map(v=>
+        <IShopCard key={v.codeGood} codeValue={v.codeGood}
+        nameGood={v.nameGood} priceGood={v.priceGood} urlGood={v.urlGood} quantityGood={v.quantityGood}
+        />)
       return (
         <div  className='IShop3'>
       <table className='tableIshop'> 
@@ -62,9 +70,7 @@ class IShop3 extends React.Component {
                   
                   </tbody>
                   </table>
-                  <div className='GoodCard'>
-                    <p>{this.state.selectedGoodId}</p>
-                  </div>
+                  {cardSelected}
       </div>
     );
   }

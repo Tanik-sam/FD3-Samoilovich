@@ -627,7 +627,7 @@ var _IShop2 = _interopRequireDefault(_IShop);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var marketNameText = 'Яблыка на талерке';
-var goods = __webpack_require__(31);
+var goods = __webpack_require__(32);
 var columnGoods = [{ text: 'название', code: 1 }, { text: 'цена', code: 2 }, { text: 'URL фото', code: 3 }, { text: 'единиц на складе', code: 4 }];
 
 _reactDom2.default.render(_react2.default.createElement(_IShop2.default, {
@@ -29522,6 +29522,10 @@ var _IShopTr = __webpack_require__(29);
 
 var _IShopTr2 = _interopRequireDefault(_IShopTr);
 
+var _IShopCard = __webpack_require__(31);
+
+var _IShopCard2 = _interopRequireDefault(_IShopCard);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29547,11 +29551,17 @@ var IShop3 = function (_React$Component) {
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = IShop3.__proto__ || Object.getPrototypeOf(IShop3)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
 
       selectedGoodId: 23,
-      rowG2: _this.props.rowG.slice()
+      rowG2: _this.props.rowG.slice(),
+      cardShown: ''
     }, _this.selectedGood = function (cdVl) {
 
       _this.setState({ selectedGoodId: cdVl });
       console.log("this.state.selectedGoodId=", _this.state.selectedGoodId);
+      function ffff(v, i, a) {
+        return v.codeGood = cdVl;
+      }
+      var l = _this.state.rowG2.filter(fff);
+      _this.setState({ cardShown: l });
     }, _this.deleteGood = function (delCdVl) {
 
       function fff(v, i, a) {
@@ -29591,7 +29601,11 @@ var IShop3 = function (_React$Component) {
           cbdeleteGood: _this2.deleteGood
         });
       });
-
+      var cardSelected = this.state.cardShown.map(function (v) {
+        return _react2.default.createElement(_IShopCard2.default, { key: v.codeGood, codeValue: v.codeGood,
+          nameGood: v.nameGood, priceGood: v.priceGood, urlGood: v.urlGood, quantityGood: v.quantityGood
+        });
+      });
       return _react2.default.createElement(
         'div',
         { className: 'IShop3' },
@@ -29614,15 +29628,7 @@ var IShop3 = function (_React$Component) {
             stringSelect
           )
         ),
-        _react2.default.createElement(
-          'div',
-          { className: 'GoodCard' },
-          _react2.default.createElement(
-            'p',
-            null,
-            this.state.selectedGoodId
-          )
-        )
+        cardSelected
       );
     }
   }]);
@@ -30432,6 +30438,12 @@ exports.default = IShopTr3;
 
 /***/ }),
 /* 31 */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: SyntaxError: D:\\Сайт\\git\\FD3-Самойлович\\ishop3\\components\\IShopCard.js: JSX attributes must only be assigned a non-empty expression (24:58)\n\n\u001b[0m \u001b[90m 22 | \u001b[39m        \u001b[33m<\u001b[39m\u001b[33mtr\u001b[39m  className\u001b[33m=\u001b[39m{itemData}\u001b[33m>\u001b[39m\n \u001b[90m 23 | \u001b[39m           \u001b[33m<\u001b[39m\u001b[33mtd\u001b[39m className\u001b[33m=\u001b[39m\u001b[32m'itemData'\u001b[39m\u001b[33m>\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 24 | \u001b[39m              \u001b[33m<\u001b[39m\u001b[33minput\u001b[39m type\u001b[33m=\u001b[39m\u001b[32m'button'\u001b[39m value\u001b[33m=\u001b[39m\u001b[32m'delete'\u001b[39m onClick\u001b[33m=\u001b[39m{ }\u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mtd\u001b[39m\u001b[33m>\u001b[39m   \n \u001b[90m    | \u001b[39m                                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 25 | \u001b[39m        \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mtr\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 26 | \u001b[39m      \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 27 | \u001b[39m        \u001b[0m\n");
+
+/***/ }),
+/* 32 */
 /***/ (function(module, exports) {
 
 module.exports = [{"nameGood":"чашка","priceGood":"2","urlGood":"https://s2-goods.ozstatic.by/2000/753/502/10/10502753_0.jpg","quantityGood":"20","codeGood":"0"},{"nameGood":"тарелка","priceGood":"3","urlGood":"https://static.kulturologia.ru/files/u1866/Angela_Rossi_2.jpg","quantityGood":"10","codeGood":"1"},{"nameGood":"блюдо","priceGood":"5","urlGood":"https://static.kulturologia.ru/files/u1866/Angela_Rossi_4.jpg","quantityGood":"15","codeGood":"2"},{"nameGood":"блюдо","priceGood":"5","urlGood":"https://static.kulturologia.ru/files/u1866/Angela_Rossi_4.jpg","quantityGood":"15","codeGood":"3"}]
