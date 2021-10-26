@@ -29555,6 +29555,15 @@ var IShop3 = function (_React$Component) {
       cardShown: [],
       cardMode: 1 // 1 - отображение, 2 - редакция
 
+    }, _this.newValue = function (m, c, n, p, q) {
+
+      var k = _this.state.rowG2;
+      k[c].priceGood = p;
+      k[c].nameGood = n;
+      k[c].quantityGood = q;
+      _this.setState({ rowG2: k });
+      _this.setState({ cardMode: m });
+      console.log('я меняю значение массива', m);
     }, _this.selectedGood = function (cdVl) {
 
       _this.setState({ selectedGoodId: cdVl });
@@ -29605,14 +29614,16 @@ var IShop3 = function (_React$Component) {
           selectedGoodId: _this2.state.selectedGoodId,
           cbselectedGood: _this2.selectedGood,
           cbdeleteGood: _this2.deleteGood,
-          cbeditGood: _this2.editGood
+          cbeditGood: _this2.editGood,
+          cardMode: _this2.state.cardMode
         });
       });
       if (this.state.cardShown != []) {
         var cardSelected = this.state.cardShown.map(function (v) {
           return _react2.default.createElement(_IShopCard2.default, {
+            codValue: v.codeGood,
             nameGood: v.nameGood, priceGood: v.priceGood, urlGood: v.urlGood, quantityGood: v.quantityGood, cardMode: _this2.state.cardMode,
-            nameRow: _this2.props.columnG
+            nameRow: _this2.props.columnG, cbnewValue: _this2.newValue
           });
         });
       }
@@ -30390,15 +30401,14 @@ var IShopTr3 = function (_React$Component) {
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = IShopTr3.__proto__ || Object.getPrototypeOf(IShopTr3)).call.apply(_ref, [this].concat(args))), _this), _this.answerClicked = function (EO) {
       _this.props.cbSelected(_this.props.code);
     }, _this.selectedGoodClicked = function (eo) {
-      _this.props.cbselectedGood(_this.props.codeValue);
-      console.log("сработал selectedGoodClicked", _this.props.codeValue);
+      if (_this.props.cardMode != 2) {
+        _this.props.cbselectedGood(_this.props.codeValue);
+      }
     }, _this.deleteRow = function (eo) {
       eo.stopPropagation();
-      console.log("ты меня нажал", "я", _this.props.codeValue);
       _this.props.cbdeleteGood(_this.props.codeValue);
     }, _this.editRow = function (eo) {
-      eo.stopPropagation();
-      console.log("жду редакции", "я", _this.props.codeValue);
+      // eo.stopPropagation();
       _this.props.cbeditGood(_this.props.codeValue);
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -30410,7 +30420,6 @@ var IShopTr3 = function (_React$Component) {
       if (this.props.selectedGoodId == this.props.codeValue) {
         classGoodName = "IShopTrRed";
       } else classGoodName = "IShopTr3";
-      console.log('выбрали строку', classGoodName);
 
       return _react2.default.createElement(
         'tr',
@@ -30433,12 +30442,12 @@ var IShopTr3 = function (_React$Component) {
         _react2.default.createElement(
           'td',
           { className: 'RowN' },
-          _react2.default.createElement('input', { type: 'button', value: 'delete', onClick: this.deleteRow })
+          _react2.default.createElement('input', { type: 'button', value: 'delete', onClick: this.deleteRow, disabled: this.props.cardMode == 2 })
         ),
         _react2.default.createElement(
           'td',
           { className: 'RowN' },
-          _react2.default.createElement('input', { type: 'button', value: 'edit', onClick: this.editRow })
+          _react2.default.createElement('input', { type: 'button', value: 'edit', onClick: this.editRow, disabled: this.props.cardMode == 2 })
         )
       );
     }
@@ -30502,15 +30511,41 @@ var IShopCard = function (_React$Component) {
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = IShopCard.__proto__ || Object.getPrototypeOf(IShopCard)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
 
-      saveMode: 0 // 0 - не сохранять, 1 - сохранить
-    }, _this.savePosition = function () {
+      saveMode: 0, // 0 - не сохранять, 1 - сохранить
+      nameDefault: _this.props.nameGood,
+      priceDefault: _this.props.priceGood,
+      quantityDefault: _this.props.quantityGood,
+      nameFault: '',
+      priceFault: '',
+      quantityFault: ''
+    }, _this.defaultPosition = function (eo) {
+      _this.setState({ saveMode: 0 });
+      _this.setState({ nameDefault: _this.props.nameGood });
+      _this.setState({ priceDefault: _this.props.priceGood });
+      _this.setState({ quantityDefault: _this.props.quantityGood });
+      _this.props.cbnewValue(1, _this.props.codValue, _this.state.nameDefault, _this.state.priceDefault, _this.state.quantityDefault);
+    }, _this.savePosition = function (eo) {
       _this.setState({ saveMode: 1 });
-
-      goodChangedValue = function goodChangedValue(eo) {
-        if (_this.state.saveMode == 1 && eo.target.value == "") {
-          alert('вы не ввели значение');
-        } else alert('вы ввели значение');
-      };
+      console.log('вы ввели значение', _this.state.nameDefault);
+      _this.props.cbnewValue(1, _this.props.codValue, _this.state.nameDefault, _this.state.priceDefault, _this.state.quantityDefault);
+    }, _this.goodChangedValue = function (eo) {
+      if (_this.state.saveMode == 1 && eo.target.value == "") {
+        _this.setState({ nameDefault: eo.target.value });
+      } else {
+        _this.setState({ nameFault: "Вы не ввели значение!" });
+      }
+    }, _this.priceChangedValue = function (eo) {
+      if (_this.state.saveMode == 1 && eo.target.value == "") {
+        _this.setState({ priceDefault: eo.target.value });
+      } else {
+        _this.setState({ priceFault: "Вы не ввели значение!" });
+      }
+    }, _this.quatityChangedValue = function (eo) {
+      if (_this.state.saveMode == 1 && eo.target.value == "") {
+        _this.setState({ quantityDefault: eo.target.value });
+      } else {
+        _this.setState({ quantityFault: "Вы не ввели значение!" });
+      }
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -30523,29 +30558,67 @@ var IShopCard = function (_React$Component) {
           'div',
           { className: 'IShopCard' },
           _react2.default.createElement(
-            'form',
+            'legend',
             null,
+            "Карточка товара"
+          ),
+          _react2.default.createElement(
+            'table',
+            { className: 'itemData' },
             _react2.default.createElement(
-              'fieldset',
+              'tbody',
               null,
               _react2.default.createElement(
-                'legend',
+                'tr',
+                { className: 'itemData' },
+                _react2.default.createElement(
+                  'td',
+                  { className: 'itemData' },
+                  _react2.default.createElement('img', { className: 'Img', src: this.props.urlGood, width: 150, height: 150 })
+                )
+              ),
+              _react2.default.createElement(
+                'tr',
+                { className: 'itemData' },
+                _react2.default.createElement(
+                  'td',
+                  { className: 'itemData' },
+                  this.props.nameRow[0].text
+                ),
+                _react2.default.createElement(
+                  'td',
+                  { className: 'itemData' },
+                  this.props.nameGood
+                )
+              ),
+              _react2.default.createElement(
+                'tr',
                 null,
-                'Карточка товара'
+                _react2.default.createElement(
+                  'td',
+                  { className: 'itemData' },
+                  this.props.nameRow[1].text
+                ),
+                _react2.default.createElement(
+                  'td',
+                  { className: 'itemData' },
+                  this.props.priceGood
+                )
               ),
-              _react2.default.createElement('img', { className: 'Img', src: this.props.urlGood, width: 150, height: 150 }),
               _react2.default.createElement(
-                'label',
-                { className: 'itemData' },
-                this.props.priceGood
-              ),
-              _react2.default.createElement(
-                'label',
-                { className: 'itemData' },
-                this.props.quantityGood
-              ),
-              _react2.default.createElement('input', { type: 'button', value: '\u0431\u0435\u0437\u043F\u043E\u043B\u0435\u0437\u043D\u0430\u044F \u043A\u043D\u043E\u043F\u043A\u0430', onClick: console.log('ты нажал на кнопку') }),
-              _react2.default.createElement('input', { type: 'button', value: '\u0431\u0435\u0437\u043F\u043E\u043B\u0435\u0437\u043D\u0430\u044F \u043A\u043D\u043E\u043F\u043A\u0430', onClick: console.log('ты нажал на кнопку') })
+                'tr',
+                null,
+                _react2.default.createElement(
+                  'td',
+                  { className: 'itemData' },
+                  this.props.nameRow[3].text
+                ),
+                _react2.default.createElement(
+                  'td',
+                  { className: 'itemData' },
+                  this.props.quantityGood
+                )
+              )
             )
           )
         );
@@ -30560,7 +30633,7 @@ var IShopCard = function (_React$Component) {
           ),
           _react2.default.createElement(
             'table',
-            null,
+            { className: 'itemData2' },
             _react2.default.createElement(
               'tbody',
               null,
@@ -30589,7 +30662,17 @@ var IShopCard = function (_React$Component) {
                 _react2.default.createElement(
                   'td',
                   null,
-                  _react2.default.createElement('input', { className: 'itemData2', type: 'text', name: 'gName', onChange: this.goodChangedValue })
+                  _react2.default.createElement('input', { className: 'itemData2', type: 'text', defaultValue: this.state.nameDefault,
+                    onChange: this.goodChangedValue })
+                ),
+                _react2.default.createElement(
+                  'td',
+                  { className: 'itemData2' },
+                  _react2.default.createElement(
+                    'span',
+                    null,
+                    this.state.nameFault
+                  )
                 )
               ),
               _react2.default.createElement(
@@ -30608,7 +30691,17 @@ var IShopCard = function (_React$Component) {
                 _react2.default.createElement(
                   'td',
                   { className: 'itemData2' },
-                  _react2.default.createElement('input', { className: 'itemData2', type: 'text' })
+                  _react2.default.createElement('input', { className: 'itemData2', type: 'text', defaultValue: this.state.priceDefault,
+                    onChange: this.priceChangedValue })
+                ),
+                _react2.default.createElement(
+                  'td',
+                  { className: 'itemData2' },
+                  _react2.default.createElement(
+                    'span',
+                    null,
+                    this.state.priceFault
+                  )
                 )
               ),
               _react2.default.createElement(
@@ -30627,7 +30720,17 @@ var IShopCard = function (_React$Component) {
                 _react2.default.createElement(
                   'td',
                   { className: 'itemData2' },
-                  _react2.default.createElement('input', { className: 'itemData2', type: 'text' })
+                  _react2.default.createElement('input', { className: 'itemData2', type: 'text', defaultValue: this.state.quantityDefault,
+                    onChange: this.quantityChangedValue })
+                ),
+                _react2.default.createElement(
+                  'td',
+                  { className: 'itemData2' },
+                  _react2.default.createElement(
+                    'span',
+                    null,
+                    this.state.quantityFault
+                  )
                 )
               ),
               _react2.default.createElement(
@@ -30641,7 +30744,7 @@ var IShopCard = function (_React$Component) {
                 _react2.default.createElement(
                   'td',
                   { className: 'itemData2' },
-                  _react2.default.createElement('input', { type: 'button', value: '\u0441\u0431\u0440\u043E\u0441\u0438\u0442\u044C', onClick: console.log('ты нажал на кнопку') })
+                  _react2.default.createElement('input', { type: 'button', value: '\u0441\u0431\u0440\u043E\u0441\u0438\u0442\u044C', onClick: this.defaultPosition })
                 )
               )
             )

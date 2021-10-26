@@ -23,7 +23,16 @@ class IShop3 extends React.Component {
         cardMode:1, // 1 - отображение, 2 - редакция
 
     }
-
+    newValue= (m,c,n,p,q)=>{
+    
+    var k= this.state.rowG2;
+    k[c].priceGood=p;
+    k[c].nameGood=n;
+    k[c].quantityGood=q;
+    this.setState({rowG2:k})
+    this.setState({cardMode:m})
+    console.log('я меняю значение массива',m)
+    }
     selectedGood = (cdVl) => {
   
     this.setState({selectedGoodId: cdVl} ); 
@@ -64,11 +73,13 @@ class IShop3 extends React.Component {
         cbselectedGood={this.selectedGood}
         cbdeleteGood={this.deleteGood}
         cbeditGood={this.editGood}
+        cardMode={this.state.cardMode}
       />)
       if (this.state.cardShown!=[]) {var cardSelected=this.state.cardShown.map(v=>
         <IShopCard   
+        codValue={v.codeGood}
         nameGood={v.nameGood} priceGood={v.priceGood} urlGood={v.urlGood} quantityGood={v.quantityGood} cardMode={this.state.cardMode}
-        nameRow={this.props.columnG}
+        nameRow={this.props.columnG} cbnewValue={this.newValue}
         />)}
       return (
         <div  className='IShop3'>
