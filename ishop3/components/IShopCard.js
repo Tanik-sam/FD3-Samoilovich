@@ -15,6 +15,7 @@ class IShopCard extends React.Component {
     nameFault:'',
     priceFault:'',
     quantityFault:'',
+    savePerm:0
    }
    defaultPosition=(eo)=>{
     this.setState({saveMode:0}) 
@@ -31,25 +32,42 @@ class IShopCard extends React.Component {
     this.props.cbnewValue(1,this.props.codValue, this.state.nameDefault,this.state.priceDefault,this.state.quantityDefault,)
   }
   
+
+  validation=(vl)=>{
+    if ((vl=="")||(vl==" ")){
+    return 1}
+    }
   
   goodChangedValue=(eo)=>{
-    if ((this.state.saveMode==1)&&(eo.target.value=="")){
-      this.setState({nameDefault:eo.target.value})}
-      else {this.setState({nameFault:"Вы не ввели значение!"});
-      
-    }
+     
+       if (this.validation(eo.target.value)!=1){
+        this.setState({savePerm:0})
+        this.setState({nameDefault:eo.target.value});
+        this.setState({nameFault:""})}
+       else {this.setState({nameFault:"Вы не ввели значение!"});
+        this.setState({savePerm:1})}
+    
   }
 
   priceChangedValue=(eo)=>{
-    if ((this.state.saveMode==1)&&(eo.target.value=="")){
-    this.setState({priceDefault:eo.target.value});}
-    else {this.setState({priceFault:"Вы не ввели значение!"})}
-    }
+    if (this.validation(eo.target.value)!=1){
+      this.setState({savePerm:0})
+      this.setState({priceDefault:eo.target.value});
+      this.setState({priceFault:""})}
+    else {this.setState({priceFault:"Вы не ввели значение!"});
+            
+            this.setState({savePerm:1})}
+            
+   }
+    
   
   quatityChangedValue=(eo)=>{
-    if ((this.state.saveMode==1)&&(eo.target.value=="")){
-      this.setState({quantityDefault:eo.target.value});}
-      else {this.setState({quantityFault:"Вы не ввели значение!"})}
+    if (this.validation(eo.target.value)!=1){
+      this.setState({savePerm:0})
+      this.setState({quantityDefault:eo.target.value});
+      this.setState({quantityFault:""})}
+      else {this.setState({quantityFault:"Вы не ввели значение!"});
+            this.setState({savePerm:1})}
       
     }
   
@@ -151,7 +169,7 @@ class IShopCard extends React.Component {
                 </td>  
                 <td className='itemData2'>
                   <input className='itemData2' type="text" defaultValue={this.state.quantityDefault} 
-                 onChange={this.quantityChangedValue}/>
+                 onChange={this.quatityChangedValue}/>
                 </td>
                 <td className='itemData2'>
                   <span>{this.state.quantityFault}</span>
@@ -159,10 +177,10 @@ class IShopCard extends React.Component {
               </tr> 
               <tr>
                  <td  className='itemData2'>
-                   <input type='button' value='сохранить' onClick={this.savePosition}/>   
+                   <input type='button' value='сохранить' onClick={this.savePosition} disabled={this.state.savePerm==1}/>   
                  </td>  
                  <td  className='itemData2'>
-                    <input type='button' value='сбросить' onClick={this.defaultPosition}/>   
+                    <input type='button' value='сбросить' onClick={this.defaultPosition} disabled={this.state.savePerm==1}/>   
                  </td>
               </tr>
         </tbody>
