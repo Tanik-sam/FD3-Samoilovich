@@ -9,9 +9,9 @@ class IShopTr3 extends React.Component {
     this.props.cbSelected(this.props.code);
   }
   selectedGoodClicked=(eo)=>{
-    if (this.props.cardMode!=2){
+    //if (this.props.cardMode!=2){
   this.props.cbselectedGood(this.props.codeValue);}
-  }
+ // }
   deleteRow=(eo)=>{
     eo.stopPropagation();
     this.props.cbdeleteGood(this.props.codeValue);

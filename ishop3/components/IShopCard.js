@@ -15,7 +15,7 @@ class IShopCard extends React.Component {
     nameFault:'',
     priceFault:'',
     quantityFault:'',
-    savePerm:0
+    savePerm:[0,0,0]
    }
    defaultPosition=(eo)=>{
     this.setState({saveMode:0}) 
@@ -39,41 +39,52 @@ class IShopCard extends React.Component {
     }
   
   goodChangedValue=(eo)=>{
-     
+    this.setState({nameDefault:eo.target.value});
+    var r=this.state.savePerm;
+    console.log ("r0",r[0])
        if (this.validation(eo.target.value)!=1){
-        this.setState({savePerm:0})
-        this.setState({nameDefault:eo.target.value});
+      r[0]=0;
+        this.setState({savePerm:r})
         this.setState({nameFault:""})}
        else {this.setState({nameFault:"Вы не ввели значение!"});
-        this.setState({savePerm:1})}
+       r[0]=1 
+       this.setState({savePerm:r})}
     
   }
 
   priceChangedValue=(eo)=>{
+    this.setState({priceDefault:eo.target.value});
+    var r1=this.state.savePerm;
     if (this.validation(eo.target.value)!=1){
-      this.setState({savePerm:0})
-      this.setState({priceDefault:eo.target.value});
+      r1[1]=0;
+      this.setState({savePerm:r1})
+      
       this.setState({priceFault:""})}
     else {this.setState({priceFault:"Вы не ввели значение!"});
-            
-            this.setState({savePerm:1})}
+    r1[1]=1        
+            this.setState({savePerm:r1})}
             
    }
     
   
   quatityChangedValue=(eo)=>{
+    this.setState({quantityDefault:eo.target.value});
+    var r2=this.state.savePerm;
     if (this.validation(eo.target.value)!=1){
-      this.setState({savePerm:0})
-      this.setState({quantityDefault:eo.target.value});
+      r2[2]=0;
+      this.setState({savePerm:r2})
+      
       this.setState({quantityFault:""})}
       else {this.setState({quantityFault:"Вы не ввели значение!"});
-            this.setState({savePerm:1})}
+      r2[2]=1;
+            this.setState({savePerm:r2})}
       
     }
   
  
 
   render() {
+    console.log('this.state.savePerm',this.state.savePerm)
     if (this.props.cardMode==1){
 
     return (
@@ -177,10 +188,10 @@ class IShopCard extends React.Component {
               </tr> 
               <tr>
                  <td  className='itemData2'>
-                   <input type='button' value='сохранить' onClick={this.savePosition} disabled={this.state.savePerm==1}/>   
+                   <input type='button' value='сохранить' onClick={this.savePosition} disabled={(this.state.savePerm[0]+this.state.savePerm[1]+this.state.savePerm[2]!=0)}/>   
                  </td>  
                  <td  className='itemData2'>
-                    <input type='button' value='сбросить' onClick={this.defaultPosition} disabled={this.state.savePerm==1}/>   
+                    <input type='button' value='сбросить' onClick={this.defaultPosition} disabled={(this.state.savePerm[0]+this.state.savePerm[1]+this.state.savePerm[2]!=0)}/>   
                  </td>
               </tr>
         </tbody>
