@@ -138,7 +138,7 @@ class IShopCard extends React.Component {
                   {this.props.nameGood}
                 </td>
                 <td>
-                  <input className='itemData2' type="text" defaultValue={this.state.nameDefault} 
+                  <input className='itemData2' type="text" value={this.state.nameDefault}
                  onChange={this.goodChangedValue}/> 
                 </td>
                 <td className='itemData2'>
@@ -153,7 +153,7 @@ class IShopCard extends React.Component {
                   {this.props.priceGood}
                 </td>
                 <td className='itemData2'>
-                  <input className='itemData2' type="text" defaultValue={this.state.priceDefault} 
+                  <input className='itemData2' type="text" value={this.state.priceDefault} 
                  onChange={this.priceChangedValue}/>
                 </td>
                 <td className='itemData2'>
@@ -168,7 +168,7 @@ class IShopCard extends React.Component {
                   {this.props.quantityGood}
                 </td>  
                 <td className='itemData2'>
-                  <input className='itemData2' type="text" defaultValue={this.state.quantityDefault} 
+                  <input className='itemData2' type="text" value={this.state.quantityDefault} 
                  onChange={this.quatityChangedValue}/>
                 </td>
                 <td className='itemData2'>

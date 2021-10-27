@@ -30678,7 +30678,7 @@ var IShopCard = function (_React$Component) {
                 _react2.default.createElement(
                   'td',
                   null,
-                  _react2.default.createElement('input', { className: 'itemData2', type: 'text', defaultValue: this.state.nameDefault,
+                  _react2.default.createElement('input', { className: 'itemData2', type: 'text', value: this.state.nameDefault, defaultValue: this.props.nameGood,
                     onChange: this.goodChangedValue })
                 ),
                 _react2.default.createElement(
@@ -30707,7 +30707,7 @@ var IShopCard = function (_React$Component) {
                 _react2.default.createElement(
                   'td',
                   { className: 'itemData2' },
-                  _react2.default.createElement('input', { className: 'itemData2', type: 'text', defaultValue: this.state.priceDefault,
+                  _react2.default.createElement('input', { className: 'itemData2', type: 'text', value: this.state.priceDefault,
                     onChange: this.priceChangedValue })
                 ),
                 _react2.default.createElement(
@@ -30736,7 +30736,7 @@ var IShopCard = function (_React$Component) {
                 _react2.default.createElement(
                   'td',
                   { className: 'itemData2' },
-                  _react2.default.createElement('input', { className: 'itemData2', type: 'text', defaultValue: this.state.quantityDefault,
+                  _react2.default.createElement('input', { className: 'itemData2', type: 'text', value: this.state.quantityDefault,
                     onChange: this.quatityChangedValue })
                 ),
                 _react2.default.createElement(
