@@ -30518,8 +30518,8 @@ var IShopCard = function (_React$Component) {
       quantityDefault: _this.props.quantityGood,
       nameFault: '',
       priceFault: '',
-      quantityFault: '',
-      savePerm: [0, 0, 0]
+      quantityFault: ''
+
     }, _this.defaultPosition = function (eo) {
       _this.setState({ saveMode: 0 });
       _this.setState({ nameDefault: _this.props.nameGood });
@@ -30536,42 +30536,24 @@ var IShopCard = function (_React$Component) {
       }
     }, _this.goodChangedValue = function (eo) {
       _this.setState({ nameDefault: eo.target.value });
-      var r = _this.state.savePerm;
-      console.log("r0", r[0]);
       if (_this.validation(eo.target.value) != 1) {
-        r[0] = 0;
-        _this.setState({ savePerm: r });
         _this.setState({ nameFault: "" });
       } else {
         _this.setState({ nameFault: "Вы не ввели значение!" });
-        r[0] = 1;
-        _this.setState({ savePerm: r });
       }
     }, _this.priceChangedValue = function (eo) {
       _this.setState({ priceDefault: eo.target.value });
-      var r1 = _this.state.savePerm;
       if (_this.validation(eo.target.value) != 1) {
-        r1[1] = 0;
-        _this.setState({ savePerm: r1 });
-
         _this.setState({ priceFault: "" });
       } else {
         _this.setState({ priceFault: "Вы не ввели значение!" });
-        r1[1] = 1;
-        _this.setState({ savePerm: r1 });
       }
     }, _this.quatityChangedValue = function (eo) {
       _this.setState({ quantityDefault: eo.target.value });
-      var r2 = _this.state.savePerm;
       if (_this.validation(eo.target.value) != 1) {
-        r2[2] = 0;
-        _this.setState({ savePerm: r2 });
-
         _this.setState({ quantityFault: "" });
       } else {
         _this.setState({ quantityFault: "Вы не ввели значение!" });
-        r2[2] = 1;
-        _this.setState({ savePerm: r2 });
       }
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -30767,12 +30749,12 @@ var IShopCard = function (_React$Component) {
                 _react2.default.createElement(
                   'td',
                   { className: 'itemData2' },
-                  _react2.default.createElement('input', { type: 'button', value: '\u0441\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C', onClick: this.savePosition, disabled: this.state.savePerm[0] + this.state.savePerm[1] + this.state.savePerm[2] != 0 })
+                  _react2.default.createElement('input', { type: 'button', value: '\u0441\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C', onClick: this.savePosition })
                 ),
                 _react2.default.createElement(
                   'td',
                   { className: 'itemData2' },
-                  _react2.default.createElement('input', { type: 'button', value: '\u0441\u0431\u0440\u043E\u0441\u0438\u0442\u044C', onClick: this.defaultPosition, disabled: this.state.savePerm[0] + this.state.savePerm[1] + this.state.savePerm[2] != 0 })
+                  _react2.default.createElement('input', { type: 'button', value: '\u0441\u0431\u0440\u043E\u0441\u0438\u0442\u044C', onClick: this.defaultPosition })
                 )
               )
             )
