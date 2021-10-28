@@ -101,7 +101,7 @@ class IShopCard extends React.Component {
             <tbody>
               <tr className='itemData'>
                 <td className='itemData'>
-                  <img className='Img' src={this.props.urlGood} width={150} height={150}/> 
+                  <img className='Img' src={this.props.urlGood} width={100} height={100}/> 
                 </td>
               </tr>
               <tr className='itemData'>
