@@ -8,7 +8,7 @@ class IShopCard extends React.Component {
  
   state = {
       
-    saveMode: 0,// 0 - не сохранять, 1 - сохранить
+    saveMode: 0,// 0 - сохранять, 1 - не сохранить
     nameDefault: this.props.nameGood,
     priceDefault: this.props.priceGood,
     quantityDefault: this.props.quantityGood,

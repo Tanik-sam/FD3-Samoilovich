@@ -5,13 +5,10 @@ import './IShopTr3.css';
 
 class IShopTr3 extends React.Component {
 
-  answerClicked = (EO) => {
-    this.props.cbSelected(this.props.code);
-  }
   selectedGoodClicked=(eo)=>{
-    //if (this.props.cardMode!=2){
-  this.props.cbselectedGood(this.props.codeValue);}
- // }
+  if (this.props.cardMode!=2){
+    this.props.cbselectedGood(this.props.codeValue);}
+  }
   deleteRow=(eo)=>{
     eo.stopPropagation();
     this.props.cbdeleteGood(this.props.codeValue);
@@ -33,7 +30,7 @@ class IShopTr3 extends React.Component {
       <td className='RowN'>{this.props.priceGood}</td>
       <td className='RowN'>{this.props.urlGood}</td>
       <td className='RowN'>
-        <img className='Img' src={this.props.urlGood} width={150} height={150}/> 
+        <img className='Img' src={this.props.urlGood} width={100} height={100}/> 
       </td>
       <td className='RowN'>{this.props.quantityGood}</td>
       <td className='RowN'><input type='button' value='delete' onClick={this.deleteRow} disabled={this.props.cardMode==2}/></td>   

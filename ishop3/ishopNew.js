@@ -30397,11 +30397,10 @@ var IShopTr3 = function (_React$Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = IShopTr3.__proto__ || Object.getPrototypeOf(IShopTr3)).call.apply(_ref, [this].concat(args))), _this), _this.answerClicked = function (EO) {
-      _this.props.cbSelected(_this.props.code);
-    }, _this.selectedGoodClicked = function (eo) {
-      //if (this.props.cardMode!=2){
-      _this.props.cbselectedGood(_this.props.codeValue);
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = IShopTr3.__proto__ || Object.getPrototypeOf(IShopTr3)).call.apply(_ref, [this].concat(args))), _this), _this.selectedGoodClicked = function (eo) {
+      if (_this.props.cardMode != 2) {
+        _this.props.cbselectedGood(_this.props.codeValue);
+      }
     }, _this.deleteRow = function (eo) {
       eo.stopPropagation();
       _this.props.cbdeleteGood(_this.props.codeValue);
@@ -30410,8 +30409,6 @@ var IShopTr3 = function (_React$Component) {
       _this.props.cbeditGood(_this.props.codeValue);
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
-  // }
-
 
   _createClass(IShopTr3, [{
     key: 'render',
@@ -30442,7 +30439,7 @@ var IShopTr3 = function (_React$Component) {
         _react2.default.createElement(
           'td',
           { className: 'RowN' },
-          _react2.default.createElement('img', { className: 'Img', src: this.props.urlGood, width: 150, height: 150 })
+          _react2.default.createElement('img', { className: 'Img', src: this.props.urlGood, width: 100, height: 100 })
         ),
         _react2.default.createElement(
           'td',
@@ -30521,7 +30518,7 @@ var IShopCard = function (_React$Component) {
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = IShopCard.__proto__ || Object.getPrototypeOf(IShopCard)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
 
-      saveMode: 0, // 0 - не сохранять, 1 - сохранить
+      saveMode: 0, // 0 - сохранять, 1 - не сохранить
       nameDefault: _this.props.nameGood,
       priceDefault: _this.props.priceGood,
       quantityDefault: _this.props.quantityGood,
@@ -30534,9 +30531,7 @@ var IShopCard = function (_React$Component) {
       _this.setState({ priceFault: "" });
       _this.setState({ quantityFault: "" });
       _this.setState({ nameFault: "" });
-      _this.setState(function (p, props) {
-        return { nameDefault: _this.props.nameGood };
-      }); //({nameDefault:this.props.nameGood})
+      _this.setState({ nameDefault: _this.props.nameGood });
       _this.setState({ priceDefault: _this.props.priceGood });
       _this.setState({ quantityDefault: _this.props.quantityGood });
       console.log('this.state.nameDefault,this.state.priceDefault,this.state.quantityDefault', _this.state.nameDefault, _this.state.priceDefault, _this.state.quantityDefault);
