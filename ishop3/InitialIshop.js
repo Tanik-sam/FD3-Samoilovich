@@ -5,12 +5,13 @@ import ReactDOM from 'react-dom';
 
 import IShop3 from './components/IShop3';
 
-let marketNameText='Яблыка на талерке';
+let marketNameText='Яблык на талерке';
 let goods=require('./goods.json');
 let columnGoods=[ 
-    {text:'название',code:1}, 
-    {text:'цена',code:2}, 
-    {text:'URL фото',code:3},
+    {text:'название',code:0}, 
+    {text:'цена',code:1}, 
+    {text:'URL фото',code:2},
+    {text:'фото',code:3},
     {text:'единиц на складе',code:4} 
   ];
 

@@ -8,13 +8,21 @@
   
 }
 .IShopCard .itemData
-{width:fit-content;
+{
  border-width: 2px;
  background:  #faea5e;
 }
 
 .IShopCard .itemData2
-{width:fit-content;
+{
  border-width: 2px;
- background:  #ddb254;
+ background:  #f3c278;
+}
+table td 
+{
+  table-layout:fixed;
+  width:120px;
+  overflow:hidden;
+  word-wrap:break-word;
+  text-align:center;
 }

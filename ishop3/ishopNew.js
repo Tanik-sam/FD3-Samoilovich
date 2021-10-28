@@ -626,9 +626,9 @@ var _IShop2 = _interopRequireDefault(_IShop);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var marketNameText = 'Яблыка на талерке';
+var marketNameText = 'Яблык на талерке';
 var goods = __webpack_require__(33);
-var columnGoods = [{ text: 'название', code: 1 }, { text: 'цена', code: 2 }, { text: 'URL фото', code: 3 }, { text: 'единиц на складе', code: 4 }];
+var columnGoods = [{ text: 'название', code: 0 }, { text: 'цена', code: 1 }, { text: 'URL фото', code: 2 }, { text: 'фото', code: 3 }, { text: 'единиц на складе', code: 4 }];
 
 _reactDom2.default.render(_react2.default.createElement(_IShop2.default, {
   marketName: marketNameText,
@@ -29595,13 +29595,12 @@ var IShop3 = function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var b = 1;
       var cG = [];
       for (var a = 0; a < this.props.columnG.length; a++) {
         var columnGood = this.props.columnG[a];
         var cGs = _react2.default.createElement(
           'th',
-          { key: columnGood.code, className: 'ColumnN' },
+          { className: 'ColumnN' },
           '  ',
           columnGood.text
         );
@@ -29609,7 +29608,7 @@ var IShop3 = function (_React$Component) {
         cG.push(cGs);
       }
       var stringSelect = this.state.rowG2.map(function (v) {
-        return _react2.default.createElement(_IShopTr2.default, { codeValue: v.codeGood,
+        return _react2.default.createElement(_IShopTr2.default, { key: v.codeGood, codeValue: v.codeGood,
           nameGood: v.nameGood, priceGood: v.priceGood, urlGood: v.urlGood, quantityGood: v.quantityGood,
           selectedGoodId: _this2.state.selectedGoodId,
           cbselectedGood: _this2.selectedGood,
@@ -29621,7 +29620,7 @@ var IShop3 = function (_React$Component) {
       if (this.state.cardShown != []) {
         var cardSelected = this.state.cardShown.map(function (v) {
           return _react2.default.createElement(_IShopCard2.default, {
-            codValue: v.codeGood,
+            codeValue: v.codeGood,
             nameGood: v.nameGood, priceGood: v.priceGood, urlGood: v.urlGood, quantityGood: v.quantityGood, cardMode: _this2.state.cardMode,
             nameRow: _this2.props.columnG, cbnewValue: _this2.newValue
           });
@@ -30424,11 +30423,21 @@ var IShopTr3 = function (_React$Component) {
 
       return _react2.default.createElement(
         'tr',
-        { className: classGoodName, key: this.props.codeValue, onClick: this.selectedGoodClicked },
+        { className: classGoodName, onClick: this.selectedGoodClicked },
+        _react2.default.createElement(
+          'td',
+          { className: 'RowN' },
+          this.props.nameGood
+        ),
         _react2.default.createElement(
           'td',
           { className: 'RowN' },
           this.props.priceGood
+        ),
+        _react2.default.createElement(
+          'td',
+          { className: 'RowN' },
+          this.props.urlGood
         ),
         _react2.default.createElement(
           'td',
@@ -30522,39 +30531,58 @@ var IShopCard = function (_React$Component) {
 
     }, _this.defaultPosition = function (eo) {
       _this.setState({ saveMode: 0 });
-      _this.setState({ nameDefault: _this.props.nameGood });
+      _this.setState({ priceFault: "" });
+      _this.setState({ quantityFault: "" });
+      _this.setState({ nameFault: "" });
+      _this.setState(function (p, props) {
+        return { nameDefault: _this.props.nameGood };
+      }); //({nameDefault:this.props.nameGood})
       _this.setState({ priceDefault: _this.props.priceGood });
       _this.setState({ quantityDefault: _this.props.quantityGood });
-      _this.props.cbnewValue(1, _this.props.codValue, _this.state.nameDefault, _this.state.priceDefault, _this.state.quantityDefault);
+      console.log('this.state.nameDefault,this.state.priceDefault,this.state.quantityDefault', _this.state.nameDefault, _this.state.priceDefault, _this.state.quantityDefault);
+      _this.props.cbnewValue(1, _this.props.codeValue, _this.state.nameDefault, _this.state.priceDefault, _this.state.quantityDefault);
     }, _this.savePosition = function (eo) {
-      _this.setState({ saveMode: 1 });
-      console.log('вы ввели значение', _this.state.nameDefault);
-      _this.props.cbnewValue(1, _this.props.codValue, _this.state.nameDefault, _this.state.priceDefault, _this.state.quantityDefault);
+      var r = [0, 0, 0];
+      if (_this.validation(_this.state.nameDefault) != 1) {
+        _this.setState({ quantityFault: "" });
+        r[0] = 0;
+      } else {
+        _this.setState({ nameFault: "Вы не ввели значение!" });
+        r[0] = 1;
+      }
+      if (_this.validation(_this.state.priceDefault) != 1) {
+        _this.setState({ priceFault: "" });
+        r[1] = 0;
+      } else {
+        _this.setState({ priceFault: "Вы не ввели значение!" });
+        r[1] = 1;
+      }
+      if (_this.validation(_this.state.quantityDefault) != 1) {
+        _this.setState({ quantityFault: "" });
+        r[2] = 0;
+      } else {
+        _this.setState({ quantityFault: "Вы не ввели значение!" });
+        r[2] = 1;
+      }
+      if (r[0] + r[1] + r[2] == 0) {
+        _this.setState({ saveMode: 0 });
+        _this.props.cbnewValue(1, _this.props.codeValue, _this.state.nameDefault, _this.state.priceDefault, _this.state.quantityDefault);
+      } else {
+        _this.setState({ saveMode: 1 });
+      }
     }, _this.validation = function (vl) {
       if (vl == "" || vl == " ") {
         return 1;
       }
     }, _this.goodChangedValue = function (eo) {
       _this.setState({ nameDefault: eo.target.value });
-      if (_this.validation(eo.target.value) != 1) {
-        _this.setState({ nameFault: "" });
-      } else {
-        _this.setState({ nameFault: "Вы не ввели значение!" });
-      }
+      _this.setState({ saveMode: 0 });
     }, _this.priceChangedValue = function (eo) {
       _this.setState({ priceDefault: eo.target.value });
-      if (_this.validation(eo.target.value) != 1) {
-        _this.setState({ priceFault: "" });
-      } else {
-        _this.setState({ priceFault: "Вы не ввели значение!" });
-      }
+      _this.setState({ saveMode: 0 });
     }, _this.quatityChangedValue = function (eo) {
       _this.setState({ quantityDefault: eo.target.value });
-      if (_this.validation(eo.target.value) != 1) {
-        _this.setState({ quantityFault: "" });
-      } else {
-        _this.setState({ quantityFault: "Вы не ввели значение!" });
-      }
+      _this.setState({ saveMode: 0 });
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -30749,7 +30777,7 @@ var IShopCard = function (_React$Component) {
                 _react2.default.createElement(
                   'td',
                   { className: 'itemData2' },
-                  _react2.default.createElement('input', { type: 'button', value: '\u0441\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C', onClick: this.savePosition })
+                  _react2.default.createElement('input', { type: 'button', value: '\u0441\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C', onClick: this.savePosition, disabled: this.state.saveMode == 1 })
                 ),
                 _react2.default.createElement(
                   'td',
@@ -30779,7 +30807,7 @@ exports.default = IShopCard;
 /* 33 */
 /***/ (function(module, exports) {
 
-module.exports = [{"nameGood":"чашка","priceGood":"2","urlGood":"https://s2-goods.ozstatic.by/2000/753/502/10/10502753_0.jpg","quantityGood":"20","codeGood":"0"},{"nameGood":"тарелка","priceGood":"3","urlGood":"https://static.kulturologia.ru/files/u1866/Angela_Rossi_2.jpg","quantityGood":"10","codeGood":"1"},{"nameGood":"блюдо","priceGood":"5","urlGood":"https://static.kulturologia.ru/files/u1866/Angela_Rossi_4.jpg","quantityGood":"15","codeGood":"2"},{"nameGood":"блюдо","priceGood":"5","urlGood":"https://static.kulturologia.ru/files/u1866/Angela_Rossi_4.jpg","quantityGood":"15","codeGood":"3"}]
+module.exports = [{"nameGood":"чашка","priceGood":"2","urlGood":"https://s2-goods.ozstatic.by/2000/753/502/10/10502753_0.jpg","quantityGood":"20","codeGood":"0"},{"nameGood":"тарелка","priceGood":"3","urlGood":"https://static.kulturologia.ru/files/u1866/Angela_Rossi_2.jpg","quantityGood":"10","codeGood":"1"},{"nameGood":"блюдо","priceGood":"5","urlGood":"https://static.kulturologia.ru/files/u1866/Angela_Rossi_4.jpg","quantityGood":"15","codeGood":"2"},{"nameGood":"блюдо","priceGood":"6","urlGood":"https://static.kulturologia.ru/files/u1866/Angela_Rossi_4.jpg","quantityGood":"17","codeGood":"3"}]
 
 /***/ })
 /******/ ]);

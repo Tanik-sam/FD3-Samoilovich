@@ -25,12 +25,13 @@ class IShopTr3 extends React.Component {
     var classGoodName="IShopTr3"
     if (this.props.selectedGoodId==this.props.codeValue) {classGoodName="IShopTrRed"} else classGoodName="IShopTr3"
     
-
+   
 
     return (
-      <tr  className={classGoodName} key={this.props.codeValue} onClick={this.selectedGoodClicked }>
-
+      <tr  className={classGoodName}  onClick={this.selectedGoodClicked}>
+      <td className='RowN'>{this.props.nameGood}</td>
       <td className='RowN'>{this.props.priceGood}</td>
+      <td className='RowN'>{this.props.urlGood}</td>
       <td className='RowN'>
         <img className='Img' src={this.props.urlGood} width={150} height={150}/> 
       </td>

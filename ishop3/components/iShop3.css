@@ -3,3 +3,12 @@
   background-color: red;
 }
 
+
+table th .ColumnN 
+{
+  table-layout:fixed;
+  width:120px;
+  overflow:hidden;
+  word-wrap:break-word;
+  text-align:center;
+}

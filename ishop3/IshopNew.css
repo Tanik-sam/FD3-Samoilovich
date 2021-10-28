@@ -3,11 +3,27 @@
   background-color: red;
 }
 
-.IShopTrRed
+
+table th .ColumnN 
+{
+  table-layout:fixed;
+  width:120px;
+  overflow:hidden;
+  word-wrap:break-word;
+  text-align:center;
+}.IShopTrRed
 {
   background-color:  #dd5454;
   background: linear-gradient(45deg, #dd5454, #faea5e);
   transition: 1s;
+}
+table td 
+{
+  table-layout:fixed;
+  width:120px;
+  overflow:hidden;
+  word-wrap:break-word;
+  text-align:center;
 }.IShopCard
 {
   
@@ -18,14 +34,22 @@
   
 }
 .IShopCard .itemData
-{width:fit-content;
+{
  border-width: 2px;
  background:  #faea5e;
 }
 
 .IShopCard .itemData2
-{width:fit-content;
+{
  border-width: 2px;
- background:  #ddb254;
+ background:  #f3c278;
+}
+table td 
+{
+  table-layout:fixed;
+  width:120px;
+  overflow:hidden;
+  word-wrap:break-word;
+  text-align:center;
 }
 /*# sourceMappingURL=ishopNew.css.map*/

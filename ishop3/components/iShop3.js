@@ -58,16 +58,15 @@ class IShop3 extends React.Component {
   }
 
   render() {
-    var b=1;
     var cG=[];
-    for ( var a=0; a<this.props.columnG.length; a++ ) {
+    for (var a=0; a<this.props.columnG.length; a++ ) {
       var columnGood=this.props.columnG[a];
-      let cGs = <th  key={columnGood.code} className='ColumnN'>  {columnGood.text}</th>
+      let cGs = <th className='ColumnN'>  {columnGood.text}</th>
       
       cG.push(cGs);
     }
     var stringSelect=this.state.rowG2.map( v =>
-      <IShopTr3  codeValue={v.codeGood}
+      <IShopTr3 key={v.codeGood} codeValue={v.codeGood}
         nameGood={v.nameGood} priceGood={v.priceGood} urlGood={v.urlGood} quantityGood={v.quantityGood} 
         selectedGoodId={this.state.selectedGoodId}
         cbselectedGood={this.selectedGood}
@@ -77,7 +76,7 @@ class IShop3 extends React.Component {
       />)
       if (this.state.cardShown!=[]) {var cardSelected=this.state.cardShown.map(v=>
         <IShopCard   
-        codValue={v.codeGood}
+        codeValue={v.codeGood}
         nameGood={v.nameGood} priceGood={v.priceGood} urlGood={v.urlGood} quantityGood={v.quantityGood} cardMode={this.state.cardMode}
         nameRow={this.props.columnG} cbnewValue={this.newValue}
         />)}
