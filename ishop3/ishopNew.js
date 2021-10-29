@@ -29585,8 +29585,6 @@ var IShop3 = function (_React$Component) {
       console.log("длина", _this.state.rowG2.length);
     }, _this.editGood = function (edtCdVl) {
       _this.setState({ cardMode: 2 });
-
-      console.log("ха-ха, вот облом", edtCdVl);
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -30528,6 +30526,7 @@ var IShopCard = function (_React$Component) {
       quantityFault: ''
 
     }, _this.defaultPosition = function (eo) {
+
       _this.setState({ saveMode: 0 });
       _this.setState({ priceFault: "" });
       _this.setState({ quantityFault: "" });
@@ -30536,7 +30535,7 @@ var IShopCard = function (_React$Component) {
       _this.setState({ priceDefault: _this.props.priceGood });
       _this.setState({ quantityDefault: _this.props.quantityGood });
       console.log('this.props.nameGood=', _this.props.nameGood, 'this.state.nameDefault=', _this.state.nameDefault);
-      _this.props.cbnewValue(1, _this.props.codeValue, _this.state.nameDefault, _this.state.priceDefault, _this.state.quantityDefault);
+      _this.props.cbnewValue(1, _this.props.codeValue, _this.props.nameGood, _this.props.priceGood, _this.props.quantityGood);
     }, _this.savePosition = function (eo) {
 
       var r = [0, 0, 0];

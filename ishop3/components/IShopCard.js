@@ -18,6 +18,7 @@ class IShopCard extends React.Component {
     
    }
    defaultPosition=(eo)=>{
+   
     this.setState({saveMode:0}) 
     this.setState({priceFault:""})
     this.setState({quantityFault:""})
@@ -26,7 +27,7 @@ class IShopCard extends React.Component {
     this.setState({priceDefault:this.props.priceGood})
     this.setState({quantityDefault:this.props.quantityGood})
     console.log ('this.props.nameGood=',this.props.nameGood,'this.state.nameDefault=', this.state.nameDefault)
-    this.props.cbnewValue(1,this.props.codeValue, this.state.nameDefault,this.state.priceDefault,this.state.quantityDefault)
+    this.props.cbnewValue(1,this.props.codeValue, this.props.nameGood,this.props.priceGood,this.props.quantityGood)
    }
 
   savePosition=(eo)=>{
