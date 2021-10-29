@@ -30574,10 +30574,7 @@ var IShopCard = function (_React$Component) {
     }, _this.goodChangedValue = function (eo) {
 
       _this.setState({ nameDefault: eo.target.value });
-      if (eo.target.value == "") _this.setState(function (p, props) {
-        return { nameDefault: _this.props.nameDefault };
-      });
-      _this.setState({ saveMode: 0 });
+      if (eo.target.value == "") _this.setState({ saveMode: 0 });
     }, _this.priceChangedValue = function (eo) {
       _this.setState({ priceDefault: eo.target.value });
       _this.setState({ saveMode: 0 });

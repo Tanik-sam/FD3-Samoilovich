@@ -53,8 +53,7 @@ class IShop3 extends React.Component {
 
   editGood = (edtCdVl) => {
    this.setState({cardMode:2})
-    
-    console.log("ха-ха, вот облом", edtCdVl)
+
   }
 
   render() {
