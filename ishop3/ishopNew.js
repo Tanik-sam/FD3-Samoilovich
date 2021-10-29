@@ -29600,7 +29600,7 @@ var IShop3 = function (_React$Component) {
         var columnGood = this.props.columnG[a];
         var cGs = _react2.default.createElement(
           'th',
-          { className: 'ColumnN' },
+          { className: 'ColumnN', key: columnGood.code },
           '  ',
           columnGood.text
         );
@@ -29620,6 +29620,7 @@ var IShop3 = function (_React$Component) {
       if (this.state.cardShown != []) {
         var cardSelected = this.state.cardShown.map(function (v) {
           return _react2.default.createElement(_IShopCard2.default, {
+            key: v.codeGood,
             codeValue: v.codeGood,
             nameGood: v.nameGood, priceGood: v.priceGood, urlGood: v.urlGood, quantityGood: v.quantityGood, cardMode: _this2.state.cardMode,
             nameRow: _this2.props.columnG, cbnewValue: _this2.newValue
@@ -30534,9 +30535,10 @@ var IShopCard = function (_React$Component) {
       _this.setState({ nameDefault: _this.props.nameGood });
       _this.setState({ priceDefault: _this.props.priceGood });
       _this.setState({ quantityDefault: _this.props.quantityGood });
-      console.log('this.state.nameDefault,this.state.priceDefault,this.state.quantityDefault', _this.state.nameDefault, _this.state.priceDefault, _this.state.quantityDefault);
+      console.log('this.props.nameGood=', _this.props.nameGood, 'this.state.nameDefault=', _this.state.nameDefault);
       _this.props.cbnewValue(1, _this.props.codeValue, _this.state.nameDefault, _this.state.priceDefault, _this.state.quantityDefault);
     }, _this.savePosition = function (eo) {
+
       var r = [0, 0, 0];
       if (_this.validation(_this.state.nameDefault) != 1) {
         _this.setState({ quantityFault: "" });
@@ -30570,7 +30572,11 @@ var IShopCard = function (_React$Component) {
         return 1;
       }
     }, _this.goodChangedValue = function (eo) {
+
       _this.setState({ nameDefault: eo.target.value });
+      if (eo.target.value == "") _this.setState(function (p, props) {
+        return { nameDefault: _this.props.nameDefault };
+      });
       _this.setState({ saveMode: 0 });
     }, _this.priceChangedValue = function (eo) {
       _this.setState({ priceDefault: eo.target.value });
@@ -30607,7 +30613,7 @@ var IShopCard = function (_React$Component) {
                 _react2.default.createElement(
                   'td',
                   { className: 'itemData' },
-                  _react2.default.createElement('img', { className: 'Img', src: this.props.urlGood, width: 150, height: 150 })
+                  _react2.default.createElement('img', { className: 'Img', src: this.props.urlGood, width: 100, height: 100 })
                 )
               ),
               _react2.default.createElement(

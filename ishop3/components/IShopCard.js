@@ -7,7 +7,7 @@ class IShopCard extends React.Component {
 
  
   state = {
-      
+   
     saveMode: 0,// 0 - сохранять, 1 - не сохранить
     nameDefault: this.props.nameGood,
     priceDefault: this.props.priceGood,
@@ -25,11 +25,12 @@ class IShopCard extends React.Component {
     this.setState({nameDefault:this.props.nameGood})
     this.setState({priceDefault:this.props.priceGood})
     this.setState({quantityDefault:this.props.quantityGood})
-    console.log ('this.state.nameDefault,this.state.priceDefault,this.state.quantityDefault', this.state.nameDefault,this.state.priceDefault,this.state.quantityDefault)
+    console.log ('this.props.nameGood=',this.props.nameGood,'this.state.nameDefault=', this.state.nameDefault)
     this.props.cbnewValue(1,this.props.codeValue, this.state.nameDefault,this.state.priceDefault,this.state.quantityDefault)
    }
 
   savePosition=(eo)=>{
+    
     var r=[0,0,0];
     if (this.validation(this.state.nameDefault)!=1){
       this.setState({quantityFault:""})
@@ -71,8 +72,12 @@ class IShopCard extends React.Component {
   }
   
   goodChangedValue=(eo)=>{
+    
     this.setState({nameDefault:eo.target.value});
+    if (eo.target.value=="")
+ 
     this.setState({saveMode:0}) 
+
    }
 
   priceChangedValue=(eo)=>{
