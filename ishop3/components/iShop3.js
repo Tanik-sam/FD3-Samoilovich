@@ -26,14 +26,14 @@ class IShop3 extends React.Component {
     newValue= (m,c,n,p,q)=>{
     
     var k=this.state.rowG2;
-    console.log(k)
+    
     for (let i=0;i<k.length;i++){
       if (k[i].codeGood==c){
         
         k[i].priceGood=p;
         k[i].nameGood=n;
         k[i].quantityGood=q;
-        console.log('k[i].nameGood')}
+        }
     }
     this.setState({rowG2:k})
     this.setState({cardMode:m})
