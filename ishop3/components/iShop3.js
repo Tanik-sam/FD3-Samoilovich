@@ -25,18 +25,24 @@ class IShop3 extends React.Component {
     }
     newValue= (m,c,n,p,q)=>{
     
-    var k= this.state.rowG2;
-    k[c].priceGood=p;
-    k[c].nameGood=n;
-    k[c].quantityGood=q;
+    var k=this.state.rowG2;
+    console.log(k)
+    for (let i=0;i<k.length;i++){
+      if (k[i].codeGood==c){
+        
+        k[i].priceGood=p;
+        k[i].nameGood=n;
+        k[i].quantityGood=q;
+        console.log('k[i].nameGood')}
+    }
     this.setState({rowG2:k})
     this.setState({cardMode:m})
-    console.log('я меняю значение массива',m)
+    
     }
     selectedGood = (cdVl) => {
   
     this.setState({selectedGoodId: cdVl} ); 
-    console.log("this.state.selectedGoodId=",this.state.selectedGoodId,);
+    
     function ffff(v,i,a){return v.codeGood==cdVl}
     var l=this.state.rowG2.filter(ffff);
     this.setState ({cardShown:l})
@@ -47,8 +53,6 @@ class IShop3 extends React.Component {
     var k=this.state.rowG2.filter(fff);
     
      this.setState({rowG2:k})
-    console.log(this.state.rowG2)
-    console.log("длина",this.state.rowG2.length)
   }
 
   editGood = (edtCdVl) => {

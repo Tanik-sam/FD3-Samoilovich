@@ -29558,16 +29558,22 @@ var IShop3 = function (_React$Component) {
     }, _this.newValue = function (m, c, n, p, q) {
 
       var k = _this.state.rowG2;
-      k[c].priceGood = p;
-      k[c].nameGood = n;
-      k[c].quantityGood = q;
+      console.log(k);
+      for (var i = 0; i < k.length; i++) {
+        if (k[i].codeGood == c) {
+
+          k[i].priceGood = p;
+          k[i].nameGood = n;
+          k[i].quantityGood = q;
+          console.log('k[i].nameGood');
+        }
+      }
       _this.setState({ rowG2: k });
       _this.setState({ cardMode: m });
-      console.log('я меняю значение массива', m);
     }, _this.selectedGood = function (cdVl) {
 
       _this.setState({ selectedGoodId: cdVl });
-      console.log("this.state.selectedGoodId=", _this.state.selectedGoodId);
+
       function ffff(v, i, a) {
         return v.codeGood == cdVl;
       }
@@ -29581,8 +29587,6 @@ var IShop3 = function (_React$Component) {
       var k = _this.state.rowG2.filter(fff);
 
       _this.setState({ rowG2: k });
-      console.log(_this.state.rowG2);
-      console.log("длина", _this.state.rowG2.length);
     }, _this.editGood = function (edtCdVl) {
       _this.setState({ cardMode: 2 });
     }, _temp), _possibleConstructorReturn(_this, _ret);
@@ -30404,7 +30408,7 @@ var IShopTr3 = function (_React$Component) {
       eo.stopPropagation();
       _this.props.cbdeleteGood(_this.props.codeValue);
     }, _this.editRow = function (eo) {
-      // eo.stopPropagation();
+      eo.stopPropagation();
       _this.props.cbeditGood(_this.props.codeValue);
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -30563,6 +30567,7 @@ var IShopCard = function (_React$Component) {
       if (r[0] + r[1] + r[2] == 0) {
         _this.setState({ saveMode: 0 });
         _this.props.cbnewValue(1, _this.props.codeValue, _this.state.nameDefault, _this.state.priceDefault, _this.state.quantityDefault);
+        console.log('я сохраню тебя в ', _this.props.codeValue);
       } else {
         _this.setState({ saveMode: 1 });
       }
@@ -30586,7 +30591,6 @@ var IShopCard = function (_React$Component) {
   _createClass(IShopCard, [{
     key: 'render',
     value: function render() {
-      console.log('this.state.savePerm', this.state.savePerm);
       if (this.props.cardMode == 1) {
 
         return _react2.default.createElement(

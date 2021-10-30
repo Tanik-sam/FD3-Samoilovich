@@ -60,6 +60,7 @@ class IShopCard extends React.Component {
     if ((r[0]+r[1]+r[2])==0){
       this.setState({saveMode:0})  
       this.props.cbnewValue(1,this.props.codeValue, this.state.nameDefault,this.state.priceDefault,this.state.quantityDefault,)
+      console.log('я сохраню тебя в ',this.props.codeValue)
     }
     else {
       this.setState({saveMode:1})   
@@ -96,7 +97,6 @@ class IShopCard extends React.Component {
  
 
   render() {
-    console.log('this.state.savePerm',this.state.savePerm)
     if (this.props.cardMode==1){
 
     return (
