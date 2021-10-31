@@ -29558,14 +29558,13 @@ var IShop3 = function (_React$Component) {
     }, _this.newValue = function (m, c, n, p, q) {
 
       var k = _this.state.rowG2;
-      console.log(k);
+
       for (var i = 0; i < k.length; i++) {
         if (k[i].codeGood == c) {
 
           k[i].priceGood = p;
           k[i].nameGood = n;
           k[i].quantityGood = q;
-          console.log('k[i].nameGood');
         }
       }
       _this.setState({ rowG2: k });
@@ -30408,7 +30407,7 @@ var IShopTr3 = function (_React$Component) {
       eo.stopPropagation();
       _this.props.cbdeleteGood(_this.props.codeValue);
     }, _this.editRow = function (eo) {
-      eo.stopPropagation();
+      //eo.stopPropagation();
       _this.props.cbeditGood(_this.props.codeValue);
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -30544,36 +30543,53 @@ var IShopCard = function (_React$Component) {
 
       var r = [0, 0, 0];
       if (_this.validation(_this.state.nameDefault) != 1) {
-        _this.setState({ quantityFault: "" });
         r[0] = 0;
       } else {
-        _this.setState({ nameFault: "Вы не ввели значение!" });
         r[0] = 1;
       }
       if (_this.validation(_this.state.priceDefault) != 1) {
-        _this.setState({ priceFault: "" });
         r[1] = 0;
       } else {
-        _this.setState({ priceFault: "Вы не ввели значение!" });
         r[1] = 1;
       }
       if (_this.validation(_this.state.quantityDefault) != 1) {
-        _this.setState({ quantityFault: "" });
         r[2] = 0;
       } else {
-        _this.setState({ quantityFault: "Вы не ввели значение!" });
         r[2] = 1;
       }
       if (r[0] + r[1] + r[2] == 0) {
         _this.setState({ saveMode: 0 });
         _this.props.cbnewValue(1, _this.props.codeValue, _this.state.nameDefault, _this.state.priceDefault, _this.state.quantityDefault);
-        console.log('я сохраню тебя в ', _this.props.codeValue);
       } else {
         _this.setState({ saveMode: 1 });
       }
     }, _this.validation = function (vl) {
       if (vl == "" || vl == " ") {
         return 1;
+      }
+    }, _this.checkNameValue = function (eo) {
+      if (_this.validation(_this.state.nameDefault) != 1) {
+        _this.setState({ nameFault: "" });
+        _this.setState({ saveMode: 0 });
+      } else {
+        _this.setState({ nameFault: "Вы не ввели значение!" });
+        _this.setState({ saveMode: 1 });
+      }
+    }, _this.checkPriceValue = function (eo) {
+      if (_this.validation(_this.state.priceDefault) != 1) {
+        _this.setState({ priceFault: "" });
+        _this.setState({ saveMode: 0 });
+      } else {
+        _this.setState({ priceFault: "Вы не ввели значение!" });
+        _this.setState({ saveMode: 1 });
+      }
+    }, _this.checkQuantityValue = function (eo) {
+      if (_this.validation(_this.state.quantityDefault) != 1) {
+        _this.setState({ quantityFault: "" });
+        _this.setState({ saveMode: 0 });
+      } else {
+        _this.setState({ quantityFault: "Вы не ввели значение!" });
+        _this.setState({ saveMode: 1 });
       }
     }, _this.goodChangedValue = function (eo) {
 
@@ -30701,7 +30717,7 @@ var IShopCard = function (_React$Component) {
                 _react2.default.createElement(
                   'td',
                   null,
-                  _react2.default.createElement('input', { className: 'itemData2', type: 'text', value: this.state.nameDefault,
+                  _react2.default.createElement('input', { className: 'itemData2', type: 'text', onBlur: this.checkNameValue, value: this.state.nameDefault,
                     onChange: this.goodChangedValue })
                 ),
                 _react2.default.createElement(
@@ -30730,7 +30746,7 @@ var IShopCard = function (_React$Component) {
                 _react2.default.createElement(
                   'td',
                   { className: 'itemData2' },
-                  _react2.default.createElement('input', { className: 'itemData2', type: 'text', value: this.state.priceDefault,
+                  _react2.default.createElement('input', { className: 'itemData2', type: 'text', onBlur: this.checkPriceValue, value: this.state.priceDefault,
                     onChange: this.priceChangedValue })
                 ),
                 _react2.default.createElement(
@@ -30759,7 +30775,7 @@ var IShopCard = function (_React$Component) {
                 _react2.default.createElement(
                   'td',
                   { className: 'itemData2' },
-                  _react2.default.createElement('input', { className: 'itemData2', type: 'text', value: this.state.quantityDefault,
+                  _react2.default.createElement('input', { className: 'itemData2', type: 'text', onBlur: this.checkQuantityValue, value: this.state.quantityDefault,
                     onChange: this.quatityChangedValue })
                 ),
                 _react2.default.createElement(

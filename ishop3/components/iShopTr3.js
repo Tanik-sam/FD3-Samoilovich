@@ -14,7 +14,7 @@ class IShopTr3 extends React.Component {
     this.props.cbdeleteGood(this.props.codeValue);
   }
   editRow=(eo)=>{
-   eo.stopPropagation();
+   //eo.stopPropagation();
     this.props.cbeditGood(this.props.codeValue);
   }
 

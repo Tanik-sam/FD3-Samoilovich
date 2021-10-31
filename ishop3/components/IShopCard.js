@@ -34,34 +34,27 @@ class IShopCard extends React.Component {
     
     var r=[0,0,0];
     if (this.validation(this.state.nameDefault)!=1){
-      this.setState({quantityFault:""})
       r[0]=0;
     }
     else{
-      this.setState({nameFault:"Вы не ввели значение!"})
       r[0]=1;
     }
     if (this.validation(this.state.priceDefault)!=1){
-      this.setState({priceFault:""})
       r[1]=0;
     }
     else{
-      this.setState({priceFault:"Вы не ввели значение!"})
       r[1]=1;
     }
     if (this.validation(this.state.quantityDefault)!=1){
-      this.setState({quantityFault:""})
       r[2]=0;
     }
     else{
-      this.setState({quantityFault:"Вы не ввели значение!"})
       r[2]=1;
     }
     if ((r[0]+r[1]+r[2])==0){
       this.setState({saveMode:0})  
       this.props.cbnewValue(1,this.props.codeValue, this.state.nameDefault,this.state.priceDefault,this.state.quantityDefault,)
-      console.log('я сохраню тебя в ',this.props.codeValue)
-    }
+      }
     else {
       this.setState({saveMode:1})   
     }
@@ -72,6 +65,41 @@ class IShopCard extends React.Component {
     if ((vl=="")||(vl==" ")){
       return 1}
   }
+
+  checkNameValue=(eo)=>{
+  if (this.validation(this.state.nameDefault)!=1){
+      this.setState({nameFault:""})
+      this.setState({saveMode:0}) 
+  }
+      else{
+        this.setState({nameFault:"Вы не ввели значение!"})
+        this.setState({saveMode:1}) 
+      }
+  }
+
+  checkPriceValue=(eo)=>{
+    if (this.validation(this.state.priceDefault)!=1){
+        this.setState({priceFault:""})
+        this.setState({saveMode:0}) 
+    }
+        else{
+          this.setState({priceFault:"Вы не ввели значение!"})
+          this.setState({saveMode:1}) 
+        }
+    }
+
+    checkQuantityValue=(eo)=>{
+      if (this.validation(this.state.quantityDefault)!=1){
+          this.setState({quantityFault:""})
+          this.setState({saveMode:0}) 
+      }
+          else{
+            this.setState({quantityFault:"Вы не ввели значение!"})
+            this.setState({saveMode:1}) 
+          }
+      }
+
+
   
   goodChangedValue=(eo)=>{
     
@@ -157,11 +185,11 @@ class IShopCard extends React.Component {
                 <td className='itemData2'>
                   {this.props.nameRow[0].text}
                 </td>
-                <td className='itemData2'>
+                <td className='itemData2'>      
                   {this.props.nameGood}
                 </td>
                 <td>
-                  <input className='itemData2' type="text" value={this.state.nameDefault}
+                  <input className='itemData2' type="text"  onBlur={this.checkNameValue} value={this.state.nameDefault}
                  onChange={this.goodChangedValue}/> 
                 </td>
                 <td className='itemData2'>
@@ -176,7 +204,7 @@ class IShopCard extends React.Component {
                   {this.props.priceGood}
                 </td>
                 <td className='itemData2'>
-                  <input className='itemData2' type="text" value={this.state.priceDefault} 
+                  <input className='itemData2' type="text" onBlur={this.checkPriceValue} value={this.state.priceDefault} 
                  onChange={this.priceChangedValue}/>
                 </td>
                 <td className='itemData2'>
@@ -191,7 +219,7 @@ class IShopCard extends React.Component {
                   {this.props.quantityGood}
                 </td>  
                 <td className='itemData2'>
-                  <input className='itemData2' type="text" value={this.state.quantityDefault} 
+                  <input className='itemData2' type="text" onBlur={this.checkQuantityValue} value={this.state.quantityDefault} 
                  onChange={this.quatityChangedValue}/>
                 </td>
                 <td className='itemData2'>
