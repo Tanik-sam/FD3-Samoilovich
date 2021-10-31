@@ -21,6 +21,7 @@ class IShop3 extends React.Component {
         rowG2: this.props.rowG.slice(),
         cardShown: [],
         cardMode:1, // 1 - отображение, 2 - редакция
+        saveNew:1//1-новый, 0- нет
 
     }
     newValue= (m,c,n,p,q)=>{
@@ -40,25 +41,36 @@ class IShop3 extends React.Component {
     
     }
     selectedGood = (cdVl) => {
-  
-    this.setState({selectedGoodId: cdVl} ); 
-    
-    function ffff(v,i,a){return v.codeGood==cdVl}
-    var l=this.state.rowG2.filter(ffff);
-    this.setState ({cardShown:l})
-  }
+      this.setState({selectedGoodId: cdVl} ); 
+      function ffff(v,i,a){return v.codeGood==cdVl }
+      var l=this.state.rowG2.filter(ffff); 
+      this.setState ({cardShown:l})
+       
+    }
   deleteGood = (delCdVl) => {
    
     function fff(v,i,a){return v.codeGood!=delCdVl}
     var k=this.state.rowG2.filter(fff);
-    
+     this.setState({cardShown:[]})
      this.setState({rowG2:k})
   }
 
   editGood = (edtCdVl) => {
    this.setState({cardMode:2})
-
   }
+  addNewGood =(ng)=>{
+    this.editGood ()
+    var lll=this.state.rowG2.length
+    var nn={nameGood:"",priceGood:"",urlGood:"",quantityGood:"",codeGood:lll}
+    var ll=this.state.rowG2
+    ll.push(nn)
+    this.setState({rowG2:ll})
+    this.selectedGood(lll)
+    this.setState({saveNew:1})
+    
+  }
+
+  
 
   render() {
     var cG=[];
@@ -82,7 +94,7 @@ class IShop3 extends React.Component {
         key={v.codeGood}   
         codeValue={v.codeGood}
         nameGood={v.nameGood} priceGood={v.priceGood} urlGood={v.urlGood} quantityGood={v.quantityGood} cardMode={this.state.cardMode}
-        nameRow={this.props.columnG} cbnewValue={this.newValue}
+        nameRow={this.props.columnG} cbnewValue={this.newValue} saveNew={this.state.saveNew}
         />)}
       return (
         <div  className='IShop3'>
@@ -91,9 +103,11 @@ class IShop3 extends React.Component {
         <tbody className='tableBody'> 
         <tr className='ColumnName'>{cG}</tr> 
          {stringSelect} 
+
                   
                   </tbody>
                   </table>
+                  <input type='button' value='new good' onClick={this.addNewGood} disabled={this.state.cardMode==2}/>
                   {cardSelected}
       </div>
     );

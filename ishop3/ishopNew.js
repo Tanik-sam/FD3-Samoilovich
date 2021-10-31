@@ -29553,7 +29553,8 @@ var IShop3 = function (_React$Component) {
       selectedGoodId: 23,
       rowG2: _this.props.rowG.slice(),
       cardShown: [],
-      cardMode: 1 // 1 - отображение, 2 - редакция
+      cardMode: 1, // 1 - отображение, 2 - редакция
+      saveNew: 1 //1-новый, 0- нет
 
     }, _this.newValue = function (m, c, n, p, q) {
 
@@ -29570,9 +29571,7 @@ var IShop3 = function (_React$Component) {
       _this.setState({ rowG2: k });
       _this.setState({ cardMode: m });
     }, _this.selectedGood = function (cdVl) {
-
       _this.setState({ selectedGoodId: cdVl });
-
       function ffff(v, i, a) {
         return v.codeGood == cdVl;
       }
@@ -29584,10 +29583,19 @@ var IShop3 = function (_React$Component) {
         return v.codeGood != delCdVl;
       }
       var k = _this.state.rowG2.filter(fff);
-
+      _this.setState({ cardShown: [] });
       _this.setState({ rowG2: k });
     }, _this.editGood = function (edtCdVl) {
       _this.setState({ cardMode: 2 });
+    }, _this.addNewGood = function (ng) {
+      _this.editGood();
+      var lll = _this.state.rowG2.length;
+      var nn = { nameGood: "", priceGood: "", urlGood: "", quantityGood: "", codeGood: lll };
+      var ll = _this.state.rowG2;
+      ll.push(nn);
+      _this.setState({ rowG2: ll });
+      _this.selectedGood(lll);
+      _this.setState({ saveNew: 1 });
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -29624,7 +29632,7 @@ var IShop3 = function (_React$Component) {
             key: v.codeGood,
             codeValue: v.codeGood,
             nameGood: v.nameGood, priceGood: v.priceGood, urlGood: v.urlGood, quantityGood: v.quantityGood, cardMode: _this2.state.cardMode,
-            nameRow: _this2.props.columnG, cbnewValue: _this2.newValue
+            nameRow: _this2.props.columnG, cbnewValue: _this2.newValue, saveNew: _this2.state.saveNew
           });
         });
       }
@@ -29650,6 +29658,7 @@ var IShop3 = function (_React$Component) {
             stringSelect
           )
         ),
+        _react2.default.createElement('input', { type: 'button', value: 'new good', onClick: this.addNewGood, disabled: this.state.cardMode == 2 }),
         cardSelected
       );
     }
@@ -30540,7 +30549,9 @@ var IShopCard = function (_React$Component) {
       console.log('this.props.nameGood=', _this.props.nameGood, 'this.state.nameDefault=', _this.state.nameDefault);
       _this.props.cbnewValue(1, _this.props.codeValue, _this.props.nameGood, _this.props.priceGood, _this.props.quantityGood);
     }, _this.savePosition = function (eo) {
-
+      if (_this.props.saveNew == 1) {
+        _this.setState({ nameFault: "Вы не ввели значение!" }), _this.setState({ priceFault: "Вы не ввели значение!" }), _this.setState({ quantityFault: "Вы не ввели значение!" });
+      }
       var r = [0, 0, 0];
       if (_this.validation(_this.state.nameDefault) != 1) {
         r[0] = 0;
@@ -30607,6 +30618,7 @@ var IShopCard = function (_React$Component) {
   _createClass(IShopCard, [{
     key: 'render',
     value: function render() {
+
       if (this.props.cardMode == 1) {
 
         return _react2.default.createElement(

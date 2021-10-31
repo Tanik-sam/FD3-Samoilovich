@@ -31,7 +31,9 @@ class IShopCard extends React.Component {
    }
 
   savePosition=(eo)=>{
-    
+    if (this.props.saveNew==1){
+      this.setState({nameFault:"Вы не ввели значение!"}),this.setState({priceFault:"Вы не ввели значение!"}),this.setState({quantityFault:"Вы не ввели значение!"})
+    }
     var r=[0,0,0];
     if (this.validation(this.state.nameDefault)!=1){
       r[0]=0;
@@ -125,6 +127,8 @@ class IShopCard extends React.Component {
  
 
   render() {
+
+    
     if (this.props.cardMode==1){
 
     return (
