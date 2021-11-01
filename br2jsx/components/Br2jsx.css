@@ -1,14 +1,9 @@
-﻿#1
-{
-  background-color: red;
-}
+﻿.Br2jsx 
 
-
-table th .ColumnN 
 {
-  table-layout:fixed;
-  width:120px;
-  overflow:hidden;
-  word-wrap:break-word;
-  text-align:center;
+background-color: rgb(129, 156, 212);
+text-align:center;
+font-size: large;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+font-weight: bold;
 }

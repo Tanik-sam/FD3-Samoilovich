@@ -11,20 +11,15 @@ class Br2jsx extends React.Component {
     textBr: PropTypes.string.isRequired,
     };
 
-    
-
-  textBreak = () => {
-  let br= this.props.textBr
-  let newArr=br.split('<br>')
-  console.log(newArr)
-  function ff(v,i,a){return v=="<br>" }
-  newArr.filter(ff); 
-  console.log(newArr)
-  return newArr.map(v => <p key={i}>{v}<br></br>
-  </p>)
-  }
-  
   render() {
+      let br= this.props.textBr
+      let newArr=br.split('<br>')
+      console.log(newArr)
+      function ff(v,i,a){return v=="<br>" }
+      newArr.filter(ff); 
+      console.log(newArr)
+      let textBreak= newArr.map(v => <p key={v+1}>{v}<br></br>
+      </p>)
   
       return (
         <div  className='Br2jsx'>
@@ -35,5 +30,5 @@ class Br2jsx extends React.Component {
 
 }
 
-export default IShop3;
+export default Br2jsx;
 
