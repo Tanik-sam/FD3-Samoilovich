@@ -1,4 +1,4 @@
-﻿import React, {Fragment} from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
 import './Br2jsx.css';
@@ -15,17 +15,20 @@ class Br2jsx extends React.Component {
       let br= this.props.textBr
       let newArr=br.split('<br>')
       console.log(newArr)
-      function ff(v,i,a) {return (v,<br></br>)}
-      let r=newArr.map(ff)
-      console.log(r)
+      function ff(v,i,a){return v=="<br>" }
+      newArr.filter(ff); 
+      console.log(newArr)
+      let textBreak= newArr.map(v => <span key={v+1}>{v}<br></br>
+      </span>)
+  
       return (
         <div  className='Br2jsx'>
-        {r}
-       </div>
+{textBreak}
+      </div>
     );
   }
 
-};
+}
 
 export default Br2jsx;
 
