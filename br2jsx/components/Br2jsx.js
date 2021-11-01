@@ -18,8 +18,8 @@ class Br2jsx extends React.Component {
       function ff(v,i,a){return v=="<br>" }
       newArr.filter(ff); 
       console.log(newArr)
-      let textBreak= newArr.map(v => <p key={v+1}>{v}<br></br>
-      </p>)
+      let textBreak= newArr.map(v => <span key={v+1}>{v}<br></br>
+      </span>)
   
       return (
         <div  className='Br2jsx'>
