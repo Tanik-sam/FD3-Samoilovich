@@ -13,9 +13,12 @@ class Br2jsx extends React.Component {
 
   render() {
       let br= this.props.textBr
-      let newArr=br.split('<br>')
+      
+      let newStr=br.split('<br>').join(' <br> ')
+      let newArr=newStr.split(' ')
       console.log(newArr)
-      function ff(v,i,a) {return (v,<br></br>)}
+       
+      function ff(v,i,a) {if (v=='<br>'){v=<br key={i}></br>} return (v)}
       let r=newArr.map(ff)
       console.log(r)
       return (
