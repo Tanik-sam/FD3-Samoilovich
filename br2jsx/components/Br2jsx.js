@@ -17,10 +17,11 @@ class Br2jsx extends React.Component {
       let newArr=br.split(/<br>|<\/\br>/g)
       let newStr=[]
        
-      for(let i=1; i<newArr.length+1;i++){
-      
-      newStr[i*2-2]=newArr[i-1]
-      newStr[i*2-1]=<br></br>}
+      for(let i=0; i<newArr.length;i++){
+      newStr.push(newArr[i]);
+      newStr.push(<br key={i}></br>);}
+          //  newStr[i*2-2]=newArr[i-1]
+      //newStr[i*2-1]=<br></br>}
      
  //function ff(v,i,a) {return(<br key={i}>{v}</br>)}
  //let r=newArr.map(ff)
