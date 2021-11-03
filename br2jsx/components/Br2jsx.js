@@ -23,7 +23,7 @@ class Br2jsx extends React.Component {
 console.log(r)
       return (
         <div  className='Br2jsx'>
-        {newArr}
+        {r}
        </div>
     );
   }
