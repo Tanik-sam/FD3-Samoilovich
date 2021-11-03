@@ -19,7 +19,8 @@ class Br2jsx extends React.Component {
        
       for(let i=0; i<newArr.length;i++){
       newStr.push(newArr[i]);
-      newStr.push(<br key={i}></br>);}
+      if(i<newArr.length-1){
+      newStr.push(<br key={i}></br>);}}
           //  newStr[i*2-2]=newArr[i-1]
       //newStr[i*2-1]=<br></br>}
      
