@@ -6,12 +6,13 @@ class ColorFrame extends React.Component {
   
   
   render() {
-    let frameColor=this.props.children
+    let textInFrame=this.props.children
 
     
-  var elem=this.props.colors.forEach((v)=>{<div>{frameColor}</div>})
+  var frameColor=this.props.colors.map((v)=>{<div key={v} style={{border:"solid 1px "+{v},padding:"10px"}}>{textInFrame}</div>})
  
     return (
+      
       {frameColor}
       
     );
