@@ -21223,23 +21223,25 @@ var Br2jsx = function (_React$Component) {
     value: function render() {
       var br = this.props.textBr;
 
-      var newStr = br.split(/<br>|<\/\br>/g);
-      var newArr = [];
-      for (i = 0; i < newStr.length; i++) {
-        if (i != 0) {
-          newArr[i + 2] = newStr[i];
-        } else {
-          newArr[i] = newStr[i];
+      var newArr = br.split(/<br>|<\/\br>/g);
+      var newStr = [];
+
+      for (var i = 0; i < newArr.length; i++) {
+        newStr.push(newArr[i]);
+        if (i < newArr.length - 1) {
+          newStr.push(_react2.default.createElement('br', { key: i }));
         }
-        newArr[i + 1] = _react2.default.createElement('br', null);
       }
-      // function ff(v,i,a) {if (v=='<br>'){v=<br key={i}></br>} return (v)}
+      //  newStr[i*2-2]=newArr[i-1]
+      //newStr[i*2-1]=<br></br>}
+
+      //function ff(v,i,a) {return(<br key={i}>{v}</br>)}
       //let r=newArr.map(ff)
-      console.log(newArr);
+      //console.log(r)
       return _react2.default.createElement(
         'div',
         { className: 'Br2jsx' },
-        newArr
+        newStr
       );
     }
   }]);

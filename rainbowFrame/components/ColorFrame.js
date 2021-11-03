@@ -3,13 +3,17 @@ import PropTypes from 'prop-types';
 
 class ColorFrame extends React.Component {
 
-
+  
   
   render() {
+    let frameColor=this.props.children
+
+    
+  var elem=this.props.colors.forEach((v)=>{<div>{frameColor}</div>})
+ 
     return (
-      <div style={{border:"solid 3px "+this.props.color,padding:"10px"}}>
-        {this.props.children}
-      </div>
+      {frameColor}
+      
     );
   }
 

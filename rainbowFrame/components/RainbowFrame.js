@@ -9,18 +9,14 @@ class RainbowFrame extends React.Component {
 
   static propTypes = {
     childText: PropTypes.string.isRequired,
-     }
-
-     
+     } 
 
   render() {
-   // var kkkk=this.props.colors.map(v=>
 
-   //   console.log(kkkk)
     return ( 
-      <ColorFrame  color={'red'} >
+   <ColorFrame  colors={this.props.colors} >
       {this.props.childText}
-      </ColorFrame>
+   </ColorFrame>
     )   
   }
 
