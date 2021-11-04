@@ -7,15 +7,13 @@ import ColorFrame from './ColorFrame';
 
 class RainbowFrame extends React.Component {
 
-  static propTypes = {
-    childText: PropTypes.string.isRequired,
-     } 
+
 
   render() {
 
     return ( 
    <ColorFrame  colors={this.props.colors} >
-      {this.props.childText}
+      Hello
    </ColorFrame>
     )   
   }
