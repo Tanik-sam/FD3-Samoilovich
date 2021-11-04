@@ -1,23 +1,28 @@
 ﻿import React from 'react';
 import PropTypes from 'prop-types';
 
+import './ColorFrame.css';
+
 class ColorFrame extends React.Component {
 
   
   
   render() {
     let textInFrame=this.props.children
+    this.props.colors.forEach(colors=>{textInFrame=<div key={colors} background={colors} style={{border:"solid 20px ",padding:"10px",color:colors,textAlign:"center"}}>{textInFrame}</div>})
 
-    
-  var frameColor=this.props.colors.map((v)=>{<div key={v} style={{border:"solid 1px "+{v},padding:"10px"}}>{textInFrame}</div>})
- 
+
+
     return (
-      
-      {frameColor}
-      
-    );
+      <div>
+      {textInFrame}
+      </div>
+    )
   }
-
 }
 
+
 export default ColorFrame;
+
+
+
