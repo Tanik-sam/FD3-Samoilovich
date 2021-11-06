@@ -16,10 +16,13 @@ class RainbowFrame extends React.Component {
     </FramedDoubleButton>
    this.props.colors.forEach(v=>{wrappedText=<div key={v} background={v} style={{border:"solid 20px ",padding:"10px",color:v,textAlign:"center"}}>{wrappedText}</div>})
     return ( 
+      <div>
    <FramedDoubleButton caption1="Я живо смазал" caption2="расплескав краски из стакана" cbPressed={num=>alert(num)}>
       Карту будней
-      {wrappedText}
+      
    </FramedDoubleButton>
+   {wrappedText}
+   </div>
    
     )   
   }
