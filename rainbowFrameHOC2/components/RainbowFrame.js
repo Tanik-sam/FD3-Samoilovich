@@ -13,12 +13,14 @@ class RainbowFrame extends React.Component {
     let FramedDoubleButton=withRainbowFrame(this.props.colors)(DoubleButton);
     
     return ( 
-      
-   <FramedDoubleButton caption1="Я живо смазал" caption2="расплескав краски из стакана" cbPressed={num=>alert(num)}>
-      Карту будней
+      <div>
+    <DoubleButton caption1="Я сразу смазал" caption2="плеснувши краску из стакана" cbPressed={num=>alert(num)}>карту будня </DoubleButton>
+   <FramedDoubleButton caption1="Я показал" caption2="косые скулы океана" cbPressed={num=>alert(num)}>
+      на блюде студня
       
    </FramedDoubleButton>
    
+   </div>
    
    
     )   
