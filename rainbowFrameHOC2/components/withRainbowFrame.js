@@ -2,7 +2,7 @@ import React from 'react';
 
 function withRainbowFrame(colors){
   return  function (CompFrame){
-     return props=>(
+     return (
      
      class Comp2  extends React.Component {
        render() {
