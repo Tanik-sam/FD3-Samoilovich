@@ -6,7 +6,7 @@ function withRainbowFrame(colors){
      
      class Comp2  extends React.Component {
        render() {
-         let k=this.props.children
+         let k=<CompFrame{...this.props}/>
          console.log (k)
          colors.forEach(v=>{k=<div key={v} background={v} style={{border:"solid 20px ",padding:"10px",color:v,textAlign:"center"}}>{k}</div>})
              
