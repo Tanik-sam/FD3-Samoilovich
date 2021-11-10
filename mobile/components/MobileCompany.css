@@ -1,0 +1,43 @@
+﻿.MobileCompany
+{
+  border: solid #667 1px;
+  border-radius: 30px;
+  padding: 3px 7px;
+  background-color:  #D0ECF4;
+}
+
+.MobileCompanyName
+{
+  padding: 10px 10px;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif; 
+  font-weight: bold;
+  color:#667;
+}
+
+.MobileCompanyClients
+{
+  padding: 10px 0px;
+  
+  
+}
+
+th {
+  color:#667;
+  width:200px;
+  text-align:center;
+  padding: 10px 10px;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif; 
+  
+}
+tr
+{
+  background: linear-gradient(45deg, #b1e092 #c97aee);
+  
+}
+hr{
+  border-color:  rgb(166, 166, 190);
+  border-width:thin
+  
+}
