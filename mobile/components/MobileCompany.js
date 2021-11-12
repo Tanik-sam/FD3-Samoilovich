@@ -85,6 +85,7 @@ class MobileCompany extends React.PureComponent {
   }
 
   clientDefault=(clD)=>{ this.setState({cardMode:1})}
+  
   clientEdit = (edtCdVl) => {
     this.setState({cardMode:2})
    }

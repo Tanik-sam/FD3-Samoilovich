@@ -26,21 +26,23 @@ class MobileClientCard extends React.Component {
    }
    
    defaultPosition=(eo)=>{
-    clientEvents.emit('ClientDefault',this.props.info.id)
-    this.setState({saveMode:0}) 
+    
+    //this.setState({saveMode:0}) 
     this.setState({surnameDefault:this.props.info.surname})
     this.setState({nameClDefault:this.props.info.nameCl})
     this.setState({patronymicDefault:this.props.info.patronymic})
     this.setState({balanceDefault:this.props.info.balance})
-    
+    let tt= {id:this.props.info.id,surname:this.state.surnameDefault,nameCl:this.state.nameClDefault,patronymic:this.state.patronymicDefault, balance:this.state.balanceDefault}
+    clientEvents.emit('ClientDefault',tt)
    }
 
   savePosition=(eo)=>{
       //this.setState({saveMode:0})  
-      this.setNewSurname ();
+      
       let t={id:this.props.info.id,surname:this.state.surnameDefault,nameCl:this.state.nameClDefault,patronymic:this.state.patronymicDefault, balance:this.state.balanceDefault}
       console.log('t',t)
       clientEvents.emit('ClientSave',t); 
+      this.setNewSurname ();
   }
 
    newSurnameRef = null;
@@ -155,8 +157,7 @@ class MobileClientCard extends React.Component {
                 {this.props.info.surname}
                 </td>
                 <td>
-                  <input className='itemData2' type="text" defaultValue={this.state.surnameDefault}
-                  ref={this.setNewSurnameRef}/> 
+                  <input className='itemData2' type="text" defaultValue={this.state.surnameDefault} ref={this.setNewSurnameRef}/> 
                 </td>
                 
               </tr>
@@ -168,7 +169,7 @@ class MobileClientCard extends React.Component {
                 {this.props.info.nameCl}
                 </td>
                 <td className='itemData2'>
-                  <input className='itemData2' type="text" onBlur={this.checkPriceValue} value={this.state.priceDefault} 
+                  <input className='itemData2' type="text" 
                  onChange={this.priceChangedValue}/>
                 </td>
               
@@ -181,7 +182,7 @@ class MobileClientCard extends React.Component {
                 {this.props.info.patronymic}
                 </td>  
                 <td className='itemData2'>
-                  <input className='itemData2' type="text" onBlur={this.checkQuantityValue} value={this.state.quantityDefault} 
+                  <input className='itemData2' type="text" 
                  onChange={this.quatityChangedValue}/>
                 </td>
                
@@ -194,7 +195,7 @@ class MobileClientCard extends React.Component {
                   {this.props.info.balance}
                 </td>  
                 <td className='itemData2'>
-                  <input className='itemData2' type="text" onBlur={this.checkQuantityValue} value={this.state.quantityDefault} 
+                  <input className='itemData2' type="text"
                  onChange={this.quatityChangedValue}/>
                 </td>
                
@@ -212,7 +213,7 @@ class MobileClientCard extends React.Component {
               </tr> 
              <tr>
                  <td  className='itemData2'>
-                   <input className="CardButton" type='button' value='СОХРАНИТЬ' onClick={this.savePosition} disabled={this.state.saveMode==1} />   
+                   <input className="CardButton" type='button' value='СОХРАНИТЬ' onClick={this.savePosition}  />   
                  </td>  
                  <td  className='itemData2'>
                     <input className="CardButton" type='button' value='СБРОСИТЬ' onClick={this.defaultPosition} />   
