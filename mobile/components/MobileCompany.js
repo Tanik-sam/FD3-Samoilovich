@@ -59,6 +59,7 @@ class MobileCompany extends React.PureComponent {
 
   componentDidMount = () => {
     clientEvents.addListener('ClientClicked',this.clientSelected);
+    clientEvents.addListener('ClientDelete',this.clientDelete);
     clientEvents.addListener('ClientEdit',this.clientEdit);
     clientEvents.addListener('ClientSave',this.clientSave);
     clientEvents.addListener('ClientDefault',this.clientDefault);
@@ -67,10 +68,22 @@ class MobileCompany extends React.PureComponent {
 
   componentWillUnmount = () => {
     clientEvents.removeListener('ClientClicked',this.clientSelected);
+    clientEvents.addListener('ClientDelete',this.clientDelete);
     clientEvents.removeListener('ClientEdit',this.clientEdit);
     clientEvents.removeListener('ClientSave',this.clientSave);
     clientEvents.removeListener('ClientDefault',this.clientDefault);
   };
+
+  clientDelete=(clDl)=>{
+    function fff(v,i,a){return v.id!=clDl}
+    let kk=[...this.state.clientsEdt]
+    let k=kk.filter(fff);
+     this.setState({cardShown:[]})
+     this.setState({clientsEdt:k})
+  }
+
+
+
   clientSave=(clSn)=>{
    let k=[...this.state.clientsEdt]
     for (let i=0;i<k.length;i++){
@@ -85,7 +98,7 @@ class MobileCompany extends React.PureComponent {
   }
 
   clientDefault=(clD)=>{ this.setState({cardMode:1})}
-  
+
   clientEdit = (edtCdVl) => {
     this.setState({cardMode:2})
    }

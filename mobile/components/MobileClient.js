@@ -34,6 +34,10 @@ class MobileClient extends React.PureComponent {
     clientEvents.emit('ClientEdit',this.props.info.id);
     console.log('ClientEdit',this.props.info.id)
    }
+   deleteRow=(eo) =>{
+    clientEvents.emit('ClientDelete',this.props.info.id);
+    console.log('ClientDelete',this.props.info.id)
+   }
  
   render() {
     console.log("MobileClient render","id=",this.props.info.id);
