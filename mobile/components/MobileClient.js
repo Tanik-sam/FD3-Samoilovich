@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 
 import './MobileClient.css';
+import {clientEvents} from './events';
 
 class MobileClient extends React.PureComponent {
 
@@ -9,10 +10,8 @@ class MobileClient extends React.PureComponent {
     info:PropTypes.shape({
       id: PropTypes.number.isRequired,
       surname: PropTypes.string.isRequired,
-      nameCl: PropTypes.string.sRequired,
-      partonymic: PropTypes.string.isRequired,
-      //status:PropTypes.bool,
-      fio: PropTypes.string.isRequired,
+      nameCl: PropTypes.string.isRequired,
+      patronymic: PropTypes.string.isRequired,
       balance: PropTypes.number.isRequired,
       
     }),
@@ -27,31 +26,31 @@ class MobileClient extends React.PureComponent {
     this.setState({info:newProps.info});
   };
 
-  SelectedClient = null;
-
-   setSelectedClient=(ref)=>{
-    this.SelectedClient=ref;
-    console.log(this.SelectedClient)
-    
-  }
-
-
+   setSelectedClient=(eo)=>{
+     clientEvents.emit('ClientClicked',this.props.info.id);
+     console.log('emited',this.props.info.id)
+   }
+   editRow=(eo) =>{
+    clientEvents.emit('ClientEdit',this.props.info.id);
+    console.log('ClientEdit',this.props.info.id)
+   }
+ 
   render() {
     console.log("MobileClient render","id=",this.props.info.id);
     
     var classClient="MobileClient"
-    if (this.SelectedClient) {classClient="MobileClientChosen"} else classClient="MobileClient"   
-    console.log (classClient)
+    if (this.props.selectedClientId==this.props.info.id) {classClient="MobileClientChosen"} else classClient="MobileClient"   
+    console.log (this.props.selectedClientId)
 
     return (
-      <tr  className={classClient} ref={this.setSelectedClient} onClick={this.setSelectedClient}>
+      <tr className={classClient} onClick={this.setSelectedClient}>
       <td className="StatusActive">{this.state.info.surname}</td>
       <td className="StatusActive">{this.state.info.nameCl}</td>
-      <td className="StatusActive">{this.state.info.partonymic}</td>
+      <td className="StatusActive">{this.state.info.patronymic}</td>
       <td className="StatusActive">{this.state.info.balance}</td>
       <td className={this.state.info.balance>0?"StatusActive":"StatusBlocked"}>{this.state.info.balance>0?"active":"blocked"}</td>
-      <td className="StatusActive"><input type='button' value='Редактировать' ref={this.setNewDelRef}/></td>   
-      <td className="StatusActive"><input type='button' value='Удалить' onClick={this.editRow}/></td>   
+      <td className="StatusActive"><input className="inTable" type='button' value='Редактировать' onClick={this.editRow}/></td>   
+      <td className="StatusActive"><input className="inTable" type='button' value='Удалить' onClick={this.deleteRow}/></td>   
       </tr>
     )        
   }

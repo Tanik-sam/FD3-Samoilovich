@@ -7,10 +7,10 @@ import MobileCompany from './components/MobileCompany';
 
 let companyName='Velcom';
 let clientsArr=[ 
-  {id:101, surname:"Иванов",nameCl:"Иван",partonymic:"Иванович",fio:"Иванов И.И.", balance:2}, 
-  {id:102, surname:"Сидоров ",nameCl:"Сидор",partonymic:"Сидорович ",fio:"Сидоров С.С.", balance:250}, 
-  {id:103, surname:"Петров",nameCl:"Петр",partonymic:"Петрович",fio:"Петров П.П.", balance:180}, 
-  {id:104, surname:"Григорьев",nameCl:"Григорий",partonymic:"Григорьевич",fio:"Григорьев Г.Г.", balance:0}, 
+  {id:101, surname:"Иванов",nameCl:"Иван",patronymic:"Иванович", balance:2}, 
+  {id:102, surname:"Сидоров ",nameCl:"Сидор",patronymic:"Сидорович ", balance:250}, 
+  {id:103, surname:"Петров",nameCl:"Петр",patronymic:"Петрович", balance:180}, 
+  {id:104, surname:"Григорьев",nameCl:"Григорий",patronymic:"Григорьевич", balance:0}, 
  ];
 
  let columnName=[ 
