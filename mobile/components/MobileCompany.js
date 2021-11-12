@@ -115,7 +115,7 @@ class MobileCompany extends React.PureComponent {
   clientSelected=(clId)=>{
     this.setState({selectedClientId: clId} ); 
     function ffff(v,i,a){return v.id==clId }
-    let cl=[...this.state.clients]; 
+    let cl=[...this.state.clientsEdt]; 
     let cll=cl.filter(ffff); 
     this.setState ({cardShown:cll})
     }
@@ -128,7 +128,41 @@ class MobileCompany extends React.PureComponent {
   setBalance2 = () => {
     this.setBalance(105,250);
   };
-  
+  filtered=null //null- все, 1 -активные, 2- заблокированные
+allClients=()=>{
+  this.filtered=null
+  this.filterClients()
+}
+activeClients=()=>{
+  this.filtered=1
+  this.filterClients()
+}
+blockedClients=()=>{
+  this.filtered=2
+  this.filterClients()
+}
+
+  filterClients=()=>{
+    let cl2=[...this.state.clientsEdt]; 
+    let cl3
+    switch (this.filtered){
+     case null:
+       this.setState({clientsEdt:cl2})
+    case 1:
+     this.setState ({cardShown:[]})
+     let cl3=[...this.state.clientsEdt]; 
+     function f1(v,i,a){return v.balance>0 }
+     let cll3=cl3.filter(f1); 
+     this.setState ({clientsEdt:cll3})
+    
+    case 2:
+     this.setState ({cardShown:[]})
+     let cl4=[...this.state.clientsEdt]; 
+     function f2(v,i,a){return v.balance<=0 }
+     let cll4=cl4.filter(f2); 
+     this.setState ({clientsEdt:cll4})
+    }
+  }
   render() {
 
     var cG=[];
@@ -152,9 +186,9 @@ class MobileCompany extends React.PureComponent {
         <input className='notTable' type="button" value="=Velcom" onClick={this.setName2} />
         <div className='MobileCompanyName'>Компания &laquo;{this.state.name}&raquo;</div>
         <hr/>
-        <input className='notTable' type="button" value="Все"  />
-        <input className='notTable' type="button" value="Активные"  />
-        <input className='notTable' type="button" value="Заблокированные"  />
+        <input className='notTable' type="button" value="Все" onClick={this.allClients}  />
+        <input className='notTable' type="button" value="Активные" onClick={this.activeClients}  />
+        <input className='notTable' type="button" value="Заблокированные" onClick={this.blockedClients}  />
         <hr/>
         <div className='MobileCompanyClients'>
           <table>

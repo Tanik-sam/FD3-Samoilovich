@@ -57,6 +57,7 @@ class MobileClientCard extends React.Component {
       let newSurname=this.newSurnameRef.value;
       this.setState({surnameDefault:newSurname});
       console.log(this.state.surnameDefault)
+      
     }
   }; 
 
