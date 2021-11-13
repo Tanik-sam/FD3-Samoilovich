@@ -11,7 +11,7 @@ class MobileClientCard extends React.Component {
       surname: PropTypes.string.isRequired,
       nameCl: PropTypes.string.isRequired,
       patronymic: PropTypes.string.isRequired,
-      balance: PropTypes.number.isRequired,
+      balance: PropTypes.number
       
     })
   }
@@ -27,13 +27,7 @@ class MobileClientCard extends React.Component {
    
    defaultPosition=(eo)=>{
     
-    //this.setState({saveMode:0}) 
-    this.setState({surnameDefault:this.props.info.surname})
-    this.setState({nameClDefault:this.props.info.nameCl})
-    this.setState({patronymicDefault:this.props.info.patronymic})
-    this.setState({balanceDefault:this.props.info.balance})
-    let tt= {id:this.props.info.id,surname:this.state.surnameDefault,nameCl:this.state.nameClDefault,patronymic:this.state.patronymicDefault, balance:this.state.balanceDefault}
-    clientEvents.emit('ClientDefault',tt)
+    clientEvents.emit('ClientDefault',false)
    }
 
   savePosition=(eo)=>{
@@ -148,7 +142,7 @@ class MobileClientCard extends React.Component {
                 <td className='itemData'>
                 {this.props.nameRow[4].text}
                 </td>
-              <td className={this.newBalanceRef.value>0?"StatusActive":"StatusBlocked"}>{this.newBalanceRef.value>0?"active":"blocked"}
+              <td className={this.props.info.balance>0?"StatusActive":"StatusBlocked"}>{this.props.info.balance0?"active":"blocked"}
               </td>
                  
               </tr> 
@@ -218,7 +212,7 @@ class MobileClientCard extends React.Component {
                 <td className='itemData2'>
                 {this.props.nameRow[4].text}
                 </td>
-              <td className={this.props.info.balance>0?"StatusActive":"StatusBlocked"}>{this.props.info.balance>0?"active":"blocked"}
+                <td className={this.newBalanceRef.value>0?"StatusActive":"StatusBlocked"}>{this.newBalanceRef.value>0?"active":"blocked"}
               </td>
               <td className='itemData2'>
 

@@ -7,6 +7,10 @@ import './MobileCompany.css';
 import MobileClientCard from './MobileClientCard';
 import {clientEvents} from './events';
 
+
+
+
+
 class MobileCompany extends React.PureComponent {
 
   static propTypes = {
@@ -44,18 +48,7 @@ class MobileCompany extends React.PureComponent {
     this.setState({name:'Velcom'});
   };
   
-  setBalance = (clientId,newBalance) => {
-    let newClients=[...this.state.clients]; // копия самого массива клиентов
-    newClients.forEach( (c,i) => {
-      if ( c.id==clientId ) {
-      //if ( c.id==clientId && c.balance!=newBalance ) {
-        let newClient={...c}; // копия хэша изменившегося клиента
-        newClient.balance=newBalance;
-        newClients[i]=newClient;
-      }
-    } );
-    this.setState({clients:newClients});
-  };
+  
 
   componentDidMount = () => {
     clientEvents.addListener('ClientClicked',this.clientSelected);
@@ -94,7 +87,7 @@ class MobileCompany extends React.PureComponent {
       }
    
   this.setState({clientsEdt:k})
-  console.log ("новый массив",k)
+  
   }
 
   clientDefault=(clD)=>{ this.setState({cardMode:1})}
@@ -103,14 +96,14 @@ class MobileCompany extends React.PureComponent {
     this.setState({cardMode:2})
    }
   addClient=()=>{
-    this.clientEdit()
+    
     var lll=this.state.clientsEdt.length+101
-    var nn={id:lll,surname:"",nameCl:"",patronymic:"",status:true,balance:''}
+    var nn={id:lll,surname:"",nameCl:"",patronymic:"",status:true,balance:0}
     var ll=[...this.state.clientsEdt];
     ll.push(nn)
     this.setState({clientsEdt:ll})
-    console.log(this.state.clientsEdt, lll);
-    
+    this.clientSelected(lll)
+    this.setState({cardMode:2})
   }
   clientSelected=(clId)=>{
     this.setState({selectedClientId: clId} ); 
@@ -118,16 +111,8 @@ class MobileCompany extends React.PureComponent {
     let cl=[...this.state.clientsEdt]; 
     let cll=cl.filter(ffff); 
     this.setState ({cardShown:cll})
+   
     }
-
-
-  setBalance1 = () => {
-    this.setBalance(105,230);
-  };
-
-  setBalance2 = () => {
-    this.setBalance(105,250);
-  };
   filtered=null //null- все, 1 -активные, 2- заблокированные
 allClients=()=>{
   this.filtered=null
@@ -141,26 +126,44 @@ blockedClients=()=>{
   this.filtered=2
   this.filterClients()
 }
-
+deepCopy=(x)=>{
+  var X= {};                      //сюда будем копировать каждый новый хэш
+  if (x === null) return (null);  //если входящее значение равно Null, то сразу возвращаем Null
+  else{
+    if(typeof x === 'object'&& !(Array.isArray(x))){ // работаем с объетами исключая массивы
+         for(var i in x) {
+            X[i] = this.deepCopy(x[i]);  // рекурсия для копирования вложенных хэшей
+          }
+         return(X);
+    }  
+    else if (Array.isArray(x)){    // теперь работаем с массивами
+         return (x.map(this.deepCopy)); //с массивами работать проще :)
+          }    
+  return (x);
+  }     
+}
+  copiedClients=this.deepCopy(this.state.clientsEdt);
   filterClients=()=>{
-    let cl2=[...this.state.clientsEdt]; 
-    let cl3
+
+    
     switch (this.filtered){
      case null:
-       this.setState({clientsEdt:cl2})
-    case 1:
-     this.setState ({cardShown:[]})
-     let cl3=[...this.state.clientsEdt]; 
-     function f1(v,i,a){return v.balance>0 }
-     let cll3=cl3.filter(f1); 
-     this.setState ({clientsEdt:cll3})
-    
+       this.setState({clientsEdt:this.copiedClients})
+    break
+     case 1:
+       this.setState ({cardShown:[]})
+       let cl3=[...this.copiedClients]; 
+       function f1(v,i,a){return v.balance>0 }
+       let cll3=cl3.filter(f1); 
+       this.setState ({clientsEdt:cll3})
+    break
     case 2:
-     this.setState ({cardShown:[]})
-     let cl4=[...this.state.clientsEdt]; 
-     function f2(v,i,a){return v.balance<=0 }
-     let cll4=cl4.filter(f2); 
-     this.setState ({clientsEdt:cll4})
+       this.setState ({cardShown:[]})
+       let cl4=[...this.copiedClients]; 
+       function f2(v,i,a){return v.balance<=0 }
+       let cll4=cl4.filter(f2); 
+       this.setState ({clientsEdt:cll4})
+    break
     }
   }
   render() {

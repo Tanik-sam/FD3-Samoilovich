@@ -12,7 +12,7 @@ class MobileClient extends React.PureComponent {
       surname: PropTypes.string.isRequired,
       nameCl: PropTypes.string.isRequired,
       patronymic: PropTypes.string.isRequired,
-      balance: PropTypes.number.isRequired,
+      balance: PropTypes.number
       
     }),
   };
@@ -35,6 +35,7 @@ class MobileClient extends React.PureComponent {
     console.log('ClientEdit',this.props.info.id)
    }
    deleteRow=(eo) =>{
+    eo.stopPropagation();
     clientEvents.emit('ClientDelete',this.props.info.id);
     console.log('ClientDelete',this.props.info.id)
    }
