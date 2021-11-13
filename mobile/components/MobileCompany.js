@@ -85,12 +85,12 @@ class MobileCompany extends React.PureComponent {
 
 
   clientSave=(clSn)=>{
-   let k=[...this.state.clientsEdt]
+  let k=[...this.state.clientsEdt]
     for (let i=0;i<k.length;i++){
       if (k[i].id==clSn.id){
         k[i]=clSn;
-       console.log(k[i])
-        }
+       console.log(clSn)
+       }
       }
    
   this.setState({clientsEdt:k})
