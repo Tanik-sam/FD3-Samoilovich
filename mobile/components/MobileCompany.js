@@ -11,6 +11,7 @@ import {clientEvents} from './events';
 
 
 
+
 class MobileCompany extends React.PureComponent {
 
   static propTypes = {
@@ -35,6 +36,7 @@ class MobileCompany extends React.PureComponent {
     status:  this.props.balance>0?true:false,
     balance:this.props.balance,
     clientsEdt: this.props.clients.slice(),
+    clientsEdt1: this.props.clients.slice(),
     selectedClientId: null,
     cardShown: [],
     cardMode:1,
@@ -73,6 +75,7 @@ class MobileCompany extends React.PureComponent {
     let k=kk.filter(fff);
      this.setState({cardShown:[]})
      this.setState({clientsEdt:k})
+     this.setState({clientsEdt1:k})
   }
 
 
@@ -89,6 +92,7 @@ class MobileCompany extends React.PureComponent {
     }
     if (changed==true){
       this.setState({clientsEdt:k})
+      this.setState({clientsEdt1:k})
     }
   
   }
@@ -106,6 +110,7 @@ class MobileCompany extends React.PureComponent {
     //ll.push(nn)
     ll=[...ll,nn]
     this.setState({clientsEdt:ll})
+    this.setState({clientsEdt1:ll})
     this.clientSelected(lll)
     this.setState({cardMode:2})
   }
@@ -117,18 +122,18 @@ class MobileCompany extends React.PureComponent {
     this.setState ({cardShown:cll})
    
     }
-  filtered=null //null- все, 1 -активные, 2- заблокированные
+
 allClients=()=>{
-  this.filtered=null
-  this.filterClients()
+  this.filterClients(0) //0--все, 1 -активные, 2- заблокированные
+  console.log('this.state.clientsEdt после return',this.state.clientsEdt)
 }
 activeClients=()=>{
-  this.filtered=1
-  this.filterClients()
+  this.filterClients(1)//0--все, 1 -активные, 2- заблокированные
+  console.log('this.state.clientsEdt после return',this.state.clientsEdt)
 }
 blockedClients=()=>{
-  this.filtered=2
-  this.filterClients()
+  this.filterClients(2)//0--все, 1 -активные, 2- заблокированные
+   console.log('this.state.clientsEdt после return',this.state.clientsEdt)
 }
 deepCopy=(x)=>{
   var X= {};                      //сюда будем копировать каждый новый хэш
@@ -146,12 +151,12 @@ deepCopy=(x)=>{
   return (x);
   }     
 }
-  copiedClients=this.deepCopy(this.state.clientsEdt);
-  filterClients=()=>{
-    let clientsEdt2=[...this.state.clientsEdt]
+ copiedClients=this.deepCopy(this.state.clientsEdt);
+  filterClients=(fltrd)=>{
+    let clientsEdt2=[...this.state.clientsEdt1]
     console.log('this.state.clientsEdt',this.state.clientsEdt)
-    switch (this.filtered){
-     case null:
+    switch (fltrd){
+     case 0:
        //this.setState({clientsEdt:this.copiedClients})
        this.setState ({cardShown:[]})
        clientsEdt2=this.copiedClients
@@ -176,6 +181,7 @@ deepCopy=(x)=>{
     }
     this.setState ({clientsEdt:clientsEdt2})
     console.log('this.state.clientsEdt после clientsEdt2',this.state.clientsEdt)
+    return (this.state.clientsEdt)
   }
   render() {
 
