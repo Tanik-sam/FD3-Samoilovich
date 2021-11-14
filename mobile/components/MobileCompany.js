@@ -103,7 +103,8 @@ class MobileCompany extends React.PureComponent {
     var lll=this.state.clientsEdt.length+101
     var nn={id:lll,surname:"",nameCl:"",patronymic:"",status:true,balance:0}
     var ll=[...this.state.clientsEdt];
-    ll.push(nn)
+    //ll.push(nn)
+    ll=[...ll,nn]
     this.setState({clientsEdt:ll})
     this.clientSelected(lll)
     this.setState({cardMode:2})
@@ -186,7 +187,7 @@ deepCopy=(x)=>{
     }
 
     console.log("MobileCompany render");
-
+    console.log(this.state.clientsEdt);
     var clientsCode=this.state.clientsEdt.map(client =>
       <MobileClient key={client.id} info={client} selectedClientId={this.state.selectedClientId} />
     );
