@@ -79,14 +79,17 @@ class MobileCompany extends React.PureComponent {
 
   clientSave=(clSn)=>{
   let k=[...this.state.clientsEdt]
+  let changed=false
     for (let i=0;i<k.length;i++){
-      if (k[i].id==clSn.id){
+      if ((k[i].id==clSn.id)&&((k[i].surname!=clSn.surname)||(k[i].surname!=clSn.surname)||(k[i].surname!=clSn.surname)||(k[i].surname!=clSn.surname))){
         k[i]=clSn;
-       console.log(clSn)
+        changed=true
+       console.log('нашли неравные')
        }
-      }
-   
-  this.setState({clientsEdt:k})
+    }
+    if (changed==true){
+      this.setState({clientsEdt:k})
+    }
   
   }
 
@@ -144,27 +147,34 @@ deepCopy=(x)=>{
 }
   copiedClients=this.deepCopy(this.state.clientsEdt);
   filterClients=()=>{
-
-    
+    let clientsEdt2=[...this.state.clientsEdt]
+    console.log('this.state.clientsEdt',this.state.clientsEdt)
     switch (this.filtered){
      case null:
-       this.setState({clientsEdt:this.copiedClients})
+       //this.setState({clientsEdt:this.copiedClients})
+       this.setState ({cardShown:[]})
+       clientsEdt2=this.copiedClients
+       console.log('this.state.clientsEdt после сетстейта',this.state.clientsEdt)
     break
      case 1:
        this.setState ({cardShown:[]})
        let cl3=[...this.copiedClients]; 
        function f1(v,i,a){return v.balance>0 }
        let cll3=cl3.filter(f1); 
-       this.setState ({clientsEdt:cll3})
+      // this.setState ({clientsEdt:cll3})
+      clientsEdt2=cll3
     break
     case 2:
        this.setState ({cardShown:[]})
        let cl4=[...this.copiedClients]; 
        function f2(v,i,a){return v.balance<=0 }
        let cll4=cl4.filter(f2); 
-       this.setState ({clientsEdt:cll4})
+       //this.setState ({clientsEdt:cll4})
+       clientsEdt2=cll4
     break
     }
+    this.setState ({clientsEdt:clientsEdt2})
+    console.log('this.state.clientsEdt после clientsEdt2',this.state.clientsEdt)
   }
   render() {
 
@@ -182,7 +192,7 @@ deepCopy=(x)=>{
     );
     if (this.state.cardShown!=[]) {var clientSelected=this.state.cardShown.map(v=>
       <MobileClientCard  key={v.id} info={v} cardMode={this.state.cardMode}
-      nameRow={this.props.columnName} selectedClientId={this.selectedClientId} saveNew={this.state.saveNew}/>)}
+      nameRow={this.props.columnName} selectedClientId={this.selectedClientId}/>)}
     return (
       <div className='MobileCompany'>
         <input className='notTable' type="button" value="=МТС" onClick={this.setName1} />
