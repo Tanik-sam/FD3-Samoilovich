@@ -105,16 +105,17 @@ class MobileCompany extends React.PureComponent {
   addClient=()=>{
     
     var lll=this.state.clientsEdt.length+101
-    var nn={id:lll,surname:"",nameCl:"",patronymic:"",status:true,balance:0}
+    var nn={id:lll,surname:"",nameCl:"",patronymic:"",status:false,balance:0}
     var ll=[...this.state.clientsEdt];
-    //ll.push(nn)
     ll=[...ll,nn]
     this.setState({clientsEdt:ll})
-    
-    this.clientSelected(lll)
+    let lastCl=[];
+    lastCl=[...lastCl,nn]
+    this.setState ({cardShown:lastCl})
     this.setState({cardMode:2})
   }
   clientSelected=(clId)=>{
+    console.log('а куку')
     this.setState({selectedClientId: clId} ); 
     function ffff(v,i,a){return v.id==clId }
     let cl=[...this.state.clientsEdt]; 
