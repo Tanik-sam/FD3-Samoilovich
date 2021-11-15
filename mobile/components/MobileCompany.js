@@ -84,11 +84,17 @@ class MobileCompany extends React.PureComponent {
   let k=[...this.state.clientsEdt]
   let changed=false
     for (let i=0;i<k.length;i++){
-      if ((k[i].id==clSn.id)&&((k[i].surname!=clSn.surname)||(k[i].surname!=clSn.surname)||(k[i].surname!=clSn.surname)||(k[i].surname!=clSn.surname))){
-        k[i]=clSn;
+      if ((k[i].id==clSn.id)&&((k[i].surname!=clSn.surname)||(k[i].nameCl!=clSn.nameCl)||(k[i].patronymic!=clSn.patronymic)||(k[i].balance!=clSn.balance))){
+        //k[i]=clSn;
+        let newClientData={...k[i]}
+        newClientData.surname=clSn.surname
+        newClientData.nameCl=clSn.nameCl
+        newClientData.patronymic=clSn.patronymic
+        newClientData.balance=clSn.balance
         changed=true
-       console.log('нашли неравные')
-       }
+        k[i]=newClientData
+        console.log (k[i])
+      }
     }
     if (changed==true){
       this.setState({clientsEdt:k})

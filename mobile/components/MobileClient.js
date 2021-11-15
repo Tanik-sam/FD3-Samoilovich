@@ -12,7 +12,7 @@ class MobileClient extends React.PureComponent {
       surname: PropTypes.string.isRequired,
       nameCl: PropTypes.string.isRequired,
       patronymic: PropTypes.string.isRequired,
-      balance: PropTypes.number
+      balance: PropTypes.number.isRequired,
       
     }),
   };
