@@ -81,8 +81,10 @@ class MobileCompany extends React.PureComponent {
 
 
   clientSave=(clSn)=>{
+    
   let k=[...this.state.clientsEdt]
   let changed=false
+  let changedCl=[]
     for (let i=0;i<k.length;i++){
       if ((k[i].id==clSn.id)&&((k[i].surname!=clSn.surname)||(k[i].nameCl!=clSn.nameCl)||(k[i].patronymic!=clSn.patronymic)||(k[i].balance!=clSn.balance))){
         //k[i]=clSn;
@@ -93,12 +95,13 @@ class MobileCompany extends React.PureComponent {
         newClientData.balance=clSn.balance
         changed=true
         k[i]=newClientData
-        console.log (k[i])
+        changedCl=[newClientData]
       }
     }
     if (changed==true){
       this.setState({clientsEdt:k})
-      
+      this.setState ({cardShown:changedCl}) 
+
     }
   
   }
@@ -121,7 +124,7 @@ class MobileCompany extends React.PureComponent {
     this.setState({cardMode:2})
   }
   clientSelected=(clId)=>{
-    console.log('а куку')
+    
     this.setState({selectedClientId: clId} ); 
     function ffff(v,i,a){return v.id==clId }
     let cl=[...this.state.clientsEdt]; 
