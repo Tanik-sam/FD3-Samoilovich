@@ -36,7 +36,7 @@ class MobileCompany extends React.PureComponent {
     status:  this.props.balance>0?true:false,
     balance:this.props.balance,
     clientsEdt: this.props.clients.slice(),
-    clientsEdt1: this.props.clients.slice(),
+    filtered:0, //0--все, 1 -активные, 2- заблокированные
     selectedClientId: null,
     cardShown: [],
     cardMode:1,
@@ -75,7 +75,7 @@ class MobileCompany extends React.PureComponent {
     let k=kk.filter(fff);
      this.setState({cardShown:[]})
      this.setState({clientsEdt:k})
-     this.setState({clientsEdt1:k})
+     
   }
 
 
@@ -92,7 +92,7 @@ class MobileCompany extends React.PureComponent {
     }
     if (changed==true){
       this.setState({clientsEdt:k})
-      this.setState({clientsEdt1:k})
+      
     }
   
   }
@@ -110,7 +110,7 @@ class MobileCompany extends React.PureComponent {
     //ll.push(nn)
     ll=[...ll,nn]
     this.setState({clientsEdt:ll})
-    this.setState({clientsEdt1:ll})
+    
     this.clientSelected(lll)
     this.setState({cardMode:2})
   }
@@ -124,65 +124,17 @@ class MobileCompany extends React.PureComponent {
     }
 
 allClients=()=>{
-  this.filterClients(0) //0--все, 1 -активные, 2- заблокированные
-  console.log('this.state.clientsEdt после return',this.state.clientsEdt)
+  this.setState({filtered:0}) //0--все, 1 -активные, 2- заблокированные
+  this.setState ({cardShown:[]})
 }
 activeClients=()=>{
-  this.filterClients(1)//0--все, 1 -активные, 2- заблокированные
-  console.log('this.state.clientsEdt после return',this.state.clientsEdt)
+  this.setState({filtered:1}) //0--все, 1 -активные, 2- заблокированные
+  this.setState ({cardShown:[]})
 }
 blockedClients=()=>{
-  this.filterClients(2)//0--все, 1 -активные, 2- заблокированные
-   console.log('this.state.clientsEdt после return',this.state.clientsEdt)
+  this.setState({filtered:2}) //0--все, 1 -активные, 2- заблокированные
+  this.setState ({cardShown:[]})
 }
-deepCopy=(x)=>{
-  var X= {};                      //сюда будем копировать каждый новый хэш
-  if (x === null) return (null);  //если входящее значение равно Null, то сразу возвращаем Null
-  else{
-    if(typeof x === 'object'&& !(Array.isArray(x))){ // работаем с объетами исключая массивы
-         for(var i in x) {
-            X[i] = this.deepCopy(x[i]);  // рекурсия для копирования вложенных хэшей
-          }
-         return(X);
-    }  
-    else if (Array.isArray(x)){    // теперь работаем с массивами
-         return (x.map(this.deepCopy)); //с массивами работать проще :)
-          }    
-  return (x);
-  }     
-}
- copiedClients=this.deepCopy(this.state.clientsEdt);
-  filterClients=(fltrd)=>{
-    let clientsEdt2=[...this.state.clientsEdt1]
-    console.log('this.state.clientsEdt',this.state.clientsEdt)
-    switch (fltrd){
-     case 0:
-       //this.setState({clientsEdt:this.copiedClients})
-       this.setState ({cardShown:[]})
-       clientsEdt2=this.copiedClients
-       console.log('this.state.clientsEdt после сетстейта',this.state.clientsEdt)
-    break
-     case 1:
-       this.setState ({cardShown:[]})
-       let cl3=[...this.copiedClients]; 
-       function f1(v,i,a){return v.balance>0 }
-       let cll3=cl3.filter(f1); 
-      // this.setState ({clientsEdt:cll3})
-      clientsEdt2=cll3
-    break
-    case 2:
-       this.setState ({cardShown:[]})
-       let cl4=[...this.copiedClients]; 
-       function f2(v,i,a){return v.balance<=0 }
-       let cll4=cl4.filter(f2); 
-       //this.setState ({clientsEdt:cll4})
-       clientsEdt2=cll4
-    break
-    }
-    this.setState ({clientsEdt:clientsEdt2})
-    console.log('this.state.clientsEdt после clientsEdt2',this.state.clientsEdt)
-    return (this.state.clientsEdt)
-  }
   render() {
 
     var cG=[];
@@ -194,9 +146,20 @@ deepCopy=(x)=>{
 
     console.log("MobileCompany render");
     console.log(this.state.clientsEdt);
-    var clientsCode=this.state.clientsEdt.map(client =>
+    var clientFiltered=this.state.clientsEdt
+    if (this.state.filtered==1){let clientActive=[...this.state.clientsEdt]; 
+      function f1(v,i,a){return v.balance>0 }
+      clientFiltered=clientActive.filter(f1);}
+      else {
+      if (this.state.filtered==2){let clientBlocked=[...this.state.clientsEdt]; 
+        function f2(v,i,a){return v.balance<=0 }
+        clientFiltered=clientBlocked.filter(f2);}
+     }
+    var clientsCode=clientFiltered.map(client =>
       <MobileClient key={client.id} info={client} selectedClientId={this.state.selectedClientId} />
     );
+    
+
     if (this.state.cardShown!=[]) {var clientSelected=this.state.cardShown.map(v=>
       <MobileClientCard  key={v.id} info={v} cardMode={this.state.cardMode}
       nameRow={this.props.columnName} selectedClientId={this.selectedClientId}/>)}
