@@ -123,11 +123,11 @@ class MobileCompany extends React.PureComponent {
     this.setState({editMode:0})
    }
   addClient=()=>{
-    
-    var lll=this.state.clientsEdt.length+101
-    let llll=lll+'n'
-    var nn={id:llll,surname:"",nameCl:"",patronymic:"",status:false,balance:0}
     var ll=[...this.state.clientsEdt];
+    var llll=ll.map(v=>v.id)
+    let maxId = Math.max.apply(Math, llll) 
+    var nn={id:(maxId+1),surname:"",nameCl:"",patronymic:"",status:false,balance:0}
+    
     ll=[...ll,nn]
     this.setState({clientsEdt:ll})
     let lastCl=[];
