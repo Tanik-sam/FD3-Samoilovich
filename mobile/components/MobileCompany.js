@@ -81,6 +81,7 @@ class MobileCompany extends React.PureComponent {
 
 
   clientSave=(clSn)=>{
+  
     
   let k=[...this.state.clientsEdt]
   let changed=false
@@ -96,7 +97,10 @@ class MobileCompany extends React.PureComponent {
         changed=true
         k[i]=newClientData
         changedCl=[newClientData]
+        
       }
+      this.setState({cardMode:1})
+      clientEvents.emit('ButtonEnbled');
     }
     if (changed==true){
       this.setState({clientsEdt:k})
@@ -114,7 +118,8 @@ class MobileCompany extends React.PureComponent {
   addClient=()=>{
     
     var lll=this.state.clientsEdt.length+101
-    var nn={id:lll,surname:"",nameCl:"",patronymic:"",status:false,balance:0}
+    let llll=lll+'n'
+    var nn={id:llll,surname:"",nameCl:"",patronymic:"",status:false,balance:0}
     var ll=[...this.state.clientsEdt];
     ll=[...ll,nn]
     this.setState({clientsEdt:ll})

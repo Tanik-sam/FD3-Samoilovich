@@ -63,3 +63,20 @@ input.CardButton{   background: -moz-linear-gradient(#f1e0f8, #b78acc, #f1e0f8);
   font-weight: bolder;
   
 }
+input.CardButton:disabled{
+  background: -moz-linear-gradient(#f1e0f8, #c5bbca, #f1e0f8);
+  background: -webkit-gradient(linear, 0 0, 0  100%, from(#f1e0f8), to(#f1e0f8), color-stop(0.5, #c5bbca));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00BBD6', endColorstr='#EBFFFF');
+  padding: 3px 7px;
+  color: #333;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 30px;
+  border: 1px solid #667;
+  padding: 8px 8px;
+  margin: 6px 6px;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color:rgb(212, 212, 212);
+  font-weight: bolder;
+}

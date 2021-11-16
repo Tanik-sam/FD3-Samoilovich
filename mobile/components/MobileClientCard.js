@@ -16,15 +16,24 @@ class MobileClientCard extends React.Component {
     })
   }
  
-
+state={
+  saveMode: 1,
+ 
+}
    
    defaultPosition=(eo)=>{
     
     clientEvents.emit('ClientDefault',false)
+    this.setState({saveMode:1}) 
+
    }
 
   savePosition=(eo)=>{
-      //this.setState({saveMode:0})  
+  /* if ((this.newSurnameRef.value='')||(this.newNameClRef.value='')||(this.newPatronymicRef.value='')||(this.newBalanceRef.value='')){
+
+      
+   }
+    else  {*/
       this.setNewSurname (); 
       this.setNewNameCl ();
       this.setNewPatronymic ();
@@ -32,7 +41,7 @@ class MobileClientCard extends React.Component {
       let t={id:this.props.info.id,surname:this.newSurnameRef.value,nameCl:this.newNameClRef.value,patronymic:this.newPatronymicRef.value, balance:parseInt(this.newBalanceRef.value)}
       console.log('t',t)
       clientEvents.emit('ClientSave',t); 
-      
+    //} 
   }
 
    newSurnameRef = this.props.info.surname;
@@ -40,17 +49,26 @@ class MobileClientCard extends React.Component {
    newPatronymicRef = this.props.info.patronymic;
    newBalanceRef = this.props.info.balance;
    
-
+//-----------------------------------------------------
   setNewSurnameRef = (ref) => {
     this.newSurnameRef=ref;
+
   };
 
   setNewSurname = () => {
     if ( this.newSurnameRef ) { 
       let newSurname=this.newSurnameRef.value;
-     
+           
     }
   }; 
+  checkSurnameValue=()=>{
+    if (this.newSurnameRef.value==''){
+      this.setState({saveMode:0}) }
+      else{
+      this.setState({saveMode:1}) 
+      }
+    
+   }
 //-----------------------------------------------------
   setNewNameClRef = (ref) => {
     this.newNameClRef=ref;
@@ -62,6 +80,13 @@ class MobileClientCard extends React.Component {
         
     }
   }; 
+  checkNameClValue=()=>{
+    if (this.newNameClRef.value==''){
+      this.setState({saveMode:0})  }
+      else{
+        this.setState({saveMode:1}) 
+        }
+   }
   //-----------------------------------------------------
   setNewPatronymicRef = (ref) => {
     this.newPatronymicRef=ref;
@@ -73,6 +98,13 @@ class MobileClientCard extends React.Component {
         
     }
   }; 
+  checkPatronymicValue=()=>{
+    if (this.newPatronymicRef.value==''){
+      this.setState({saveMode:0}) }
+      else{
+      this.setState({saveMode:1}) 
+      }
+  }
   //-----------------------------------------------------
   setNewBalanceRef = (ref) => {
     this.newBalanceRef=ref;
@@ -84,8 +116,15 @@ class MobileClientCard extends React.Component {
      
     }
   }; 
-  
- 
+  checkBalancecValue=()=>{
+    if (this.newBalancecRef.value==''){
+      this.setState({saveMode:0}) }
+      else{
+      this.setState({saveMode:1}) 
+      }
+    }
+  //-----------------------------------------------------
+
 
   render() {
 
@@ -135,7 +174,8 @@ class MobileClientCard extends React.Component {
                 <td className='itemData'>
                 {this.props.nameRow[4].text}
                 </td>
-              <td className={this.props.info.balance>0?"StatusActive":"StatusBlocked"}>{this.props.info.balance0?"active":"blocked"}
+          
+              <td className={this.props.info.balance >0?"StatusActive":"StatusBlocked"}>{this.props.info.balance >0?"active":"blocked"}
               </td>
                  
               </tr> 
@@ -161,7 +201,7 @@ class MobileClientCard extends React.Component {
                 {this.props.info.surname}
                 </td>
                 <td>
-                  <input className='itemData2' type="text" defaultValue={this.props.info.surname} ref={this.setNewSurnameRef}/> 
+                  <input className='itemData2' type="text" defaultValue={this.props.info.surname} ref={this.setNewSurnameRef} onBlur={this.checkSurnameValue}/> 
                 </td>
                 
               </tr>
@@ -173,7 +213,7 @@ class MobileClientCard extends React.Component {
                 {this.props.info.nameCl}
                 </td>
                 <td className='itemData2'>
-                  <input className='itemData2' type="text" defaultValue={this.props.info.nameCl} ref={this.setNewNameClRef}/>
+                  <input className='itemData2' type="text" defaultValue={this.props.info.nameCl} ref={this.setNewNameClRef} onBlur={this.checkNameClValue}/>
                 </td>
               
               </tr>
@@ -185,7 +225,7 @@ class MobileClientCard extends React.Component {
                 {this.props.info.patronymic}
                 </td>  
                 <td className='itemData2'>
-                  <input className='itemData2' type="text" defaultValue={this.props.info.patronymic} ref={this.setNewPatronymicRef}/>
+                  <input className='itemData2' type="text" defaultValue={this.props.info.patronymic} ref={this.setNewPatronymicRef} onBlur={this.checkPatronymicValue}/>
                 </td>
                
               </tr> 
@@ -197,7 +237,7 @@ class MobileClientCard extends React.Component {
                   {this.props.info.balance}
                 </td>  
                 <td className='itemData2'>
-                  <input className='itemData2' type="text" defaultValue={this.props.info.balance} ref={this.setNewBalanceRef}/>
+                  <input className='itemData2' type="text" defaultValue={this.props.info.balance} ref={this.setNewBalanceRef} onBlur={this.checkBalanceValue}/>
                 </td>
                
               </tr> 
@@ -205,7 +245,7 @@ class MobileClientCard extends React.Component {
                 <td className='itemData2'>
                 {this.props.nameRow[4].text}
                 </td>
-                <td className={this.props.info.balance.value>0?"StatusActive":"StatusBlocked"}>{this.props.info.balance.value>0?"active":"blocked"}
+                <td className={this.props.info.balance>0?"StatusActive":"StatusBlocked"}>{this.props.info.balance>0?"active":"blocked"}
               </td>
               <td className='itemData2'>
 
@@ -213,7 +253,7 @@ class MobileClientCard extends React.Component {
               </tr> 
              <tr>
                  <td  className='itemData2'>
-                   <input className="CardButton" type='button' value='СОХРАНИТЬ' onClick={this.savePosition}  />   
+                   <input className="CardButton" type='button' value='СОХРАНИТЬ' onClick={this.savePosition} disabled={this.state.saveMode==0} />   
                  </td>  
                  <td  className='itemData2'>
                     <input className="CardButton" type='button' value='СБРОСИТЬ' onClick={this.defaultPosition} />   

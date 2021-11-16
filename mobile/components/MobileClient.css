@@ -56,3 +56,19 @@
   font-size: large;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+input.inTable:disabled{
+  background: -moz-linear-gradient(#D0ECF4, #a4d0da, #D0ECF4);
+  background: -webkit-gradient(linear, 0 0, 0  100%, from(#D0ECF4), to(#D0ECF4), color-stop(0.5, #a4d0da));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00BBD6', endColorstr='#EBFFFF');
+  padding: 3px 7px;
+  color: #333;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 30px;
+  border: 1px solid #667;
+  color:rgb(109, 108, 108);
+  padding: 8px 8px;
+  margin: 8px 8px;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

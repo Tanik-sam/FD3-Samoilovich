@@ -19,8 +19,18 @@ class MobileClient extends React.PureComponent {
 
   state = {
     info: this.props.info,
+    editMode:1,
   };
   
+  componentDidMount = () => {
+    clientEvents.addListener('ButtonEnbled',this.buttonEnbled)
+  }
+  componentWillUnmount = () => {
+    clientEvents.removeListener('ButtonEnbled',this.buttonEnbled)
+  }
+  buttonEnbled=()=>{
+  this.setState({editMode:1})
+  }
   componentWillReceiveProps = (newProps) => {
     console.log("MobileClient id="+this.props.info.id+" componentWillReceiveProps");
     this.setState({info:newProps.info});
@@ -33,6 +43,7 @@ class MobileClient extends React.PureComponent {
    editRow=(eo) =>{
     clientEvents.emit('ClientEdit',this.props.info.id);
     console.log('ClientEdit',this.props.info.id)
+    this.setState({editMode:0});
    }
    deleteRow=(eo) =>{
     eo.stopPropagation();
@@ -54,8 +65,8 @@ class MobileClient extends React.PureComponent {
       <td className="StatusActive">{this.state.info.patronymic}</td>
       <td className="StatusActive">{this.state.info.balance}</td>
       <td className={this.state.info.balance>0?"StatusActive":"StatusBlocked"}>{this.state.info.balance>0?"active":"blocked"}</td>
-      <td className="StatusActive"><input className="inTable" type='button' value='Редактировать' onClick={this.editRow}/></td>   
-      <td className="StatusActive"><input className="inTable" type='button' value='Удалить' onClick={this.deleteRow}/></td>   
+      <td className="StatusActive"><input className="inTable" type='button' value='Редактировать' onClick={this.editRow} disabled={this.state.editMode==0}/></td>   
+      <td className="StatusActive"><input className="inTable" type='button' value='Удалить' onClick={this.deleteRow} disabled={this.state.editMode==0}/> </td>   
       </tr>
     )        
   }
