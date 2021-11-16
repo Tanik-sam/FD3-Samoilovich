@@ -29,11 +29,7 @@ state={
    }
 
   savePosition=(eo)=>{
-  /* if ((this.newSurnameRef.value='')||(this.newNameClRef.value='')||(this.newPatronymicRef.value='')||(this.newBalanceRef.value='')){
-
-      
-   }
-    else  {*/
+ 
       this.setNewSurname (); 
       this.setNewNameCl ();
       this.setNewPatronymic ();
@@ -41,7 +37,7 @@ state={
       let t={id:this.props.info.id,surname:this.newSurnameRef.value,nameCl:this.newNameClRef.value,patronymic:this.newPatronymicRef.value, balance:parseInt(this.newBalanceRef.value)}
       console.log('t',t)
       clientEvents.emit('ClientSave',t); 
-    //} 
+  
   }
 
    newSurnameRef = this.props.info.surname;

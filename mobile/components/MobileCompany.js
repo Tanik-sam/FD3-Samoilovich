@@ -12,6 +12,7 @@ import {clientEvents} from './events';
 
 
 
+
 class MobileCompany extends React.PureComponent {
 
   static propTypes = {
@@ -40,6 +41,7 @@ class MobileCompany extends React.PureComponent {
     selectedClientId: null,
     cardShown: [],
     cardMode:1,
+    editMode:1,
   };
 
   setName1 = () => {
@@ -58,6 +60,7 @@ class MobileCompany extends React.PureComponent {
     clientEvents.addListener('ClientEdit',this.clientEdit);
     clientEvents.addListener('ClientSave',this.clientSave);
     clientEvents.addListener('ClientDefault',this.clientDefault);
+    clientEvents.addListener('ButtonEnbled',this.buttonEnbled)
     
   };
 
@@ -67,8 +70,11 @@ class MobileCompany extends React.PureComponent {
     clientEvents.removeListener('ClientEdit',this.clientEdit);
     clientEvents.removeListener('ClientSave',this.clientSave);
     clientEvents.removeListener('ClientDefault',this.clientDefault);
+    clientEvents.addListener('ButtonEnbled',this.buttonEnbled)
   };
-
+  buttonEnbled=()=>{
+    this.setState({editMode:1})
+    }
   clientDelete=(clDl)=>{
     function fff(v,i,a){return v.id!=clDl}
     let kk=[...this.state.clientsEdt]
@@ -114,6 +120,7 @@ class MobileCompany extends React.PureComponent {
 
   clientEdit = (edtCdVl) => {
     this.setState({cardMode:2})
+    this.setState({editMode:0})
    }
   addClient=()=>{
     
@@ -196,7 +203,7 @@ blockedClients=()=>{
           </tbody>
           </table>
         </div>
-        <input className="inTable" type="button" value="Добавить клиента" onClick={this.addClient} />
+        <input className="inTable" type="button" value="Добавить клиента" onClick={this.addClient} disabled={this.state.editMode==0} />
         {clientSelected}
       </div>
     )
