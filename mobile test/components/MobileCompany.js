@@ -16,7 +16,7 @@ import {clientEvents} from './events';
 class MobileCompany extends React.PureComponent {
 
   static propTypes = {
-    name: PropTypes.string.isRequired,
+    
     clients:PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -180,7 +180,7 @@ blockedClients=()=>{
       nameRow={this.props.columnName} selectedClientId={this.selectedClientId}/>)}
     return (
       <div className='MobileCompany'>
-        <input className='notTable' data-foo='k' type="button" value="Все" onClick={this.allClients}  />
+        <input className='notTable' type="button" value="Все" onClick={this.allClients}  />
         <input className='notTable' type="button" value="Активные" onClick={this.activeClients}  />
         <input className='notTable' type="button" value="Заблокированные" onClick={this.blockedClients}  />
         <hr/>
