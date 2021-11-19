@@ -17,7 +17,7 @@ test('работа фильтрации по всем клиентам', () => {
   expect(componentTree).toMatchSnapshot();
 
   // найдём в вёрстке компонента саму кнопку
-  const buttonElem = component.root.find( el => (className="inTable") /*&& el.props.aaa == 'bbb'*/ ); 
+  const buttonElem = component.root.find("input", className="inTable") //*&& el.props.aaa == 'bbb'*/ ); 
   // и "нажмём" на неё
   buttonElem.props.onClick();
 
