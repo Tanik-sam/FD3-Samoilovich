@@ -176,7 +176,7 @@ blockedClients=()=>{
     
 
     if (this.state.cardShown!=[]) {var clientSelected=this.state.cardShown.map(v=>
-      <MobileClientCard  key={v.id} info={v} cardMode={this.state.cardMode}
+      <MobileClientCard  info={v} cardMode={this.state.cardMode}
       nameRow={this.props.columnName} selectedClientId={this.selectedClientId}/>)}
     return (
       <div className='MobileCompany'>
