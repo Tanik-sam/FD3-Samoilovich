@@ -2,14 +2,22 @@
 
 import React from 'react';
 import renderer from 'react-test-renderer';
+//import MobileCompany from '../components/MobileCompany';
+import PrivetRender from '../components/PrivetRender';
 
-import MobileCompany from '../components/MobileCompany';
+test('Проверка рендера "Привет"', () => {
 
-
-test('Работа кнопки Добавить клиента', () => {
-
-  // создаём тестовую версию компонента
   const component = renderer.create(
+    <PrivetRender />
+    ); 
+    // получаем снэпшот (HTML-снимок) компонента для сверки, что вёрстка не испортилась
+    let componentTree=component.toJSON();
+    expect(componentTree).toMatchSnapshot();
+  
+
+  
+  // создаём тестовую версию компонента
+   /*const component = renderer.create(
     <MobileCompany clients={[ 
       {id:101, surname:"Иванов",nameCl:"Иван",patronymic:"Иванович", balance:2}, 
       {id:102, surname:"Сидоров ",nameCl:"Сидор",patronymic:"Сидорович ", balance:250}, 
