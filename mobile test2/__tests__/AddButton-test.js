@@ -2,19 +2,8 @@
 
 import React from 'react';
 import renderer from 'react-test-renderer';
-//import MobileCompany from '../components/MobileCompany';
-import PrivetRender from '../components/PrivetRender';
-
-test('Проверка рендера "Привет"', () => {
-
-  const component = renderer.create(
-    <PrivetRender />
-    ); 
-    // получаем снэпшот (HTML-снимок) компонента для сверки, что вёрстка не испортилась
-    let componentTree=component.toJSON();
-    expect(componentTree).toMatchSnapshot();
-  /*
-
+import MobileCompany from '../components/MobileCompany';
+test('Проверка кнопки "Добавить"', () => {
   
   // создаём тестовую версию компонента
    const component = renderer.create(
@@ -35,17 +24,15 @@ test('Проверка рендера "Привет"', () => {
     
   );
 
-
-   
-
   // получаем снэпшот (HTML-снимок) компонента для сверки, что вёрстка не испортилась
   let componentTree=component.toJSON();
   expect(componentTree).toMatchSnapshot();
- /*
+ 
   // найдём в вёрстке компонента саму кнопку
-  const buttonElem = component.root.find(el => el.type=='input' && el.props.className=='inTable' );  && el.props.aaa == 'bbb' ); 
+  const buttonElem = component.root.find(el => el.type=='input' && el.props.data=='add' );//  && el.props.aaa == 'bbb' ); 
   // и "нажмём" на неё
   buttonElem.props.onClick();
+  console.log ('buttonElem',buttonElem)
 
   // получаем уже изменённый снэпшот
   componentTree=component.toJSON();
@@ -57,5 +44,5 @@ test('Проверка рендера "Привет"', () => {
   // и получаем окончательный снэпшот
   componentTree=component.toJSON();
   expect(componentTree).toMatchSnapshot();
-  */
+  
 });
