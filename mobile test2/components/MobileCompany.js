@@ -180,9 +180,9 @@ blockedClients=()=>{
       nameRow={this.props.columnName} selectedClientId={this.selectedClientId}/>)}
     return (
       <div className='MobileCompany'>
-        <input className='notTable' type="button" value="Все" onClick={this.allClients}  />
-        <input className='notTable' type="button" value="Активные" onClick={this.activeClients}  />
-        <input className='notTable' type="button" value="Заблокированные" onClick={this.blockedClients}  />
+        <input className='notTable' data='all' type="button" value="Все" onClick={this.allClients}  />
+        <input className='notTable' data='active' type="button" value="Активные" onClick={this.activeClients}  />
+        <input className='notTable' data='blocked' type="button" value="Заблокированные" onClick={this.blockedClients}  />
         <hr/>
         <div className='MobileCompanyClients'>
           <table>

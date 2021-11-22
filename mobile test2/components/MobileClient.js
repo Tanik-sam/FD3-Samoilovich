@@ -66,7 +66,7 @@ class MobileClient extends React.PureComponent {
       <td className="StatusActive">{this.state.info.balance}</td>
       <td className={this.state.info.balance>0?"StatusActive":"StatusBlocked"}>{this.state.info.balance>0?"active":"blocked"}</td>
       <td className="StatusActive"><input className="inTable" type='button' value='Редактировать' onClick={this.editRow} disabled={this.state.editMode==0}/></td>   
-      <td className="StatusActive"><input className="inTable" type='button' value='Удалить' onClick={this.deleteRow} disabled={this.state.editMode==0}/> </td>   
+      <td className="StatusActive"><input className="inTable" type='button' data={'del'+this.props.info.id} value='Удалить' onClick={this.deleteRow} disabled={this.state.editMode==0}/> </td>   
       </tr>
     )        
   }

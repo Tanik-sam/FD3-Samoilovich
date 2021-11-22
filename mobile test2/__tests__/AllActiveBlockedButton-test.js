@@ -3,7 +3,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import MobileCompany from '../components/MobileCompany';
-test('Проверка кнопки "Добавить"', () => {
+test('Проверка кнопок "Все, активные, заблокированные"', () => {
   
   // создаём тестовую версию компонента
    const component = renderer.create(
@@ -29,9 +29,19 @@ test('Проверка кнопки "Добавить"', () => {
   expect(componentTree).toMatchSnapshot();
  
   // найдём в вёрстке компонента саму кнопку
-  const buttonElem = component.root.find(el => el.type=='input' && el.props.data=='add' );//  && el.props.aaa == 'bbb' ); 
+  const buttonElem = component.root.find(el => el.type=='input' && el.props.data=='all' ); 
   // и "нажмём" на неё
   buttonElem.props.onClick();
+  
+    // найдём в вёрстке компонента саму кнопку
+    const buttonElem2 = component.root.find(el => el.type=='input' && el.props.data=='active' ); 
+    // и "нажмём" на неё
+    buttonElem2.props.onClick();
+     
+      // найдём в вёрстке компонента саму кнопку
+  const buttonElem3 = component.root.find(el => el.type=='input' && el.props.data=='blocked' ); 
+  // и "нажмём" на неё
+  buttonElem3.props.onClick();
  
 
   // получаем уже изменённый снэпшот

@@ -3,7 +3,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import MobileCompany from '../components/MobileCompany';
-test('Проверка кнопки "Добавить"', () => {
+test('Проверка кнопок "Удалить"', () => {
   
   // создаём тестовую версию компонента
    const component = renderer.create(
@@ -23,16 +23,24 @@ test('Проверка кнопки "Добавить"', () => {
     ]}/>
     
   );
+  let clients=[ 
+    {id:101, surname:"Иванов",nameCl:"Иван",patronymic:"Иванович", balance:2}, 
+    {id:102, surname:"Сидоров ",nameCl:"Сидор",patronymic:"Сидорович ", balance:250}, 
+    {id:103, surname:"Петров",nameCl:"Петр",patronymic:"Петрович", balance:180}, 
+    {id:104, surname:"Григорьев",nameCl:"Григорий",patronymic:"Григорьевич", balance:0}, 
+   ]
 
   // получаем снэпшот (HTML-снимок) компонента для сверки, что вёрстка не испортилась
   let componentTree=component.toJSON();
   expect(componentTree).toMatchSnapshot();
- 
+  for (let i=0;i<clients.length;i++){
   // найдём в вёрстке компонента саму кнопку
-  const buttonElem = component.root.find(el => el.type=='input' && el.props.data=='add' );//  && el.props.aaa == 'bbb' ); 
-  // и "нажмём" на неё
+  let dataDel='del'+clients[i].id
+  console.log (dataDel)
+  const buttonElem = component.root.find(el => el.type=='input' && el.props.data==dataDel ); 
+  }
   buttonElem.props.onClick();
- 
+  
 
   // получаем уже изменённый снэпшот
   componentTree=component.toJSON();
