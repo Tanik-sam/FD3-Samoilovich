@@ -41,7 +41,7 @@ test('Проверка кнопок "Удалить"', () => {
   console.log (dataDel)
   const buttonElem = component.root.find(el => el.type=='input' && el.props.data==dataDel ); 
   console.log (buttonElem)
-
+  
   buttonElem.props.onClick();
   }
 
@@ -49,11 +49,5 @@ test('Проверка кнопок "Удалить"', () => {
   componentTree=component.toJSON();
   expect(componentTree).toMatchSnapshot();
 
-  // "нажмём" кнопку ещё раз
-  buttonElem.props.onClick();
-  
-  // и получаем окончательный снэпшот
-  componentTree=component.toJSON();
-  expect(componentTree).toMatchSnapshot();
   
 });

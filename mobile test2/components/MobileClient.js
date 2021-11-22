@@ -46,7 +46,9 @@ class MobileClient extends React.PureComponent {
     this.setState({editMode:0});
    }
    deleteRow=(eo) =>{
-    eo.stopPropagation();
+    console.log (eo)
+    if(eo){ 
+    eo.stopPropagation();}
     clientEvents.emit('ClientDelete',this.props.info.id);
     console.log('ClientDelete',this.props.info.id)
    }

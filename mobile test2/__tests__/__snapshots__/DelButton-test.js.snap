@@ -306,3 +306,94 @@ exports[`Проверка кнопок "Удалить" 1`] = `
   />
 </div>
 `;
+
+exports[`Проверка кнопок "Удалить" 2`] = `
+<div
+  className="MobileCompany"
+>
+  <input
+    className="notTable"
+    data="all"
+    onClick={[Function]}
+    type="button"
+    value="Все"
+  />
+  <input
+    className="notTable"
+    data="active"
+    onClick={[Function]}
+    type="button"
+    value="Активные"
+  />
+  <input
+    className="notTable"
+    data="blocked"
+    onClick={[Function]}
+    type="button"
+    value="Заблокированные"
+  />
+  <hr />
+  <div
+    className="MobileCompanyClients"
+  >
+    <table>
+      <tbody>
+        <tr
+          className="MobileClient"
+        >
+          <th
+            className="ColumnN"
+          >
+              
+            Фамилия
+          </th>
+          <th
+            className="ColumnN"
+          >
+              
+            Имя
+          </th>
+          <th
+            className="ColumnN"
+          >
+              
+            Отчество
+          </th>
+          <th
+            className="ColumnN"
+          >
+              
+            Баланс
+          </th>
+          <th
+            className="ColumnN"
+          >
+              
+            Статус
+          </th>
+          <th
+            className="ColumnN"
+          >
+              
+            Редактировать
+          </th>
+          <th
+            className="ColumnN"
+          >
+              
+            Удалить
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <input
+    className="inTable"
+    data="add"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+    value="Добавить клиента"
+  />
+</div>
+`;
