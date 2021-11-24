@@ -67,7 +67,7 @@ class Tomato extends Products {  //со сметаной
     taste:'sour'|'sweet'|'plain';
     weight:number;
 
-    constructor(color:string, taste:string,weight:number) {
+    constructor(_color:string, _taste:string,_weight:number) {
         // конструктор класса-потомка должен вызвать 
         // конструктор класса-предка
         super(); 
