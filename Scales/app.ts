@@ -5,16 +5,17 @@ class Scales {
     list:Array<object>;
     product:{name:string, weight:number};
 
-    constructor(_weight:number) {
-        this.weight=_weight; 
+    constructor() {
+        this.weight=0; 
+        this.list=[];
     }
 
       add(product:object):void {
         this.list.push(product)
       }
 
-      getSumScale(weight:number):number {
-        this.weight=weight+this.product.weight
+      getSumScale() {
+        this.weight=this.weight+this.product.weight
       }
      
       getNameList():void {
@@ -22,7 +23,6 @@ class Scales {
       }
     
 }
-
 
 class Products {
 
@@ -33,12 +33,12 @@ class Products {
         this.weight=0; 
     }
 
-    getScale():void {
+      getScale():void {
         console.log(this.product.weight)
-    }
-    getName():void {
+      }
+      getName():void {
         console.log(this.product.name)
-    }
+      }
     
 }
 
@@ -48,19 +48,19 @@ class Apple extends Products {
     taste:'sour'|'sweet'|'plain';
     weight:number;
 
-    constructor(color:string, taste:string,weight:number) {
+    constructor(_color:string, _taste:string,_weight:number) {
         // конструктор класса-потомка должен вызвать 
         // конструктор класса-предка
         super(); 
-        this.color=color;
-        this.taste=taste;
-        this.weight=weight
+        this.color=_color;
+        this.taste=_taste;
+        this.weight=_weight
 
     }
 
 }
 
-class Tomato extends Products {
+class Tomato extends Products {  //со сметаной
     
    
     color:string;
@@ -71,9 +71,9 @@ class Tomato extends Products {
         // конструктор класса-потомка должен вызвать 
         // конструктор класса-предка
         super(); 
-        this.color=color;
-        this.taste=taste;
-        this.weight=weight
+        this.color=_color;
+        this.taste=_taste;
+        this.weight=_weight
 
     }
     }
