@@ -1,0 +1,55 @@
+"[{"spName":"Болт M6х16","articul":"9001.95.01","articulCode":"90019501","quantity":"40","price":"0,9","priceNDS":"1,08","equipment":"сеялка MegaSeed, TurboDrill"},
+    {"spName":"Болт M6х170","articul":"931D16170РА","articulCode":"931D16170РА","quantity":"20","price":"24,52","priceNDS":"29,42","equipment":"сеялка MegaSeed, TurboDrill"},
+    {"spName":"Винт задней секции","articul":"4782.35.23 MS","articulCode":"47823523MS","quantity":"1","price":"876,73","priceNDS":"1 052,08","equipment":"сеялка MegaSeed, TurboDrill"},
+    {"spName":"Винт левый","articul":"4782.35.05","articulCode":"47823505","quantity":"2","price":"310,68","priceNDS":"372,82","equipment":"сеялка MegaSeed, TurboDrill,Disc Harrows
+    Disc Harrows K 38-54 "},
+    {"spName":"Винт правый","articul":"4782.35.06","articulCode":"47823506","quantity":"2","price":"310,68","priceNDS":"372,82","equipment":"сеялка MegaSeed, TurboDrill,Disc Harrows
+    Disc Harrows K 38-54 "},
+    {"spName":"Втулка","articul":"9108.90.10","articulCode":"91089010","quantity":"10","price":"5,9","priceNDS":"7,08","equipment":"сеялка MegaSeed, TurboDrill, MegaDrill"},
+    {"spName":"Гайка 6KTM M 20 X1.5","articul":"934D2015M","articulCode":"934D2015M","quantity":"20","price":"6,56","priceNDS":"7,87","equipment":"сеялка MegaSeed"},
+    {"spName":"Грудинка корпуса плуга левая UR-VRP 292 OL","articul":"2701.07.02","articulCode":"27010702","quantity":"1","price":"46,68","priceNDS":"56,02","equipment":"плуг Marabou, плуг Kormoran"},
+    {"spName":"Грудинка корпуса плуга правая UR-VRP 292 O","articul":"2701.07.01","articulCode":"27010701","quantity":"1","price":"46,68","priceNDS":"56,02","equipment":"плуг Marabou, плуг Kormoran"},
+    {"spName":"Датчик контроля высева","articul":"9012.45.60","articulCode":"90124560","quantity":"1","price":"686,45","priceNDS":"823,74","equipment":"сеялка Mega Seed"},
+    {"spName":"Загортачи 10.ST-RA-8","articul":"9006.39.50","articulCode":"90063950","quantity":"3","price":"9,72","priceNDS":"11,66","equipment":"сеялка Mega Seed"},
+    {"spName":"Загортачи 10.ST.RA6","articul":"9006.39.16","articulCode":"90063916","quantity":"4","price":"10,59","priceNDS":"12,71","equipment":"сеялка Mega Seed"},
+    {"spName":"Загортная пружина","articul":"9006.39.51","articulCode":"90063951","quantity":"11","price":"29,97","priceNDS":"35,96","equipment":"сеялка Mega Seed"},
+    {"spName":"Загортачи длинные 10.ST.RA5","articul":"9006.39.51","articulCode":"90063951","quantity":"1","price":"12,46","priceNDS":"14,95","equipment":"сеялка MegaSeed, TurboDrill"},
+    {"spName":"Зуб фрезы левый RABE","articul":"8423.18.03","articulCode":"84231803","quantity":"1","price":"95,5","priceNDS":"114,6","equipment":"Folding Power Harrows
+    VKE 600 K Br.2
+    VKE 400 K - 500 K, 800K Br.3"},
+    {"spName":"Зуб фрезы правый RABE","articul":"8423.18.01","articulCode":"84231801","quantity":"1","price":"95,5","priceNDS":"114,6","equipment":"Folding Power Harrows
+    VKE 600 K Br.2
+    VKE 400 K - 500 K, 800K Br.3"},
+    {"spName":"Высевающая катушка","articul":"9001.15.06","articulCode":"90011506","quantity":"4","price":"43,48","priceNDS":"52,18","equipment":"сеялка MegaSeed, TurboDrill"},
+    {"spName":"Кольцо","articul":"8413.00.18","articulCode":"84130018","quantity":"3","price":"98,28","priceNDS":"117,94","equipment":"Культиватор вертикально-фрезерный
+    RABEWERK PKE 300"},
+    {"spName":"Корпус (кожух) вентилятора","articul":"9001.32.30","articulCode":"90013230","quantity":"2","price":"1 371,79","priceNDS":"1 646,15","equipment":"сеялка MegaSeed, TurboDrill"},
+    {"spName":"Крепление сошника","articul":"9002.11.01","articulCode":"90021101","quantity":"2","price":"231,47","priceNDS":"277,76","equipment":"сеялка MegaSeed, TurboDrill"},
+    {"spName":"Крепление сошника","articul":"9002.59.01","articulCode":"90025901","quantity":"2","price":"264,77","priceNDS":"317,72","equipment":"сеялка MegaSeed, TurboDrill"},
+    {"spName":"Крышка высевающей головки в сборе","articul":"9001.97.01","articulCode":"90019701","quantity":"2","price":"814,39","priceNDS":"977,27","equipment":"сеялка MegaSeed, TurboDrill"},
+    {"spName":"Лемех левый SSP 293 ОL 90.160.97","articul":"2700.10.02","articulCode":"27001002","quantity":"1","price":"136,17","priceNDS":"163,4","equipment":"плуг Marabou, плуг Kormoran"},
+    {"spName":"Лемех левый SSP 350 WL 90.162.61 27","articul":"2751.07.02","articulCode":"27510702","quantity":"2","price":"147,08","priceNDS":"176,5","equipment":"плуг Marabou, плуг Kormoran"},
+    {"spName":"Опорная шайба","articul":"S988DS2535","articulCode":"S988DS2535","quantity":"8","price":"8,44","priceNDS":"10,13","equipment":"},
+    {"spName":"Отвал корпуса плуга левый UR-HRP327 PL","articul":"2701.08.02","articulCode":"27010802","quantity":"1","price":"238,83","priceNDS":"286,6","equipment":"плуг Marabou, плуг Kormoran"},
+    {"spName":"Отвал корпуса плуга правый UR-HRP327 P","articul":"2701.08.01","articulCode":"27010801","quantity":"1","price":"238,83","priceNDS":"286,6","equipment":"плуг Marabou, плуг Kormoran"},
+    {"spName":"Подшипник","articul":"720D32012","articulCode":"720D32012","quantity":"3","price":"184,06","priceNDS":"220,87","equipment":"Folding Power Harrows
+    VKE 600 K Br.2
+    VKE 400 K - 500 K, 800K Br.3"},
+    {"spName":"Подшипник","articul":"720D32012X SKF","articulCode":"720D32012XSKF","quantity":"3","price":"200,59","priceNDS":"240,71","equipment":"Folding Power Harrows
+    VKE 600 K Br.2
+    VKE 400 K - 500 K, 800K Br.3"},
+    {"spName":"Подшипник на высев (сошник)","articul":"625 D 630 42 RS1","articulCode":"625D63042RS1","quantity":"20","price":"68,03","priceNDS":"81,64","equipment":"сеялка MegaSeed, TurboDrill"},
+    {"spName":"Ремень XPZ-1750","articul":"9003.34.01","articulCode":"90033401","quantity":"2","price":"75,88","priceNDS":"91,06","equipment":"сеялка MegaSeed, TurboDrill"},
+    {"spName":"Сальник","articul":"8433.00.13","articulCode":"84330013","quantity":"3","price":"25,53","priceNDS":"30,64","equipment":"сеялка MegaSeed, TurboDrill"},
+    {"spName":"Семяпровод металлический","articul":"9002.51.07","articulCode":"90025107","quantity":"2","price":"329,85","priceNDS":"395,82","equipment":"сеялка MegaSeed, TurboDrill"},
+    {"spName":"Семяпровод металлический","articul":"9022.51.04","articulCode":"90225104","quantity":"6","price":"296,86","priceNDS":"356,23","equipment":"сеялка MegaSeed, TurboDrill"},
+    {"spName":"Створка клапана (Флажок патрубка)","articul":"9001.57.02","articulCode":"90015702","quantity":"6","price":"20,04","priceNDS":"24,05","equipment":"сеялка MegaSeed, TurboDrill"},
+    {"spName":"Ступица диска бороны","articul":"9031.40.02","articulCode":"90314002","quantity":"14","price":"567,43","priceNDS":"680,92","equipment":"сеялка MegaSeed, TurboDrill"},
+    {"spName":"Уплотнение опорного цилиндра плуга","articul":"8168.04.04","articulCode":"81680404","quantity":"2","price":"168,78","priceNDS":"202,54","equipment":"плуг Marabou, плуг Kormoran"},
+    {"spName":"Фиксатор 100х3 DIN472","articul":"472D1003","articulCode":"472D1003","quantity":"3","price":"7,68","priceNDS":"9,22","equipment":"Культиватор вертикально-фрезерный
+    RABEWERK PKE 300"},
+    {"spName":"Фланец","articul":"8413.00.20","articulCode":"84130020","quantity":"3","price":"274,08","priceNDS":"328,9","equipment":"Культиватор вертикально-фрезерный
+    RABEWERK PKE 300"},
+    {"spName":"Чистик","articul":"9022.50.13","articulCode":"90225013","quantity":"12","price":"52,37","priceNDS":"62,84","equipment":"сеялка MegaSeed, TurboDrill"},
+    {"spName":"Чистик","articul":"9022.50.14","articulCode":"90225014","quantity":"12","price":"52,37","priceNDS":"62,84","equipment":"сеялка MegaSeed, TurboDrill"}]"
+    

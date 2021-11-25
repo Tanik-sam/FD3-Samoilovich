@@ -1,28 +1,35 @@
 
 class Scales {
 
-    weight:number=0;
     list:Array<object>;
-    product:{name:string, weight:number};
-
+    
     constructor() {
-        this.weight=0; 
         this.list=[];
+        
     }
 
       add(product:object):void {
         this.list.push(product)
+        console.log(this.list)
       }
 
       getSumScale() {
-        this.weight=this.weight+this.product.weight
+        let totalWeight:number=0;
+        for (let i=0;i<this.list.length;i++){
+       // totalWeight+=this.list[i].weight
+        }
       }
      
       getNameList():void {
+        
+        for (let i=0;i<this.list.length;i++){
+        //console.log=this.list[i].name
+        }
         console.log (this.list)
       }
     
 }
+
 
 class Products {
 
@@ -53,7 +60,7 @@ class Apple extends Products {
         // конструктор класса-предка
         super(); 
         this.color=_color;
-        this.taste=_taste;
+        //this.taste=_taste;
         this.weight=_weight
 
     }
@@ -64,7 +71,7 @@ class Tomato extends Products {  //со сметаной
     
    
     color:string;
-    taste:'sour'|'sweet'|'plain';
+    //taste:'sour'|'sweet'|'plain';
     weight:number;
 
     constructor(_color:string, _taste:string,_weight:number) {
@@ -72,12 +79,16 @@ class Tomato extends Products {  //со сметаной
         // конструктор класса-предка
         super(); 
         this.color=_color;
-        this.taste=_taste;
+        //this.taste=_taste;
         this.weight=_weight
 
     }
     }
-}
 
-let apple1:Apple=new Apple();
+
+var scales:Scales=new Scales
+let apple1:Apple=new Apple('yelow','sweet',200);
+let tomato1:Tomato=new Tomato('red','sour',200);
+scales.add(apple1);
+scales.add(tomato1);
 
