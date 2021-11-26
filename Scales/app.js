@@ -24,12 +24,13 @@ var Scales = /** @class */ (function () {
     Scales.prototype.getSumScale = function () {
         var totalWeight = 0;
         for (var i = 0; i < this.list.length; i++) {
-            // totalWeight+=this.list[i].weight
+            totalWeight += this.list[i].weight;
+            console.log(totalWeight);
         }
     };
     Scales.prototype.getNameList = function () {
         for (var i = 0; i < this.list.length; i++) {
-            //console.log=this.list[i].name
+            console.log(this.list[i].name);
         }
         console.log(this.list);
     };
@@ -40,22 +41,22 @@ var Products = /** @class */ (function () {
         this.weight = 0;
     }
     Products.prototype.getScale = function () {
-        console.log(this.product.weight);
+        console.log(this.weight);
     };
     Products.prototype.getName = function () {
-        console.log(this.product.name);
+        console.log(this.name);
     };
     return Products;
 }());
 var Apple = /** @class */ (function (_super) {
     __extends(Apple, _super);
-    function Apple(_color, _taste, _weight) {
+    function Apple(_name, _color, _taste, _weight) {
         var _this = 
-        // конструктор класса-потомка должен вызвать 
-        // конструктор класса-предка
+        // конструктор класса-потомка должен вызвать конструктор класса-предка
         _super.call(this) || this;
+        _this.name = _name;
         _this.color = _color;
-        //this.taste=_taste;
+        _this.taste = _taste;
         _this.weight = _weight;
         return _this;
     }
@@ -63,21 +64,23 @@ var Apple = /** @class */ (function (_super) {
 }(Products));
 var Tomato = /** @class */ (function (_super) {
     __extends(Tomato, _super);
-    function Tomato(_color, _taste, _weight) {
-        var _this = 
-        // конструктор класса-потомка должен вызвать 
-        // конструктор класса-предка
-        _super.call(this) || this;
+    function Tomato(_name, _color, _taste, _weight) {
+        var _this = _super.call(this) || this;
+        _this.name = _name;
         _this.color = _color;
-        //this.taste=_taste;
+        _this.taste = _taste;
         _this.weight = _weight;
         return _this;
     }
     return Tomato;
 }(Products));
 var scales = new Scales;
-var apple1 = new Apple('yelow', 'sweet', 200);
-var tomato1 = new Tomato('red', 'sour', 200);
+var apple1 = new Apple('golden', 'yelow', 'sweet', 200);
+var tomato1 = new Tomato('red gigant', 'red', 'sour', 250);
 scales.add(apple1);
 scales.add(tomato1);
+scales.getSumScale();
+scales.getNameList();
+apple1.getScale();
+tomato1.getName();
 //# sourceMappingURL=app.js.map
