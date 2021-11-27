@@ -19,20 +19,21 @@ var Scales = /** @class */ (function () {
     }
     Scales.prototype.add = function (product) {
         this.list.push(product);
-        console.log(this.list);
+        return (this.list);
     };
     Scales.prototype.getSumScale = function () {
         var totalWeight = 0;
         for (var i = 0; i < this.list.length; i++) {
             totalWeight += this.list[i].weight;
-            console.log(totalWeight);
         }
+        return (totalWeight);
     };
     Scales.prototype.getNameList = function () {
+        var nameList = [];
         for (var i = 0; i < this.list.length; i++) {
-            console.log(this.list[i].name);
+            nameList[i] = this.list[i].name;
         }
-        console.log(this.list);
+        return (nameList);
     };
     return Scales;
 }());
@@ -41,10 +42,10 @@ var Products = /** @class */ (function () {
         this.weight = 0;
     }
     Products.prototype.getScale = function () {
-        console.log(this.weight);
+        return (this.weight);
     };
     Products.prototype.getName = function () {
-        console.log(this.name);
+        return (this.name);
     };
     return Products;
 }());
@@ -77,10 +78,16 @@ var Tomato = /** @class */ (function (_super) {
 var scales = new Scales;
 var apple1 = new Apple('golden', 'yelow', 'sweet', 200);
 var tomato1 = new Tomato('red gigant', 'red', 'sour', 250);
-scales.add(apple1);
-scales.add(tomato1);
-scales.getSumScale();
-scales.getNameList();
-apple1.getScale();
-tomato1.getName();
+var addA1 = scales.add(apple1);
+console.log("Добавили яблоко ", addA1);
+var addT1 = scales.add(tomato1);
+console.log("Добавили к яблоку помидор ", addT1);
+var weightTotal = scales.getSumScale();
+console.log("Суммарная масса ", weightTotal, " гр ");
+var nameTotal = scales.getNameList();
+console.log("Названия сортов добавленных продуктов", nameTotal);
+var a1 = apple1.getScale();
+console.log("Масса одного яблока ", a1, " гр ");
+var t1 = tomato1.getName();
+console.log("Сорт помидора", t1);
 //# sourceMappingURL=app.js.map

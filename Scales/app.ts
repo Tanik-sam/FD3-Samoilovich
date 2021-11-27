@@ -8,26 +8,26 @@ class Scales {
  
     }
 
-      add(product:Products):void {
+      add(product:Products):Array<Products> {
         this.list.push(product)
-        console.log(this.list)
+        return (this.list)
       }
 
-      getSumScale():void {
+      getSumScale():number {
         
         let totalWeight:number=0;
         for (let i=0;i<this.list.length;i++){
         totalWeight+=this.list[i].weight
-        console.log(totalWeight)
         }
+        return (totalWeight)
       }
      
-      getNameList():void{
-        
+      getNameList():Array<string>{
+        let nameList=[];
         for (let i=0;i<this.list.length;i++){
-        console.log(this.list[i].name)
+        nameList[i]=this.list[i].name
         }
-        console.log (this.list)
+        return (nameList)
       }
     
 }
@@ -44,11 +44,11 @@ class Products {
         this.weight=0; 
     }
 
-      getScale():void {
-        console.log(this.weight)
+      getScale():number{
+        return(this.weight)
       }
-      getName():void {
-        console.log(this.name)
+      getName():string{
+        return(this.name)
       }
     
 }
@@ -91,9 +91,15 @@ class Tomato extends Products {  //со сметаной
 var scales:Scales=new Scales
 let apple1:Apple=new Apple('golden','yelow','sweet',200);
 let tomato1:Tomato=new Tomato('red gigant','red','sour',250);
-scales.add(apple1);
-scales.add(tomato1);
-scales.getSumScale()
-scales.getNameList()
-apple1.getScale();
-tomato1.getName();
+let addA1=scales.add(apple1);
+console.log("Добавили яблоко ", addA1)
+let addT1=scales.add(tomato1);
+console.log("Добавили к яблоку помидор ", addT1)
+let weightTotal=scales.getSumScale()
+console.log("Суммарная масса ", weightTotal, " гр ")
+let nameTotal=scales.getNameList()
+console.log("Названия сортов добавленных продуктов", nameTotal)
+let a1=apple1.getScale();
+console.log("Масса одного яблока ", a1, " гр ");
+let t1=tomato1.getName();
+console.log("Сорт помидора", t1);
