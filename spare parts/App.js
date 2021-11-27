@@ -3,7 +3,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import MobileCompany from './components/MobileCompany';
+import SpareParts from './components/SpareParts';
+
+let spareParts=require('./spareParts.json');
 
 
 let clientsArr=[ 
@@ -14,19 +16,20 @@ let clientsArr=[
  ];
 
  let columnName=[ 
-  {text:'Фамилия',code:0}, 
-  {text:'Имя',code:1}, 
-  {text:'Отчество',code:2},
-  {text:'Баланс',code:3},
-  {text:'Статус',code:4},
-  {text:'Редактировать',code:5},
-  {text:'Удалить',code:6},
-];
+  {text:'Название',code:0}, 
+  {text:'Артикул',code:1}, 
+  {text:'Код',code:2},
+  {text:'Количество',code:3},
+  {text:'Цена без НДС',code:4},
+  {text:'Цена с НДС',code:5},
+  {text:'Оборудование',code:6},
+  {text:'Редактировать',code:7},
+  {text:'Удалить',code:8}];
 
 
 ReactDOM.render(
-  <MobileCompany 
-    clients={clientsArr}
+  <SpareParts
+    spParts={spareParts}
     columnName={columnName}
   />
   , document.getElementById('container') 

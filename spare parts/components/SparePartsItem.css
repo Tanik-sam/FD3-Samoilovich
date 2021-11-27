@@ -1,9 +1,9 @@
-﻿.MobileClientChosen
+﻿.SpItemChosen
 {
   background: linear-gradient(45deg, #936ca5, #718b5f);
   transition: 1s;
 }
-.MobileClient
+.SparePartsItem
 {
   background: linear-gradient(45deg, #ca99e0, #b1e092);
   transition: 1s;

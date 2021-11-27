@@ -1,4 +1,4 @@
-﻿.MobileCompany
+﻿.SpareParts
 {
   border: solid #667 1px;
   border-radius: 30px;
@@ -6,7 +6,7 @@
   background-color:  #D0ECF4;
 }
 
-.MobileCompanyName
+.SparePartsName
 {
   padding: 7px 7px;
   font-size: large;
@@ -15,7 +15,7 @@
   color:#667;
 }
 
-.MobileCompanyClients
+.SparePartsItem
 {
   padding: 10px 0px;
   

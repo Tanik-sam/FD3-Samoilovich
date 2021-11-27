@@ -1,4 +1,5 @@
-﻿div.MobileClientCard{
+﻿
+  div.SparePartsItemCard{
   border-radius: 30px;
   padding: 15px 15px;
   border-radius: 30px;
@@ -8,7 +9,7 @@
   background: -webkit-gradient(linear, 0 0, 0  100%, from(#d0a4e4), to(#b1e092), color-stop(0.5, #9ccdd8));
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00BBD6', endColorstr='#EBFFFF');} 
 
-.MobileClientCard
+.SparePartsItemCard
 {
   
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -18,7 +19,7 @@
   border: solid #667 1px;
   
 }
-.MobileClientCard .itemData
+.SparePartsItemCard .itemData
 {
  
  background:  #b1e092;
@@ -26,7 +27,7 @@
 
 }
 
-.MobileClientCard.itemData2
+.SparePartsItemCard.itemData2
 {
  
  background:  #c97aee;

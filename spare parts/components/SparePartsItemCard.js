@@ -1,17 +1,19 @@
 ﻿import React from 'react';
 import PropTypes from 'prop-types';
 
-import './MobileClientCard.css';
-import {clientEvents} from './events';
-class MobileClientCard extends React.Component {
+import './SparePartsItemCard.css';
+import {spEvents} from './events';
+class SparePartsItemCard extends React.Component {
 
   static propTypes = {
     info:PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      surname: PropTypes.string.isRequired,
-      nameCl: PropTypes.string.isRequired,
-      patronymic: PropTypes.string.isRequired,
-      balance: PropTypes.number.isRequired,
+      spName: PropTypes.string.isRequired,
+      articul: PropTypes.string.isRequired,
+      articulCode: PropTypes.string.isRequired,
+      quantity:PropTypes.number.isRequired,
+      price: PropTypes.number.isRequired,
+      priceNDS: PropTypes.number.isRequired,
+      equipment: PropTypes.string.isRequired,
       
     })
   }
@@ -23,42 +25,42 @@ state={
    
    defaultPosition=(eo)=>{
     
-    clientEvents.emit('ClientDefault',false)
+    spEvents.emit('SpDefault',false)
     this.setState({saveMode:1}) 
 
    }
 
   savePosition=(eo)=>{
  
-      this.setNewSurname (); 
-      this.setNewNameCl ();
-      this.setNewPatronymic ();
-      this.setNewBalance ();
-      let t={id:this.props.info.id,surname:this.newSurnameRef.value,nameCl:this.newNameClRef.value,patronymic:this.newPatronymicRef.value, balance:parseInt(this.newBalanceRef.value)}
+      this.setNewSpName (); 
+      this.setNewArticul ();
+      this.setNewQuantity ();
+      this.setNewPrice ();
+      let t={articulCode:this.props.info.articulCode,spName:this.newSpNameRef.value,nameCl:this.newArticulRef.value,patronymic:this.newPriceRef.value, balance:parseInt(this.newQuantityRef.value)}
       console.log('t',t)
-      clientEvents.emit('ClientSave',t); 
+      spEvents.emit('SpSave',t); 
   
   }
 
-   newSurnameRef = this.props.info.surname;
-   newNameClRef = this.props.info.nameCl;
-   newPatronymicRef = this.props.info.patronymic;
-   newBalanceRef = this.props.info.balance;
+   newSpNameRef = this.props.info.spName;
+   newArticulRef = this.props.info.articul;
+   newPriceRef = this.props.info.price;
+   newQuantityRef = this.props.info.quantity;
    
 //-----------------------------------------------------
-  setNewSurnameRef = (ref) => {
-    this.newSurnameRef=ref;
+  setNewSpNameRef = (ref) => {
+    this.newSpNameRef=ref;
 
   };
 
-  setNewSurname = () => {
-    if ( this.newSurnameRef ) { 
-      let newSurname=this.newSurnameRef.value;
+  setNewSpName = () => {
+    if ( this.newSpNameRef ) { 
+      let newSpName=this.newSpNameRef.value;
            
     }
   }; 
   checkSurnameValue=()=>{
-    if (this.newSurnameRef.value==''){
+    if (this.newSpNameRef.value==''){
       this.setState({saveMode:0}) }
       else{
       this.setState({saveMode:1}) 
@@ -66,49 +68,49 @@ state={
     
    }
 //-----------------------------------------------------
-  setNewNameClRef = (ref) => {
-    this.newNameClRef=ref;
+  setNewArticulRef = (ref) => {
+    this.newArticulRef=ref;
   };
 
-  setNewNameCl = () => {
-    if ( this.newNameClRef ) { 
-      let newNameCl=this.newNameClRef.value;
+  setNewArticul = () => {
+    if ( this.newArticulRef ) { 
+      let newNameCl=this.newArticulRef.value;
         
     }
   }; 
   checkNameClValue=()=>{
-    if (this.newNameClRef.value==''){
+    if (this.newArticulRef.value==''){
       this.setState({saveMode:0})  }
       else{
         this.setState({saveMode:1}) 
         }
    }
   //-----------------------------------------------------
-  setNewPatronymicRef = (ref) => {
-    this.newPatronymicRef=ref;
+  setNewQuantityRef = (ref) => {
+    this.newPriceRef=ref;
   };
 
-  setNewPatronymic = () => {
-    if ( this.newPatronymicRef ) { 
-      let newPatronymic=this.newPatronymicRef.value;
+  setNewQuantity = () => {
+    if ( this.newPriceRef ) { 
+      let newPatronymic=this.newPriceRef.value;
         
     }
   }; 
   checkPatronymicValue=()=>{
-    if (this.newPatronymicRef.value==''){
+    if (this.newPriceRef.value==''){
       this.setState({saveMode:0}) }
       else{
       this.setState({saveMode:1}) 
       }
   }
   //-----------------------------------------------------
-  setNewBalanceRef = (ref) => {
-    this.newBalanceRef=ref;
+  setNewPriceRef = (ref) => {
+    this.newQuantityRef=ref;
   };
 
-  setNewBalance = () => {
-    if ( this.newBalanceRef ) { 
-      let newBalance=this.newBalanceRef.value;
+  setNewPrice = () => {
+    if ( this.newQuantityRef ) { 
+      let newBalance=this.newQuantityRef.value;
      
     }
   }; 
@@ -129,7 +131,7 @@ state={
 
     return (
       
-<div className="MobileClientCard">
+<div className="SparePartsItemCard">
         <legend className="MobileCompanyName">{"Карточка клиента"}</legend>
           <table className='itemData'>
             <tbody>
@@ -139,7 +141,7 @@ state={
                   {this.props.nameRow[0].text}
                 </td>
                 <td className='itemData'>
-                  {this.props.info.surname}
+                  {this.props.info.spName}
                 </td>
               </tr>
               <tr>
@@ -147,7 +149,7 @@ state={
                   {this.props.nameRow[1].text}
                 </td>
                 <td  className='itemData'>
-                  {this.props.info.nameCl}
+                  {this.props.info.articul}
                 </td>  
               </tr> 
               <tr>
@@ -155,7 +157,7 @@ state={
                   {this.props.nameRow[2].text}
                 </td>
                 <td  className='itemData'>
-                  {this.props.info.patronymic}
+                  {this.props.info.price}
                 </td>  
               </tr> 
               <tr>
@@ -171,7 +173,7 @@ state={
                 {this.props.nameRow[4].text}
                 </td>
           
-              <td className={this.props.info.balance >0?"StatusActive":"StatusBlocked"}>{this.props.info.balance >0?"active":"blocked"}
+              <td className={this.props.info.quantity >0?"StatusActive":"StatusBlocked"}>{this.props.info.quantity >0?"active":"blocked"}
               </td>
                  
               </tr> 
@@ -185,7 +187,7 @@ state={
     )   }
     else     {
     return (
-      <div className="MobileClientCard">
+      <div className="SparePartsItemCard">
         <legend className="MobileCompanyName">{"Изменение карточки клиента"}</legend>
           <table className='itemData2'>
             <tbody>
@@ -194,10 +196,10 @@ state={
                   {this.props.nameRow[0].text}
                 </td>
                 <td className='itemData2'>      
-                {this.props.info.surname}
+                {this.props.info.spName}
                 </td>
                 <td>
-                  <input className='itemData2' type="text" defaultValue={this.props.info.surname} ref={this.setNewSurnameRef} onBlur={this.checkSurnameValue}/> 
+                  <input className='itemData2' type="text" defaultValue={this.props.info.spName} ref={this.setNewSpNameRef} onBlur={this.checkSurnameValue}/> 
                 </td>
                 
               </tr>
@@ -206,10 +208,10 @@ state={
                   {this.props.nameRow[1].text}
                 </td>
                 <td className='itemData2'>
-                {this.props.info.nameCl}
+                {this.props.info.articul}
                 </td>
                 <td className='itemData2'>
-                  <input className='itemData2' type="text" defaultValue={this.props.info.nameCl} ref={this.setNewNameClRef} onBlur={this.checkNameClValue}/>
+                  <input className='itemData2' type="text" defaultValue={this.props.info.articul} ref={this.setNewArticulRef} onBlur={this.checkNameClValue}/>
                 </td>
               
               </tr>
@@ -218,10 +220,10 @@ state={
                   {this.props.nameRow[2].text}
                 </td>
                 <td  className='itemData2'>
-                {this.props.info.patronymic}
+                {this.props.info.price}
                 </td>  
                 <td className='itemData2'>
-                  <input className='itemData2' type="text" defaultValue={this.props.info.patronymic} ref={this.setNewPatronymicRef} onBlur={this.checkPatronymicValue}/>
+                  <input className='itemData2' type="text" defaultValue={this.props.info.price} ref={this.setNewQuantityRef} onBlur={this.checkPatronymicValue}/>
                 </td>
                
               </tr> 
@@ -230,10 +232,10 @@ state={
                   {this.props.nameRow[3].text}
                 </td>
                 <td  className='itemData2'>
-                  {this.props.info.balance}
+                  {this.props.info.quantity}
                 </td>  
                 <td className='itemData2'>
-                  <input className='itemData2' type="text" defaultValue={this.props.info.balance} ref={this.setNewBalanceRef} onBlur={this.checkBalanceValue}/>
+                  <input className='itemData2' type="text" defaultValue={this.props.info.quantity} ref={this.setNewPriceRef} onBlur={this.checkBalanceValue}/>
                 </td>
                
               </tr> 
@@ -241,7 +243,7 @@ state={
                 <td className='itemData2'>
                 {this.props.nameRow[4].text}
                 </td>
-                <td className={this.props.info.balance>0?"StatusActive":"StatusBlocked"}>{this.props.info.balance>0?"active":"blocked"}
+                <td className={this.props.info.quantity>0?"StatusActive":"StatusBlocked"}>{this.props.info.quantity>0?"active":"blocked"}
               </td>
               <td className='itemData2'>
 
@@ -263,4 +265,4 @@ state={
   }
 }
 
-  export default MobileClientCard;
+  export default SparePartsItemCard;
