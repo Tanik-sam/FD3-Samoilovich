@@ -23,9 +23,9 @@ class Scales {
       }
      
       getNameList():Array<string>{
-        let nameList=[];
+        let nameList:Array<string>=[];
         for (let i=0;i<this.list.length;i++){
-        nameList[i]=this.list[i].name
+        nameList[i]=this.list[i].getName()
         }
         return (nameList)
       }
@@ -36,7 +36,6 @@ class Products {
 
     weight:number;
     name:string;
-     
     color:string;
     taste:'sour'|'sweet'|'plain';
 
@@ -54,10 +53,7 @@ class Products {
 }
 
 class Apple extends Products {
-    name:string;
-    color:string;
-    taste:'sour'|'sweet'|'plain';
-    weight:number;
+
 
     constructor(_name:string,_color:string, _taste:'sour'|'sweet'|'plain',_weight:number) {
         // конструктор класса-потомка должен вызвать конструктор класса-предка
@@ -72,10 +68,6 @@ class Apple extends Products {
 }
 
 class Tomato extends Products {  //со сметаной
-    name:string;   
-    color:string;
-    taste:'sour'|'sweet'|'plain';
-    weight:number;
 
     constructor(_name:string,_color:string, _taste:'sour'|'sweet'|'plain',_weight:number) {
 

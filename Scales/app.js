@@ -31,7 +31,7 @@ var Scales = /** @class */ (function () {
     Scales.prototype.getNameList = function () {
         var nameList = [];
         for (var i = 0; i < this.list.length; i++) {
-            nameList[i] = this.list[i].name;
+            nameList[i] = this.list[i].getName();
         }
         return (nameList);
     };
