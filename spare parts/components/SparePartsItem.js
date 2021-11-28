@@ -2,12 +2,13 @@
 import PropTypes from 'prop-types';
 
 import './SparePartsItem.css';
-import {clientEvents} from './events';
+import {spEvents} from './events';
 
 class SparePartsItem extends React.PureComponent {
 
   static propTypes = {
     info:PropTypes.shape({
+      code:PropTypes.number.isRequired,
       spName: PropTypes.string.isRequired,
       articul: PropTypes.string.isRequired,
       articulCode: PropTypes.string.isRequired,
@@ -34,32 +35,32 @@ class SparePartsItem extends React.PureComponent {
   this.setState({editMode:1})
   }
   componentWillReceiveProps = (newProps) => {
-    console.log("SparePartsItem articulCode="+this.props.info.articulCode+" componentWillReceiveProps");
+    console.log("SparePartsItem code="+this.props.info.code+" componentWillReceiveProps");
     this.setState({info:newProps.info});
   };
 
    setSelectedSp=(eo)=>{
-     spEvents.emit('SpClicked',this.props.info.articulCode);
-     console.log('emited',this.props.info.articulCode)
+     spEvents.emit('SpClicked',this.props.info.code);
+     console.log('emited',this.props.info.code)
    }
    editRow=(eo) =>{
-    spEvents.emit('SpEdit',this.props.info.articulCode);
-    console.log('SpEdit',this.props.info.articulCode)
+    spEvents.emit('SpEdit',this.props.info.code);
+    console.log('SpEdit',this.props.info.code)
     this.setState({editMode:0});
    }
    deleteRow=(eo) =>{
     console.log (eo)
     if(eo){ 
     eo.stopPropagation();}
-    spEvents.emit('SpDelete',this.props.info.articulCode);
-    console.log('SpDelete',this.props.info.articulCode)
+    spEvents.emit('SpDelete',this.props.info.code);
+    console.log('SpDelete',this.props.info.code)
    }
  
   render() {
-    console.log("SparePartsItem render","articulCode",this.props.info.articulCode);
+    console.log("SparePartsItem render","code",this.props.info.code);
     
     var classSp="SparePartsItem"
-    if (this.props.selectedSparePartsId==this.props.info.articulCode) {classSp="SpItemChosen"} else classSp="SparePartsItem"   
+    if (this.props.selectedSparePartsId==this.props.info.code) {classSp="SpItemChosen"} else classSp="SparePartsItem"   
     console.log (this.props.selectedSparePartsId)
 
     return (
@@ -73,7 +74,7 @@ class SparePartsItem extends React.PureComponent {
       <td className="StatusActive">{this.state.info.quantity}</td>
       <td className={this.state.info.quantity>0?"StatusActive":"StatusBlocked"}>{this.state.info.quantity>0?"active":"blocked"}</td>
       <td className="StatusActive"><input className="inTable" type='button' value='Редактировать' onClick={this.editRow} disabled={this.state.editMode==0}/></td>   
-      <td className="StatusActive"><input className="inTable" type='button' data={'del'+this.props.info.articulCode} value='Удалить' onClick={this.deleteRow} disabled={this.state.editMode==0}/> </td>   
+      <td className="StatusActive"><input className="inTable" type='button' data={'del'+this.props.info.code} value='Удалить' onClick={this.deleteRow} disabled={this.state.editMode==0}/> </td>   
       </tr>
     )        
   }

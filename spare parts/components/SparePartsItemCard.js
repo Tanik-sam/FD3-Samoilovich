@@ -7,6 +7,7 @@ class SparePartsItemCard extends React.Component {
 
   static propTypes = {
     info:PropTypes.shape({
+      code:PropTypes.number.isRequired,
       spName: PropTypes.string.isRequired,
       articul: PropTypes.string.isRequired,
       articulCode: PropTypes.string.isRequired,
@@ -36,7 +37,7 @@ state={
       this.setNewArticul ();
       this.setNewQuantity ();
       this.setNewPrice ();
-      let t={articulCode:this.props.info.articulCode,spName:this.newSpNameRef.value,nameCl:this.newArticulRef.value,patronymic:this.newPriceRef.value, balance:parseInt(this.newQuantityRef.value)}
+      let t={code:this.props.info.code, articulCode:this.props.info.articulCode,spName:this.newSpNameRef.value,nameCl:this.newArticulRef.value,patronymic:this.newPriceRef.value, balance:parseInt(this.newQuantityRef.value)}
       console.log('t',t)
       spEvents.emit('SpSave',t); 
   
@@ -44,8 +45,10 @@ state={
 
    newSpNameRef = this.props.info.spName;
    newArticulRef = this.props.info.articul;
+   newArticulCodeRef = this.props.info.articulCode;
    newPriceRef = this.props.info.price;
    newQuantityRef = this.props.info.quantity;
+   newEquipmentRef = this.props.info.equipment;
    
 //-----------------------------------------------------
   setNewSpNameRef = (ref) => {
@@ -59,7 +62,7 @@ state={
            
     }
   }; 
-  checkSurnameValue=()=>{
+  checkSpNameValue=()=>{
     if (this.newSpNameRef.value==''){
       this.setState({saveMode:0}) }
       else{
@@ -74,29 +77,47 @@ state={
 
   setNewArticul = () => {
     if ( this.newArticulRef ) { 
-      let newNameCl=this.newArticulRef.value;
+      let newArticul=this.newArticulRef.value;
         
     }
   }; 
-  checkNameClValue=()=>{
+  checkArticulValue=()=>{
     if (this.newArticulRef.value==''){
       this.setState({saveMode:0})  }
       else{
         this.setState({saveMode:1}) 
         }
    }
-  //-----------------------------------------------------
-  setNewQuantityRef = (ref) => {
-    this.newPriceRef=ref;
+   //-----------------------------------------------------
+  setNewArticulCodeRef = (ref) => {
+    this.newArticulRef=ref;
   };
 
-  setNewQuantity = () => {
-    if ( this.newPriceRef ) { 
-      let newPatronymic=this.newPriceRef.value;
+  setNewArticulCode = () => {
+    if ( this.newArticulCodeRef ) { 
+      let newArticul=this.newArticulCodeRef.value;
         
     }
   }; 
-  checkPatronymicValue=()=>{
+  checkArticulCodeValue=()=>{
+    if (this.newArticulCodeRef.value==''){
+      this.setState({saveMode:0})  }
+      else{
+        this.setState({saveMode:1}) 
+        }
+   }
+  //-----------------------------------------------------
+  setNewPriceRef = (ref) => {
+    this.newPriceRef=ref;
+  };
+
+  setNewPrice = () => {
+    if ( this.newPriceRef ) { 
+      let newPrice=this.newPriceRef.value;
+        
+    }
+  }; 
+  checkPriceValue=()=>{
     if (this.newPriceRef.value==''){
       this.setState({saveMode:0}) }
       else{
@@ -104,18 +125,36 @@ state={
       }
   }
   //-----------------------------------------------------
-  setNewPriceRef = (ref) => {
+  setNewQuantityRef = (ref) => {
     this.newQuantityRef=ref;
   };
 
-  setNewPrice = () => {
+  setNewQuantity = () => {
     if ( this.newQuantityRef ) { 
-      let newBalance=this.newQuantityRef.value;
+      let newQuantity=this.newQuantityRef.value;
      
     }
   }; 
-  checkBalancecValue=()=>{
-    if (this.newBalancecRef.value==''){
+  checkQuantityValue=()=>{
+    if (this.newQuantityRef.value==''){
+      this.setState({saveMode:0}) }
+      else{
+      this.setState({saveMode:1}) 
+      }
+    }
+    //-----------------------------------------------------
+  setNewEquipmentRef = (ref) => {
+    this.newEquipmentRef=ref;
+  };
+
+  setNewEquipment = () => {
+    if ( this.newEquipmentRef ) { 
+      let newEquipment=this.newEquipmentRef.value;
+     
+    }
+  }; 
+  checkEquipmentValue=()=>{
+    if (this.newEquipmentRef.value==''){
       this.setState({saveMode:0}) }
       else{
       this.setState({saveMode:1}) 
@@ -132,7 +171,7 @@ state={
     return (
       
 <div className="SparePartsItemCard">
-        <legend className="MobileCompanyName">{"Карточка клиента"}</legend>
+        <legend className="SparePartsName">{"Карточка товара"}</legend>
           <table className='itemData'>
             <tbody>
 
@@ -150,11 +189,19 @@ state={
                 </td>
                 <td  className='itemData'>
                   {this.props.info.articul}
+                </td>
+                <tr>
+                <td className='itemData'>
+                  {this.props.nameRow[2].text}
+                </td>
+                <td  className='itemData'>
+                  {this.props.info.articulCode}
                 </td>  
+              </tr> 
               </tr> 
               <tr>
                 <td className='itemData'>
-                  {this.props.nameRow[2].text}
+                  {this.props.nameRow[4].text}
                 </td>
                 <td  className='itemData'>
                   {this.props.info.price}
@@ -162,20 +209,36 @@ state={
               </tr> 
               <tr>
                 <td className='itemData'>
-                  {this.props.nameRow[3].text}
+                  {this.props.nameRow[5].text}
                 </td>
                 <td  className='itemData'>
-                  {this.props.info.balance}
+                  {this.props.info.priceNDS}
                 </td>  
               </tr> 
               <tr>
                 <td className='itemData'>
-                {this.props.nameRow[4].text}
+                  {this.props.nameRow[3].text}
+                </td>
+                <td  className='itemData'>
+                  {this.props.info.quantity}
+                </td>  
+              </tr> 
+              <tr>
+                <td className='itemData'>
+                {this.props.nameRow[7].text}
                 </td>
           
               <td className={this.props.info.quantity >0?"StatusActive":"StatusBlocked"}>{this.props.info.quantity >0?"active":"blocked"}
               </td>
                  
+              </tr> 
+              <tr>
+                <td className='itemData'>
+                  {this.props.nameRow[6].text}
+                </td>
+                <td  className='itemData'>
+                  {this.props.info.equipment}
+                </td>  
               </tr> 
             
         </tbody>
@@ -188,7 +251,7 @@ state={
     else     {
     return (
       <div className="SparePartsItemCard">
-        <legend className="MobileCompanyName">{"Изменение карточки клиента"}</legend>
+        <legend className="SparePartsName">{"Изменение карточки клиента"}</legend>
           <table className='itemData2'>
             <tbody>
               <tr className='itemData2'>
@@ -211,7 +274,7 @@ state={
                 {this.props.info.articul}
                 </td>
                 <td className='itemData2'>
-                  <input className='itemData2' type="text" defaultValue={this.props.info.articul} ref={this.setNewArticulRef} onBlur={this.checkNameClValue}/>
+                  <input className='itemData2' type="text" defaultValue={this.props.info.articul} ref={this.setNewArticulRef} onBlur={this.checkArticulValue}/>
                 </td>
               
               </tr>
@@ -219,11 +282,23 @@ state={
                 <td className='itemData2'>
                   {this.props.nameRow[2].text}
                 </td>
+                <td className='itemData2'>
+                {this.props.info.articulCode}
+                </td>
+                <td className='itemData2'>
+                  <input className='itemData2' type="text" defaultValue={this.props.info.articulCode} ref={this.setNewArticulCodeRef} onBlur={this.checkArticulCodeValue}/>
+                </td>
+              
+              </tr>
+              <tr>
+                <td className='itemData2'>
+                  {this.props.nameRow[4].text}
+                </td>
                 <td  className='itemData2'>
                 {this.props.info.price}
                 </td>  
                 <td className='itemData2'>
-                  <input className='itemData2' type="text" defaultValue={this.props.info.price} ref={this.setNewQuantityRef} onBlur={this.checkPatronymicValue}/>
+                  <input className='itemData2' type="text" defaultValue={this.props.info.price} ref={this.setNewPriceRef} onBlur={this.checkPriceValue}/>
                 </td>
                
               </tr> 
@@ -235,13 +310,13 @@ state={
                   {this.props.info.quantity}
                 </td>  
                 <td className='itemData2'>
-                  <input className='itemData2' type="text" defaultValue={this.props.info.quantity} ref={this.setNewPriceRef} onBlur={this.checkBalanceValue}/>
+                  <input className='itemData2' type="text" defaultValue={this.props.info.quantity} ref={this.setNewQuantityRef} onBlur={this.checkQuantityValue}/>
                 </td>
                
               </tr> 
               <tr>
                 <td className='itemData2'>
-                {this.props.nameRow[4].text}
+                {this.props.nameRow[7].text}
                 </td>
                 <td className={this.props.info.quantity>0?"StatusActive":"StatusBlocked"}>{this.props.info.quantity>0?"active":"blocked"}
               </td>
@@ -249,7 +324,20 @@ state={
 
                 </td>
               </tr> 
+              <tr>
+                <td className='itemData2'>
+                  {this.props.nameRow[6].text}
+                </td>
+                <td  className='itemData2'>
+                  {this.props.info.equipment}
+                </td>  
+                <td className='itemData2'>
+                  <input className='itemData2' type="text" defaultValue={this.props.info.equipment} ref={this.setNewEquipmentRef} onBlur={this.checkEquipmentValue}/>
+                </td>
+               
+              </tr> 
              <tr>
+               
                  <td  className='itemData2'>
                    <input className="CardButton" type='button' value='СОХРАНИТЬ' onClick={this.savePosition} disabled={this.state.saveMode==0} />   
                  </td>  

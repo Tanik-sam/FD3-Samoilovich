@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 
 import SparePartsItem from './SparePartsItem';
 
-import './MobileCompany.css';
+import './SpareParts.css';
 import SparePartsItemCard from './SparePartsItemCard';
-import {spPartEvents} from './events';
+import {spEvents} from './events';
 
 
 
@@ -16,6 +16,7 @@ class SpareParts extends React.PureComponent {
     
     spParts:PropTypes.arrayOf(
       PropTypes.shape({
+        code: PropTypes.number.isRequired,
         spName: PropTypes.string.isRequired,
         articul: PropTypes.string.isRequired,
         articulCode: PropTypes.string.isRequired,
@@ -27,9 +28,9 @@ class SpareParts extends React.PureComponent {
       })
     ),
   };
-
+ 
   state = {
-    
+    code:this.props.code,
     spParts: this.props.spParts,
     spName: this.props.spName,
     articul:this.props.articul,
@@ -72,7 +73,7 @@ class SpareParts extends React.PureComponent {
     this.setState({editMode:1})
     }
   spDelete=(clDl)=>{
-    function fff(v,i,a){return v.id!=clDl}
+    function fff(v,i,a){return v.code!=clDl}
     let kk=[...this.state.spPartsEdt]
     let k=kk.filter(fff);
      this.setState({cardShown:[]})
@@ -88,20 +89,22 @@ class SpareParts extends React.PureComponent {
   let changed=false
   let changedSp=[]
     for (let i=0;i<k.length;i++){
-      if ((k[i].id==clSn.articulCode)&&((k[i].spName!=clSn.spName)||(k[i].quantity!=clSn.quantity)||(k[i].price!=clSn.price)||(k[i].priceNDS!=clSn.priceNDS)||(k[i].equipment!=clSn.equipment))){
+      if ((k[i].code==clSn.code)&&(k[i].articulCode==clSn.articulCode)&&((k[i].spName!=clSn.spName)||(k[i].quantity!=clSn.quantity)||(k[i].price!=clSn.price)||(k[i].priceNDS!=clSn.priceNDS)||(k[i].equipment!=clSn.equipment))){
 
         let newSpData={...k[i]}
-        newSpData.surname=clSn.surname
-        newSpData.nameCl=clSn.nameCl
-        newSpData.patronymic=clSn.patronymic
-        newSpData.balance=clSn.balance
+        newSpData.spName=clSn.spName
+        newSpData.price=clSn.price
+        newSpData.priceNDS=clSn.priceNDS
+        
+        newSpData.quantity=clSn.quantity
+        newSpData.equipment=clSn.equipment
         changed=true
         k[i]=newSpData
         changedSp=[newSpData]
         
       }
       this.setState({cardMode:1})
-      clientEvents.emit('ButtonEnbled');
+      spEvents.emit('ButtonEnbled');
     }
     if (changed==true){
       this.setState({spPartsEdt:k})
@@ -110,7 +113,7 @@ class SpareParts extends React.PureComponent {
     }
   
   }
-
+ 
   spDefault=(clD)=>{ this.setState({cardMode:1})}
 
   spEdit = (edtCdVl) => {
@@ -119,9 +122,9 @@ class SpareParts extends React.PureComponent {
    }
   addSp=()=>{
     var ll=[...this.state.spPartsEdt];
-    var llll=ll.map(v=>v.id)
+    var llll=ll.map(v=>v.code)
     let maxId = Math.max.apply(Math, llll) 
-    var nn={id:(maxId+1),surname:"",nameCl:"",patronymic:"",status:false,balance:0}
+    var nn={code:(maxId+1),spName:"",articul:"",quantity:0,status:false,price:0, priceNDS:0, equipment:""}
     
     ll=[...ll,nn]
     this.setState({spPartsEdt:ll})
@@ -153,7 +156,8 @@ blockedSp=()=>{
   this.setState ({cardShown:[]})
 }
   render() {
-
+    console.log(this.props.columnName);
+    console.log(this.props.spParts);
     var cG=[];
     for (var a=0; a<this.props.columnName.length; a++ ) {
       var columnN=this.props.columnName[a];
@@ -163,22 +167,22 @@ blockedSp=()=>{
 
     console.log("SpareParts render");
     console.log(this.state.spPartsEdt);
-    var clientFiltered=this.state.spPartsEdt
+    var spFiltered=this.state.spPartsEdt
     if (this.state.filtered==1){let spActive=[...this.state.spPartsEdt]; 
-      function f1(v,i,a){return v.balance>0 }
+      function f1(v,i,a){return v.quantity>0 }
       spFiltered=spActive.filter(f1);}
       else {
-      if (this.state.filtered==2){let clientBlocked=[...this.state.spPartsEdt]; 
-        function f2(v,i,a){return v.balance<=0 }
-        spFiltered=clientBlocked.filter(f2);}
+      if (this.state.filtered==2){let spBlocked=[...this.state.spPartsEdt]; 
+        function f2(v,i,a){return v.quantity<=0 }
+        spFiltered=spBlocked.filter(f2);}
      }
-    var spCode=clientFiltered.map(sp =>
-      <SpareParts key={sp.articulCode} info={sp} selectedSparePartsId={this.state.selectedSparePartsId} />
-    );articulCode
+    var spCode=spFiltered.map(sp =>
+      <SparePartsItem key={sp.code} info={sp} selectedSparePartsId={this.state.selectedSparePartsId} />
+    );
     
 
-    if (this.state.cardShown!=[]) {var clientSelected=this.state.cardShown.map(v=>
-      <SparePartsItemCard  key={v.articulCode} info={v} cardMode={this.state.cardMode}
+    if (this.state.cardShown!=[]) {var spSelected=this.state.cardShown.map(v=>
+      <SparePartsItemCard  key={v.code} info={v} cardMode={this.state.cardMode}
       nameRow={this.props.columnName} selectedSparePartsId={this.selectedSparePartsId}/>)}
     return (
       <div className='SpareParts'>
