@@ -24,6 +24,7 @@ class SpareParts extends React.PureComponent {
         price: PropTypes.number.isRequired,
         priceNDS: PropTypes.number.isRequired,
         equipment: PropTypes.string.isRequired,
+        urlSP: PropTypes.string.isRequired,
 
       })
     ),
@@ -44,12 +45,9 @@ class SpareParts extends React.PureComponent {
     filtered:0, //0--все, 1 -активные, 2- заблокированные
     selectedSparePartsId: null,
     cardShown: [],
-    cardMode:1,
+    cardMode:1, //1 - режим просмотра
     editMode:1,
   };
-
-
-  
 
   componentDidMount = () => {
     spEvents.addListener('SpClicked',this.spSelected);
@@ -81,7 +79,24 @@ class SpareParts extends React.PureComponent {
      
   }
 
-
+  spEquipment=()=>{
+    let kk=[...this.state.spPartsEdt]
+    let equipType=[]
+    equipType.push(kk[0].equipment)
+    
+    for (let i=0;i<kk.length;i++){
+      let u=0;
+      if (kk[i].equipment!=kk[0].equipment){
+        
+        for (let j=0;j<equipType.length; j++){
+          if (equipType[j]==kk[i].equipment){u++;}
+        }
+        if (u==0) {equipType.push(kk[i].equipment)}
+    
+      }
+    }
+    console.log(equipType)
+  }
 
   spSave=(clSn)=>{
       
@@ -89,7 +104,7 @@ class SpareParts extends React.PureComponent {
   let changed=false
   let changedSp=[]
     for (let i=0;i<k.length;i++){
-      if ((k[i].code==clSn.code)&&(k[i].articulCode==clSn.articulCode)&&((k[i].spName!=clSn.spName)||(k[i].quantity!=clSn.quantity)||(k[i].price!=clSn.price)||(k[i].priceNDS!=clSn.priceNDS)||(k[i].equipment!=clSn.equipment))){
+      if ((k[i].code==clSn.code)&&(k[i].articulCode==clSn.articulCode)&&((k[i].spName!=clSn.spName)||(k[i].quantity!=clSn.quantity)||(k[i].price!=clSn.price)||(k[i].priceNDS!=clSn.priceNDS)||(k[i].equipment!=clSn.equipment)||(k[i].urlSP!=clSn.urlSP))){
 
         let newSpData={...k[i]}
         newSpData.spName=clSn.spName
@@ -98,6 +113,7 @@ class SpareParts extends React.PureComponent {
         
         newSpData.quantity=clSn.quantity
         newSpData.equipment=clSn.equipment
+        newSpData.urlSP=clSn.urlSP
         changed=true
         k[i]=newSpData
         changedSp=[newSpData]
@@ -108,7 +124,7 @@ class SpareParts extends React.PureComponent {
     }
     if (changed==true){
       this.setState({spPartsEdt:k})
-      this.setState ({cardShown:changedCl}) 
+      this.setState ({cardShown:changedSp}) 
 
     }
   
@@ -124,7 +140,7 @@ class SpareParts extends React.PureComponent {
     var ll=[...this.state.spPartsEdt];
     var llll=ll.map(v=>v.code)
     let maxId = Math.max.apply(Math, llll) 
-    var nn={code:(maxId+1),spName:"",articul:"",quantity:0,status:false,price:0, priceNDS:0, equipment:""}
+    var nn={code:(maxId+1),spName:"",articul:"",quantity:0,status:false,price:0, priceNDS:0, equipment:"",urlSP:""}
     
     ll=[...ll,nn]
     this.setState({spPartsEdt:ll})
@@ -134,12 +150,14 @@ class SpareParts extends React.PureComponent {
     this.setState({cardMode:2})
   }
   spSelected=(clId)=>{
+    console.log (clId)
     
     this.setState({selectedSparePartsId: clId} ); 
-    function ffff(v,i,a){return v.id==clId }
+    function ffff(v,i,a){return v.code==clId }
     let cl=[...this.state.spPartsEdt]; 
     let cll=cl.filter(ffff); 
     this.setState ({cardShown:cll})
+    
    
     }
 
@@ -167,39 +185,43 @@ blockedSp=()=>{
 
     console.log("SpareParts render");
     console.log(this.state.spPartsEdt);
+
     var spFiltered=this.state.spPartsEdt
     if (this.state.filtered==1){let spActive=[...this.state.spPartsEdt]; 
-      function f1(v,i,a){return v.quantity>0 }
-      spFiltered=spActive.filter(f1);}
+      function f1(v,i){if (v.spName<i.spName) return -1;if (v.spName>i.spName) return 1;return 0; }
+      spFiltered=spActive.sort(f1);
+      }
       else {
       if (this.state.filtered==2){let spBlocked=[...this.state.spPartsEdt]; 
-        function f2(v,i,a){return v.quantity<=0 }
-        spFiltered=spBlocked.filter(f2);}
+        function f2(v,i){if (v.articulCode<i.articulCode) return -1;if (v.articulCode>i.articulCode) return 1;return 0; }
+        spFiltered=spBlocked.sort(f2);
+        }
      }
     var spCode=spFiltered.map(sp =>
       <SparePartsItem key={sp.code} info={sp} selectedSparePartsId={this.state.selectedSparePartsId} />
     );
     
 
-    if (this.state.cardShown!=[]) {var spSelected=this.state.cardShown.map(v=>
+    if (this.state.cardShown!=[]) {var spSlctd=this.state.cardShown.map(v=>
       <SparePartsItemCard  key={v.code} info={v} cardMode={this.state.cardMode}
       nameRow={this.props.columnName} selectedSparePartsId={this.selectedSparePartsId}/>)}
     return (
       <div className='SpareParts'>
         <input className='notTable' data='all' type="button" value="Все" onClick={this.allSp}  />
-        <input className='notTable' data='active' type="button" value="Активные" onClick={this.activeSp}  />
-        <input className='notTable' data='blocked' type="button" value="Заблокированные" onClick={this.blockedSp}  />
+        <input className='notTable' data='active' type="button" value="Сортировать по названию" onClick={this.activeSp}  />
+        <input className='notTable' data='blocked' type="button" value="Сортировать по артикулу" onClick={this.blockedSp}  />
+        <input className='notTable' data='blocked' type="button" value="Выбрать оборудование" onClick={this.spEquipment}  />
         <hr/>
         <div className='SparePartsItem'>
           <table>
             <tbody>
-        <tr className="SpareParts">{cG}</tr> 
+        <tr className="SparePartsItemEven">{cG}</tr> 
           {spCode}
           </tbody>
           </table>
         </div>
         <input className="inTable" data='add' type="button" value="Добавить позицию" onClick={this.addSp} disabled={this.state.editMode==0} />
-        {spSelected}
+        {spSlctd}
       </div>
     )
     ;

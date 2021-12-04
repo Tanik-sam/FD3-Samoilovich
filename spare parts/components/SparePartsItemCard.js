@@ -7,6 +7,7 @@ class SparePartsItemCard extends React.Component {
 
   static propTypes = {
     info:PropTypes.shape({
+      
       code:PropTypes.number.isRequired,
       spName: PropTypes.string.isRequired,
       articul: PropTypes.string.isRequired,
@@ -15,6 +16,7 @@ class SparePartsItemCard extends React.Component {
       price: PropTypes.number.isRequired,
       priceNDS: PropTypes.number.isRequired,
       equipment: PropTypes.string.isRequired,
+      urlSP: PropTypes.string.isRequired,
       
     })
   }
@@ -37,7 +39,7 @@ state={
       this.setNewArticul ();
       this.setNewQuantity ();
       this.setNewPrice ();
-      let t={code:this.props.info.code, articulCode:this.props.info.articulCode,spName:this.newSpNameRef.value,nameCl:this.newArticulRef.value,patronymic:this.newPriceRef.value, balance:parseInt(this.newQuantityRef.value)}
+      let t={code:this.props.info.code, articulCode:this.props.info.articulCode,spName:this.newSpNameRef.value,articul:this.newArticulRef.value,price:this.newPriceRef.value, quantity:parseInt(this.newQuantityRef.value), urlSP:this.newUrlSPRef.value,}
       console.log('t',t)
       spEvents.emit('SpSave',t); 
   
@@ -161,7 +163,25 @@ state={
       }
     }
   //-----------------------------------------------------
-
+  
+    setNewUrlSPRef = (ref) => {
+      this.newUrlSPRef=ref;
+    };
+  
+    setNewUrlSP = () => {
+      if ( this.newUrlSPRef) { 
+        let newUrlSP=this.newUrlSPRef.value;
+       
+      }
+    }; 
+    checkUrlSPValue=()=>{
+      if (this.newUrlSPRef.value==''){
+        this.setState({saveMode:0}) }
+        else{
+        this.setState({saveMode:1}) 
+        }
+      }
+    //-----------------------------------------------------
 
   render() {
 
@@ -171,18 +191,12 @@ state={
     return (
       
 <div className="SparePartsItemCard">
+<img className='Img' src={this.props.info.urlSP} width={430} height={290} float="left"/> 
         <legend className="SparePartsName">{"Карточка товара"}</legend>
           <table className='itemData'>
             <tbody>
-
-              <tr>
-                <td className='itemData'>
-                  {this.props.nameRow[0].text}
-                </td>
-                <td className='itemData'>
-                  {this.props.info.spName}
-                </td>
-              </tr>
+            
+             
               <tr>
                 <td className='itemData'>
                   {this.props.nameRow[1].text}
@@ -190,6 +204,7 @@ state={
                 <td  className='itemData'>
                   {this.props.info.articul}
                 </td>
+                </tr>
                 <tr>
                 <td className='itemData'>
                   {this.props.nameRow[2].text}
@@ -197,7 +212,7 @@ state={
                 <td  className='itemData'>
                   {this.props.info.articulCode}
                 </td>  
-              </tr> 
+              
               </tr> 
               <tr>
                 <td className='itemData'>
@@ -228,7 +243,7 @@ state={
                 {this.props.nameRow[7].text}
                 </td>
           
-              <td className={this.props.info.quantity >0?"StatusActive":"StatusBlocked"}>{this.props.info.quantity >0?"active":"blocked"}
+              <td className={this.props.info.quantity >0?"StatusActive":"StatusBlocked"}>{this.props.info.quantity >0?"в наличии":"нет в наличии"}
               </td>
                  
               </tr> 
@@ -251,9 +266,11 @@ state={
     else     {
     return (
       <div className="SparePartsItemCard">
+       <img className='Img' src={this.props.info.urlSP} width={430} height={290}/> 
         <legend className="SparePartsName">{"Изменение карточки клиента"}</legend>
           <table className='itemData2'>
             <tbody>
+         
               <tr className='itemData2'>
                 <td className='itemData2'>
                   {this.props.nameRow[0].text}
@@ -318,7 +335,7 @@ state={
                 <td className='itemData2'>
                 {this.props.nameRow[7].text}
                 </td>
-                <td className={this.props.info.quantity>0?"StatusActive":"StatusBlocked"}>{this.props.info.quantity>0?"active":"blocked"}
+                <td className={this.props.info.quantity>0?"StatusActive":"StatusBlocked"}>{this.props.info.quantity>0?"в наличии":"нет в наличии"}
               </td>
               <td className='itemData2'>
 
@@ -333,6 +350,18 @@ state={
                 </td>  
                 <td className='itemData2'>
                   <input className='itemData2' type="text" defaultValue={this.props.info.equipment} ref={this.setNewEquipmentRef} onBlur={this.checkEquipmentValue}/>
+                </td>
+               
+              </tr> 
+              <tr>
+                <td className='itemData2'>
+                  Введите URL картинки
+                </td>
+                <td  className='itemData2'>
+                  {this.props.info.urlSP}
+                </td>  
+                <td className='itemData2'>
+                  <input className='itemData2' type="text" defaultValue={this.props.info.urlSP} ref={this.setNewUrlSPRef} onBlur={this.checkUrlSPValue}/>
                 </td>
                
               </tr> 

@@ -1,10 +1,27 @@
 ﻿.SpareParts
 {
-  border: solid #667 1px;
+  border: solid rgb(45, 66, 38) 1px;
   border-radius: 30px;
   padding: 3px 5px;
-  background-color:  #D0ECF4;
+  
+    background-color: #FFFFFF;
+    background-image: url(../Rabe_Agri_logo_transp_big.png);
+    background-repeat: repeat;
+    background-position: right center;
+    border: 1px groove #BDB76B;
+    box-sizing: border-box;
+   
 }
+.SparePartsItemEven
+{
+  border: solid rgb(45, 66, 38);
+  border-radius: 30px;
+  padding: 3px 5px;
+  background: #cccccc;
+  border-color: silver;
+   
+}
+
 
 .SparePartsName
 {
@@ -12,7 +29,7 @@
   font-size: large;
   font-family: Verdana, Geneva, Tahoma, sans-serif; 
   font-weight: bold;
-  color:#667;
+  color:rgb(45, 66, 38);
 }
 
 .SparePartsItem
@@ -23,8 +40,8 @@
 }
 
 th {
-  color:#667;
-  width:200px;
+  color:rgb(45, 66, 38);
+ 
   text-align:center;
   padding: 8px 8px;
   font-size: large;

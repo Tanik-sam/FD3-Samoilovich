@@ -1,13 +1,48 @@
 ﻿.SpItemChosen
 {
-  background: linear-gradient(45deg, #936ca5, #718b5f);
+  background:  #929292;
+  font-weight: bolder;
+  color: white;
   transition: 1s;
+  border-color: silver;
+}  
+
+.SparePartsItemOdd
+{
+  background: transparent;
+  border-color: silver;
+   
 }
 .SparePartsItem
 {
-  background: linear-gradient(45deg, #ca99e0, #b1e092);
-  transition: 1s;
+  background: transparent;
+  border-color: silver;
+   
 }
+
+
+.SparePartsItemEven
+{
+  background: #cccccc;
+  border-color: silver;
+  
+}
+
+
+.SparePartsItemEven:hover
+{
+  background:   #BDB76B;
+}
+
+
+
+
+
+.SparePartsItemOdd:hover
+{
+  background:    #BDB76B;
+}
+
 .StatusBlocked
 {border-color: #dd5454;
  text-align:center;
@@ -18,8 +53,17 @@
 .StatusActive
 {text-align:center;
  }
+ .StatusActiveName
+ {text-align:center;
+  padding: 7px 7px;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif; 
+  font-weight: bold;
+  color:rgb(45, 66, 38);
+  }
+
  td{
-   width:200px;
+  
    text-align:center;
    padding: 8px 8px;
    font-size: large;

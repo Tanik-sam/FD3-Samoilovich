@@ -8,6 +8,7 @@ class SparePartsItem extends React.PureComponent {
 
   static propTypes = {
     info:PropTypes.shape({
+      
       code:PropTypes.number.isRequired,
       spName: PropTypes.string.isRequired,
       articul: PropTypes.string.isRequired,
@@ -16,6 +17,7 @@ class SparePartsItem extends React.PureComponent {
       price: PropTypes.number.isRequired,
       priceNDS: PropTypes.number.isRequired,
       equipment: PropTypes.string.isRequired,
+      
       
     }),
   };
@@ -59,20 +61,21 @@ class SparePartsItem extends React.PureComponent {
   render() {
     console.log("SparePartsItem render","code",this.props.info.code);
     
-    var classSp="SparePartsItem"
-    if (this.props.selectedSparePartsId==this.props.info.code) {classSp="SpItemChosen"} else classSp="SparePartsItem"   
+    var classSp="SparePartsItemOdd"
+    
+    if (this.props.selectedSparePartsId==this.props.info.code) {classSp="SpItemChosen"} else if (this.props.info.code%2==0) {classSp="SparePartsItemEven"} else {classSp="SparePartsItemOdd"}
     console.log (this.props.selectedSparePartsId)
 
     return (
       <tr className={classSp} onClick={this.setSelectedSp}>
-      <td className="StatusActive">{this.state.info.spName}</td>
+      <td className="StatusActiveName">{this.state.info.spName}</td>
       <td className="StatusActive">{this.state.info.articul}</td>
       <td className="StatusActive">{this.state.info.articulCode}</td>
       <td className="StatusActive">{this.state.info.price}</td>
       <td className="StatusActive">{this.state.info.priceNDS}</td>
       <td className="StatusActive">{this.state.info.equipment}</td>
       <td className="StatusActive">{this.state.info.quantity}</td>
-      <td className={this.state.info.quantity>0?"StatusActive":"StatusBlocked"}>{this.state.info.quantity>0?"active":"blocked"}</td>
+      <td className={this.state.info.quantity>0?"StatusActive":"StatusBlocked"}>{this.state.info.quantity>0?"в наличии":"нет в наличии"}</td>
       <td className="StatusActive"><input className="inTable" type='button' value='Редактировать' onClick={this.editRow} disabled={this.state.editMode==0}/></td>   
       <td className="StatusActive"><input className="inTable" type='button' data={'del'+this.props.info.code} value='Удалить' onClick={this.deleteRow} disabled={this.state.editMode==0}/> </td>   
       </tr>
