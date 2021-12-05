@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 
 import SparePartsItem from './SparePartsItem';
-
+import EquipmentSelect from './EquipmentSelect';
 import './SpareParts.css';
 import SparePartsItemCard from './SparePartsItemCard';
 import {spEvents} from './events';
@@ -47,6 +47,7 @@ class SpareParts extends React.PureComponent {
     cardShown: [],
     cardMode:1, //1 - режим просмотра
     editMode:1,
+    equip:[],
   };
 
   componentDidMount = () => {
@@ -79,24 +80,9 @@ class SpareParts extends React.PureComponent {
      
   }
 
-  spEquipment=()=>{
-    let kk=[...this.state.spPartsEdt]
-    let equipType=[]
-    equipType.push(kk[0].equipment)
-    
-    for (let i=0;i<kk.length;i++){
-      let u=0;
-      if (kk[i].equipment!=kk[0].equipment){
-        
-        for (let j=0;j<equipType.length; j++){
-          if (equipType[j]==kk[i].equipment){u++;}
-        }
-        if (u==0) {equipType.push(kk[i].equipment)}
-    
-      }
-    }
-    console.log(equipType)
-  }
+
+  
+
 
   spSave=(clSn)=>{
       
@@ -197,11 +183,33 @@ blockedSp=()=>{
         spFiltered=spBlocked.sort(f2);
         }
      }
+
+      let kk=[...spFiltered]
+      let equipType=[]
+      equipType.push(kk[0].equipment)
+      for (let i=0;i<kk.length;i++){
+        let u=0;
+        if (kk[i].equipment!=kk[0].equipment){
+          
+          for (let j=0;j<equipType.length; j++){
+            if (equipType[j]==kk[i].equipment){u++;}
+          }
+          if (u==0) {equipType.push(kk[i].equipment)}
+      
+        }
+      }
+      equipType.sort();
+     
+    
+
     var spCode=spFiltered.map(sp =>
       <SparePartsItem key={sp.code} info={sp} selectedSparePartsId={this.state.selectedSparePartsId} />
     );
-    
-
+    var eqSelect= equipType.map(sp =>
+      <EquipmentSelect key={sp} eq={sp} />
+      
+    );
+ 
     if (this.state.cardShown!=[]) {var spSlctd=this.state.cardShown.map(v=>
       <SparePartsItemCard  key={v.code} info={v} cardMode={this.state.cardMode}
       nameRow={this.props.columnName} selectedSparePartsId={this.selectedSparePartsId}/>)}
@@ -210,7 +218,9 @@ blockedSp=()=>{
         <input className='notTable' data='all' type="button" value="Все" onClick={this.allSp}  />
         <input className='notTable' data='active' type="button" value="Сортировать по названию" onClick={this.activeSp}  />
         <input className='notTable' data='blocked' type="button" value="Сортировать по артикулу" onClick={this.blockedSp}  />
-        <input className='notTable' data='blocked' type="button" value="Выбрать оборудование" onClick={this.spEquipment}  />
+        <select className="EquipmentSelect" >
+        {eqSelect}
+        </select>
         <hr/>
         <div className='SparePartsItem'>
           <table>
@@ -221,7 +231,9 @@ blockedSp=()=>{
           </table>
         </div>
         <input className="inTable" data='add' type="button" value="Добавить позицию" onClick={this.addSp} disabled={this.state.editMode==0} />
+      
         {spSlctd}
+        
       </div>
     )
     ;
