@@ -1,6 +1,13 @@
 ﻿
  
  div.SparePartsItemCard{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  height: fit-content;
   border: solid #667 1px;
   border-radius: 30px;
   padding: 15px 15px;
@@ -11,8 +18,31 @@
     background-position: right center;
     border: 1px groove #BDB76B;
     box-sizing: border-box;
-    box-shadow:  10px 5px 5px slategrey;
+    box-shadow:  0 0 20px rgba(112, 128, 144, 0.8);
  } 
+
+.SparePartsItemCardClose{
+  position: absolute;
+  top: 10;
+   
+  right: 10; 
+  float:right;
+  height: 30px;
+  width:30px;
+  border-radius: 50%;
+  
+}
+.SparePartsItemCardClose :hover{
+  position: absolute;
+  top: 10;
+  
+  right: 10;
+  float:right;
+  height: 30px;
+  width:30px;
+  border-radius: 50%;
+  box-shadow:  0 0 8px rgba(112, 128, 144, 0.8);
+}
 
 .SparePartsItemCard
 {

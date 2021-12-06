@@ -58,7 +58,7 @@ class SpareParts extends React.PureComponent {
     spEvents.addListener('SpSave',this.spSave);
     spEvents.addListener('SpDefault',this.spDefault);
     spEvents.addListener('ButtonEnbled',this.buttonEnbled)
-    spEvents.addListener('EqClicked',this.eqClicked)
+    
     
   };
 
@@ -69,7 +69,7 @@ class SpareParts extends React.PureComponent {
     spEvents.removeListener('SpSave',this.spSave);
     spEvents.removeListener('SpDefault',this.spDefault);
     spEvents.removeListener('ButtonEnbled',this.buttonEnbled)
-    spEvents.removeListener('EqClicked',this.eqClicked)
+    
   };
 
   eqClicked=(eq)=>{
@@ -124,7 +124,7 @@ class SpareParts extends React.PureComponent {
   
   }
  
-  spDefault=(clD)=>{ this.setState({cardMode:1})}
+  spDefault=(clD)=>{ this.setState({cardShown:[]})} //({cardMode:1})}
 
   spEdit = (edtCdVl) => {
     this.setState({cardMode:2})
@@ -167,6 +167,12 @@ blockedSp=()=>{
   this.setState({filtered:2}) //0--все, 1 -активные, 2- заблокированные
   this.setState ({cardShown:[]})
 }
+
+setSelectedEq=(eo)=>{
+  this.setState({equipmentSelected:eo.target.value})
+ 
+}
+
   render() {
     console.log(this.props.columnName);
     console.log(this.props.spParts);
@@ -193,10 +199,14 @@ blockedSp=()=>{
      }
 
      var eqFiltered=this.state.equipmentSelected
+     if (eqFiltered!='Все оборудование'){
      if (eqFiltered){
-      function f3(v,i){return v.equipment===eqFiltered}
-      spFiltered.filter(f3)
+      function f3(v,i,a){return v.equipment==eqFiltered}
+      let spFiltered2=[...spFiltered]
+      spFiltered=spFiltered2.filter(f3)
+      console.log(spFiltered)
      }
+    }
 
       let kk=[...spFiltered]
       let equipType=[]
@@ -225,6 +235,7 @@ blockedSp=()=>{
       
     );
  
+ 
     if (this.state.cardShown!=[]) {var spSlctd=this.state.cardShown.map(v=>
       <SparePartsItemCard  key={v.code} info={v} cardMode={this.state.cardMode}
       nameRow={this.props.columnName} selectedSparePartsId={this.selectedSparePartsId}/>)}
@@ -233,7 +244,7 @@ blockedSp=()=>{
         <input className='notTable' data='all' type="button" value="Сброс сортировки" onClick={this.allSp}  />
         <input className='notTable' data='active' type="button" value="Сортировать по названию" onClick={this.activeSp}  />
         <input className='notTable' data='blocked' type="button" value="Сортировать по артикулу" onClick={this.blockedSp}  />
-        <select className="EquipmentSelect" value="Выбор оборудования" >
+        <select className="EquipmentSelect" onChange={this.setSelectedEq}>
         {eqSelect}
         </select>
         <hr/>

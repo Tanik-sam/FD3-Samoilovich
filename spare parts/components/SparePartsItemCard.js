@@ -191,6 +191,7 @@ state={
     return (
       
 <div className="SparePartsItemCard">
+<div className="SparePartsItemCardClose" ><img  onClick={this.defaultPosition} src="../close.png" width={30} height={30} />  </div>
 <img className='Img' src={this.props.info.urlSP} width={430} height={290} float="left"/> 
         <legend className="SparePartsName">{"Карточка товара"}</legend>
           <table className='itemData'>
@@ -266,7 +267,8 @@ state={
     else     {
     return (
       <div className="SparePartsItemCard">
-       <img className='Img' src={this.props.info.urlSP} width={430} height={290}/> 
+        <div className="SparePartsItemCardClose" ><img  onClick={this.defaultPosition} src="../close.png" width={30} height={30} />  </div>
+         <img className='Img' src={this.props.info.urlSP} width={430} height={290}/> 
         <legend className="SparePartsName">{"Изменение карточки клиента"}</legend>
           <table className='itemData2'>
             <tbody>

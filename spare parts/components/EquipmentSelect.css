@@ -1,8 +1,8 @@
 ﻿.EquipmentSelect
 {
    
-  background: -moz-linear-gradient(#e1f5d3, #b1e092, #e1f5d3);
-  background: -webkit-gradient(linear, 0 0, 0  100%, from(#e1f5d3), to(#e1f5d3), color-stop(0.5, #b1e092));
+  background: -moz-linear-gradient(#f5f2c8, #BDB76B, #f5f2c8);
+  background: -webkit-gradient(linear, 0 0, 0  100%, from(#f5f2c8), to(#f5f2c8), color-stop(0.5, #BDB76B));
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00BBD6', endColorstr='#EBFFFF');
   padding: 3px 7px;
   color: #333;

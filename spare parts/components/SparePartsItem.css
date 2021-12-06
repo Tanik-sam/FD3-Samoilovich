@@ -86,8 +86,8 @@
    font-family: Verdana, Geneva, Tahoma, sans-serif;
  }
  input.notTable{
-  background: -moz-linear-gradient(#e1f5d3, #b1e092, #e1f5d3);
-  background: -webkit-gradient(linear, 0 0, 0  100%, from(#e1f5d3), to(#e1f5d3), color-stop(0.5, #b1e092));
+  background: -moz-linear-gradient(#f5f2c8, #BDB76B, #f5f2c8);
+  background: -webkit-gradient(linear, 0 0, 0  100%, from(#f5f2c8), to(#f5f2c8), color-stop(0.5, #BDB76B));
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00BBD6', endColorstr='#EBFFFF');
   padding: 3px 7px;
   color: #333;
@@ -100,6 +100,23 @@
   font-size: large;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+input.notTable :hover {
+  background: -moz-linear-gradient(#f5f2c8, #BDB76B, #f5f2c8);
+  background: -webkit-gradient(linear, 0 0, 0  100%, from(#f5f2c8), to(#f5f2c8), color-stop(0.5, #BDB76B));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00BBD6', endColorstr='#EBFFFF');
+  padding: 3px 7px;
+  color: #333;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 30px;
+  border: 1px solid #485f38;
+  padding: 8px 8px;
+  margin: 8px 8px;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  box-shadow:  0 0 10px rgba(112, 128, 144, 0.8);
+}
+
 input.inTable:disabled{
   background: -moz-linear-gradient(#D0ECF4, #a4d0da, #D0ECF4);
   background: -webkit-gradient(linear, 0 0, 0  100%, from(#D0ECF4), to(#D0ECF4), color-stop(0.5, #a4d0da));
@@ -116,3 +133,20 @@ input.inTable:disabled{
   font-size: large;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+input.inTable :hover {
+  background: -moz-linear-gradient(#D0ECF4, #5BC9E1, #D0ECF4);
+  background: -webkit-gradient(linear, 0 0, 0  100%, from(#D0ECF4), to(#D0ECF4), color-stop(0.5, #5BC9E1));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00BBD6', endColorstr='#EBFFFF');
+  padding: 3px 7px;
+  color: #333;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 30px;
+  border: 1px solid #667;
+  padding: 8px 8px;
+  margin: 8px 8px;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  box-shadow:  0 0 10px rgba(112, 128, 144, 0.8);
+  }

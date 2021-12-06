@@ -6,12 +6,9 @@ import {spEvents} from './events';
 
 class EquipmentSelect extends React.PureComponent {
 
-  setSelectedEq=(eo)=>{
-    spEvents.emit('EqClicked',this.props.eq);
-    console.log('emited',this.props.eq)
-  }
 
- 
+
+    
   render() {
     console.log("EquipmentSelect render","code",this.props.eq);
     var classSp="EquipmentSelect"   
@@ -19,7 +16,7 @@ class EquipmentSelect extends React.PureComponent {
 
     return (
       
-      <option className={classSp} onClick={this.setSelectedEq}> {this.props.eq} </option>
+      <option className={classSp}> {this.props.eq} </option>
        
     )        
   }
