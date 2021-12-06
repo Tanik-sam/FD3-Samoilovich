@@ -48,6 +48,7 @@ class SpareParts extends React.PureComponent {
     cardMode:1, //1 - режим просмотра
     editMode:1,
     equip:[],
+    equipmentSelected:''
   };
 
   componentDidMount = () => {
@@ -57,17 +58,26 @@ class SpareParts extends React.PureComponent {
     spEvents.addListener('SpSave',this.spSave);
     spEvents.addListener('SpDefault',this.spDefault);
     spEvents.addListener('ButtonEnbled',this.buttonEnbled)
+    spEvents.addListener('EqClicked',this.eqClicked)
     
   };
 
   componentWillUnmount = () => {
     spEvents.removeListener('SpClicked',this.spSelected);
-    spEvents.addListener('SpDelete',this.spDelete);
+    spEvents.removeListener('SpDelete',this.spDelete);
     spEvents.removeListener('SpEdit',this.spEdit);
     spEvents.removeListener('SpSave',this.spSave);
     spEvents.removeListener('SpDefault',this.spDefault);
-    spEvents.addListener('ButtonEnbled',this.buttonEnbled)
+    spEvents.removeListener('ButtonEnbled',this.buttonEnbled)
+    spEvents.removeListener('EqClicked',this.eqClicked)
   };
+
+  eqClicked=(eq)=>{
+    this.setState({equipmentSelected:eq})
+    console.log ('this.state.equipmentSelected',this.state.equipmentSelected)
+  }
+
+
   buttonEnbled=()=>{
     this.setState({editMode:1})
     }
@@ -80,8 +90,6 @@ class SpareParts extends React.PureComponent {
      
   }
 
-
-  
 
 
   spSave=(clSn)=>{
@@ -184,6 +192,12 @@ blockedSp=()=>{
         }
      }
 
+     var eqFiltered=this.state.equipmentSelected
+     if (eqFiltered){
+      function f3(v,i){return v.equipment===eqFiltered}
+      spFiltered.filter(f3)
+     }
+
       let kk=[...spFiltered]
       let equipType=[]
       equipType.push(kk[0].equipment)
@@ -199,6 +213,7 @@ blockedSp=()=>{
         }
       }
       equipType.sort();
+      equipType.unshift('Все оборудование')
      
     
 
@@ -215,10 +230,10 @@ blockedSp=()=>{
       nameRow={this.props.columnName} selectedSparePartsId={this.selectedSparePartsId}/>)}
     return (
       <div className='SpareParts'>
-        <input className='notTable' data='all' type="button" value="Все" onClick={this.allSp}  />
+        <input className='notTable' data='all' type="button" value="Сброс сортировки" onClick={this.allSp}  />
         <input className='notTable' data='active' type="button" value="Сортировать по названию" onClick={this.activeSp}  />
         <input className='notTable' data='blocked' type="button" value="Сортировать по артикулу" onClick={this.blockedSp}  />
-        <select className="EquipmentSelect" >
+        <select className="EquipmentSelect" value="Выбор оборудования" >
         {eqSelect}
         </select>
         <hr/>

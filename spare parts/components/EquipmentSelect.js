@@ -6,39 +6,20 @@ import {spEvents} from './events';
 
 class EquipmentSelect extends React.PureComponent {
 
- 
-
-
-  
- /* componentDidMount = () => {
-    spEvents.addListener('ButtonEnbled',this.buttonEnbled)
+  setSelectedEq=(eo)=>{
+    spEvents.emit('EqClicked',this.props.eq);
+    console.log('emited',this.props.eq)
   }
-  componentWillUnmount = () => {
-    spEvents.removeListener('ButtonEnbled',this.buttonEnbled)
-  }
-  componentDidMount = () => {
-    this.spEquipment()
-    console.log(this.state.equip)
-  }*/
-
 
  
   render() {
     console.log("EquipmentSelect render","code",this.props.eq);
-    var classSp="EquipmentSelect"
-    /*
-    if (this.props.selectedSparePartsId==this.props.info.code) {classSp="SpItemChosen"} else if (this.props.info.code%2==0) {classSp="SparePartsItemEven"} else {classSp="SparePartsItemOdd"}
-    console.log (this.props.selectedSparePartsId) */var classSp="EquipmentSelect"
-    /*
-    if (this.props.selectedSparePartsId==this.props.info.code) {classSp="SpItemChosen"} else if (this.props.info.code%2==0) {classSp="SparePartsItemEven"} else {classSp="SparePartsItemOdd"}
-    console.log (this.props.selectedSparePartsId) */
-
-        
+    var classSp="EquipmentSelect"   
   
 
     return (
       
-      <option classname={classSp}> {this.props.eq} </option>
+      <option className={classSp} onClick={this.setSelectedEq}> {this.props.eq} </option>
        
     )        
   }

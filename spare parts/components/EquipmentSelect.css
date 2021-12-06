@@ -1,8 +1,17 @@
 ﻿.EquipmentSelect
 {
-  background:  #929292;
-  font-weight: bolder;
-  color: white;
-  transition: 1s;
-  border-color: silver;
+   
+  background: -moz-linear-gradient(#e1f5d3, #b1e092, #e1f5d3);
+  background: -webkit-gradient(linear, 0 0, 0  100%, from(#e1f5d3), to(#e1f5d3), color-stop(0.5, #b1e092));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00BBD6', endColorstr='#EBFFFF');
+  padding: 3px 7px;
+  color: #333;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 30px;
+  border: 1px solid #485f38;
+  padding: 8px 8px;
+  margin: 8px 8px;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }  
