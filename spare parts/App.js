@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import SpareParts from './components/SpareParts';
+import { BrowserRouter } from 'react-router-dom';
 
 let spareParts=require('./spareParts.json');
 
@@ -24,10 +25,13 @@ let spareParts=require('./spareParts.json');
 
 
 ReactDOM.render(
+  <BrowserRouter>
   <SpareParts
     spParts={spareParts}
     columnName={columnName}
   />
+   </BrowserRouter>
   , document.getElementById('container') 
+ 
 );
 
