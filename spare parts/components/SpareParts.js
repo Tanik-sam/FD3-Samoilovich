@@ -240,7 +240,7 @@ setSelectedEq=(eo)=>{
       <SparePartsItemCard  key={v.code} info={v} cardMode={this.state.cardMode}
       nameRow={this.props.columnName} selectedSparePartsId={this.selectedSparePartsId}/>)}
     return (
-      <div className='SpareParts'>
+      <div className='SpareParts2'>
         <input className='notTable' data='all' type="button" value="Сброс сортировки" onClick={this.allSp}  />
         <input className='notTable' data='active' type="button" value="Сортировать по названию" onClick={this.activeSp}  />
         <input className='notTable' data='blocked' type="button" value="Сортировать по артикулу" onClick={this.blockedSp}  />

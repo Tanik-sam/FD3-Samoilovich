@@ -5,33 +5,31 @@ import ReactDOM from 'react-dom';
 
 import SpareParts from './components/SpareParts';
 import { BrowserRouter } from 'react-router-dom';
+import PagesRouter from './pages/PagesRouter';
+import PagesLinks from './pages/PagesLinks';
 
 let spareParts=require('./spareParts.json');
 
 
  
-
- let columnName=[ 
-  {text:'Название',code:0}, 
-  {text:'Артикул',code:1}, 
-  {text:'Код',code:2},
-  {text:'Цена без НДС',code:3},
-  {text:'Цена с НДС',code:4},
-  {text:'Оборудование',code:5},
-  {text:'Количество',code:6},
-  {text:'Статус',code:7},
-  {text:'Редактировать',code:8},
-  {text:'Удалить',code:9}];
-
+  let pageTotal= parseInt(spareParts.length/10)
+  let page=[]
+     for (let i=0;i<pageTotal; i++){
+      page[i]=i+1
+  }  
+  var linkSheet=page.map(p=><PagesLinks   key={p} pageNum={p}/>)
+  var routeSheet=page.map(p=><PagesRouter key={p} pageNum={p}/>)
 
 ReactDOM.render(
   <BrowserRouter>
-  <SpareParts
-    spParts={spareParts}
-    columnName={columnName}
-  />
+  <div className='SpareParts'>
+      {routeSheet}
+      {linkSheet}
+      
+      </div>
    </BrowserRouter>
   , document.getElementById('container') 
  
 );
 
+  //<SpareParts    spParts={spareParts}    columnName={columnName}  />

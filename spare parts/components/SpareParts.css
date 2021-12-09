@@ -1,4 +1,5 @@
-﻿.SpareParts
+﻿ 
+.SpareParts
 {
   border: solid rgb(45, 66, 38) 1px;
   border-radius: 30px;
@@ -10,7 +11,8 @@
     background-position: right center;
     border: 1px groove #BDB76B;
     box-sizing: border-box;
-   
+
+   text-align:center;
 }
 .SparePartsItemEven
 {

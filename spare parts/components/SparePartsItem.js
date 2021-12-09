@@ -68,6 +68,7 @@ class SparePartsItem extends React.PureComponent {
 
     return (
       <tr className={classSp} onClick={this.setSelectedSp}>
+      <td className="StatusActiveName">{this.state.info.code}</td>
       <td className="StatusActiveName">{this.state.info.spName}</td>
       <td className="StatusActive">{this.state.info.articul}</td>
       <td className="StatusActive">{this.state.info.articulCode}</td>
