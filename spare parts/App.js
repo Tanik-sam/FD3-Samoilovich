@@ -17,6 +17,7 @@ let spareParts=require('./spareParts.json');
      for (let i=0;i<pageTotal; i++){
       page[i]=i+1
   }  
+  page.push('Все')
   var linkSheet=page.map(p=><PagesLinks   key={p} pageNum={p}/>)
   var routeSheet=page.map(p=><PagesRouter key={p} pageNum={p}/>)
 

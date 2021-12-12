@@ -9,11 +9,14 @@ class Page_SpareParts extends React.PureComponent {
   
           
   render() {
-
-    let pageNmb=(parseInt(this.props.match.params.clid)-1)*10;
-    let pages=spareParts.slice(pageNmb,pageNmb+10)
-    console.log(appData)
-
+    if (this.props.match.params.clid!='Все'){
+    var pageNmb=(parseInt(this.props.match.params.clid)-1)*10;
+    var pages=spareParts.slice(pageNmb,pageNmb+10)
+    }
+    else{
+      pages=spareParts
+    }
+    
     return (
       <SpareParts
       spParts={pages} columnName={appData}

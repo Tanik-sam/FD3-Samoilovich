@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import PropTypes from 'prop-types';
 
+
 import './SparePartsItemCard.css';
 import {spEvents} from './events';
 class SparePartsItemCard extends React.Component {
@@ -23,11 +24,14 @@ class SparePartsItemCard extends React.Component {
  
 state={
   saveMode: 1,
- 
 }
+
+
+
    
    defaultPosition=(eo)=>{
-    
+    const wrapper = document.getElementById('wrapper');
+    wrapper.classList.toggle('is-close')
     spEvents.emit('SpDefault',false)
     this.setState({saveMode:1}) 
 
@@ -190,7 +194,7 @@ state={
 
     return (
       
-<div className="SparePartsItemCard">
+<div className="SparePartsItemCard" id="wrapper">
 <div className="SparePartsItemCardClose" ><img  onClick={this.defaultPosition} src="../close.png" width={30} height={30} />  </div>
 <img className='Img' src={this.props.info.urlSP} width={430} height={290} float="left"/> 
         <legend className="SparePartsName">{"Карточка товара"}</legend>
@@ -260,6 +264,7 @@ state={
         </tbody>
         </table>
       </div> 
+    
 
         
  

@@ -17,10 +17,13 @@ class SparePartsItem extends React.PureComponent {
       price: PropTypes.number.isRequired,
       priceNDS: PropTypes.number.isRequired,
       equipment: PropTypes.string.isRequired,
+      ht:30
       
       
     }),
   };
+ 
+
 
   state = {
     info: this.props.info,
@@ -55,9 +58,9 @@ class SparePartsItem extends React.PureComponent {
     if(eo){ 
     eo.stopPropagation();}
     spEvents.emit('SpDelete',this.props.info.code);
-    console.log('SpDelete',this.props.info.code)
+         this.setState({ht:1})
    }
- 
+   
   render() {
     console.log("SparePartsItem render","code",this.props.info.code);
     
@@ -67,7 +70,7 @@ class SparePartsItem extends React.PureComponent {
     console.log (this.props.selectedSparePartsId)
 
     return (
-      <tr className={classSp} onClick={this.setSelectedSp}>
+      <tr className={classSp} onClick={this.setSelectedSp} height={this.state.ht}>
       <td className="StatusActiveName">{this.state.info.code}</td>
       <td className="StatusActiveName">{this.state.info.spName}</td>
       <td className="StatusActive">{this.state.info.articul}</td>

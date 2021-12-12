@@ -1,5 +1,16 @@
 ﻿
+ .wrapper {
  
+  height: 100%;
+  transition: height 2s;
+   
+}
+
+.wrapper.is-close {
+  transition: height 2s;
+  height: 1%;
+}
+
  div.SparePartsItemCard{
   position: absolute;
   top: 0;
@@ -33,14 +44,7 @@
   
 }
 .SparePartsItemCardClose :hover{
-  position: absolute;
-  top: 10;
-  
-  right: 10;
-  float:right;
-  height: 30px;
-  width:30px;
-  border-radius: 50%;
+
   box-shadow:  0 0 8px rgba(112, 128, 144, 0.8);
 }
 
@@ -49,8 +53,6 @@
   
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: large;
-  
-  transition: 1s;
   border: solid #667 1px;
   
 }
