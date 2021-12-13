@@ -1,16 +1,27 @@
-﻿
- .wrapper {
+﻿div.SparePartsItemCardHide{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  border: solid #667 1px;
+  border-radius: 30px;
+  padding: 15px 15px;
+  width:fit-content;
+    background-color: #FFFFFF;
+    background-image: url(../Rabe_Agri_logo_transp_big.png);
+    background-repeat: repeat;
+    background-position: right center;
+    border: 1px groove #BDB76B;
+    box-sizing: border-box;
+    box-shadow:  0 0 20px rgba(112, 128, 144, 0.8);
+  transition: opacity 1s;
+  height: fit-content;
+  opacity: 0%;
+  
  
-  height: 100%;
-  transition: height 2s;
-   
 }
-
-.wrapper.is-close {
-  transition: height 2s;
-  height: 1%;
-}
-
  div.SparePartsItemCard{
   position: absolute;
   top: 0;
@@ -30,6 +41,9 @@
     border: 1px groove #BDB76B;
     box-sizing: border-box;
     box-shadow:  0 0 20px rgba(112, 128, 144, 0.8);
+    transition: opacity 1s;
+
+    
  } 
 
 .SparePartsItemCardClose{
@@ -50,7 +64,6 @@
 
 .SparePartsItemCard
 {
-  
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: large;
   border: solid #667 1px;
@@ -67,10 +80,8 @@
 
 .SparePartsItemCard.itemData2
 {
- 
- background:  #c97aee;
-  
-}
+  background:  #c97aee;
+ }
 table td{
   width:200px;
   text-align:center;

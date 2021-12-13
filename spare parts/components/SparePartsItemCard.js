@@ -24,14 +24,19 @@ class SparePartsItemCard extends React.Component {
  
 state={
   saveMode: 1,
+  classCard:'SparePartsItemCard'
 }
+clicked=(eo)=>{
+this.setState({classCard:'SparePartsItemCardHide'})
+setTimeout(this.defaultPosition,1000)
 
+
+ }
 
 
    
    defaultPosition=(eo)=>{
-    const wrapper = document.getElementById('wrapper');
-    wrapper.classList.toggle('is-close')
+
     spEvents.emit('SpDefault',false)
     this.setState({saveMode:1}) 
 
@@ -194,8 +199,8 @@ state={
 
     return (
       
-<div className="SparePartsItemCard" id="wrapper">
-<div className="SparePartsItemCardClose" ><img  onClick={this.defaultPosition} src="../close.png" width={30} height={30} />  </div>
+<div className={this.state.classCard} >
+<div className="SparePartsItemCardClose" ><img  onClick={this.clicked} src="../close.png" width={30} height={30} />  </div>
 <img className='Img' src={this.props.info.urlSP} width={430} height={290} float="left"/> 
         <legend className="SparePartsName">{"Карточка товара"}</legend>
           <table className='itemData'>

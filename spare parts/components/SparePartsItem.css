@@ -12,7 +12,7 @@
 {
   background: transparent;
   border-color: silver;
- 
+  transition: opacity 0.5s;
    
 }
 .SparePartsItem
@@ -28,8 +28,16 @@
 {
   background: #cccccc;
   border-color: silver;
+ 
+  transition: opacity 0.5s;
+}
 
-  
+.SparePartsItemClose
+{
+  background: #cccccc;
+  border-color: silver;
+  opacity: 0%;
+  transition: opacity 0.5s;
 }
 
 

@@ -17,7 +17,7 @@ class SparePartsItem extends React.PureComponent {
       price: PropTypes.number.isRequired,
       priceNDS: PropTypes.number.isRequired,
       equipment: PropTypes.string.isRequired,
-      ht:30
+      ht:0
       
       
     }),
@@ -54,12 +54,15 @@ class SparePartsItem extends React.PureComponent {
     this.setState({editMode:0});
    }
    deleteRow=(eo) =>{
-    console.log (eo)
     if(eo){ 
     eo.stopPropagation();}
-    spEvents.emit('SpDelete',this.props.info.code);
-         this.setState({ht:1})
+    this.setState({ht:1})
+    setTimeout(this.deleteRow1,500)
    }
+
+   deleteRow1=(eo) =>{
+    spEvents.emit('SpDelete',this.props.info.code);
+    }
    
   render() {
     console.log("SparePartsItem render","code",this.props.info.code);
@@ -67,10 +70,10 @@ class SparePartsItem extends React.PureComponent {
     var classSp="SparePartsItemOdd"
     
     if (this.props.selectedSparePartsId==this.props.info.code) {classSp="SpItemChosen"} else if (this.props.info.code%2==0) {classSp="SparePartsItemEven"} else {classSp="SparePartsItemOdd"}
-    console.log (this.props.selectedSparePartsId)
+    if (this.state.ht==1) {classSp="SparePartsItemClose"} 
 
     return (
-      <tr className={classSp} onClick={this.setSelectedSp} height={this.state.ht}>
+      <tr className={classSp} onClick={this.setSelectedSp}  >
       <td className="StatusActiveName">{this.state.info.code}</td>
       <td className="StatusActiveName">{this.state.info.spName}</td>
       <td className="StatusActive">{this.state.info.articul}</td>
