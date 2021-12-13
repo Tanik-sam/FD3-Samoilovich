@@ -277,7 +277,7 @@ setTimeout(this.defaultPosition,1000)
     else     {
     return (
       <div className="SparePartsItemCard">
-        <div className="SparePartsItemCardClose" ><img  onClick={this.defaultPosition} src="../close.png" width={30} height={30} />  </div>
+        <div className="SparePartsItemCardClose" ><img  onClick={this.clicked} src="../close.png" width={30} height={30} />  </div>
          <img className='Img' src={this.props.info.urlSP} width={430} height={290}/> 
         <legend className="SparePartsName">{"Изменение карточки клиента"}</legend>
           <table className='itemData2'>
