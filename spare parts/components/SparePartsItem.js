@@ -60,7 +60,7 @@ class SparePartsItem extends React.PureComponent {
     setTimeout(this.deleteRow1,500)
    }
 
-   deleteRow1=(eo) =>{
+   deleteRow1=() =>{
     spEvents.emit('SpDelete',this.props.info.code);
     }
    
