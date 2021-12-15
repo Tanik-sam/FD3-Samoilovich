@@ -1,0 +1,12 @@
+.PageLink {
+    color: #667;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size:xx-large;
+    display: inline;
+}
+
+.ActivePageLink {
+    font-weight: bold;
+    font-size: xx-large;
+}

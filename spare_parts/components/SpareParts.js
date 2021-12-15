@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import PropTypes from 'prop-types';
 
-
+import isoFetch from 'isomorphic-fetch';
 import SparePartsItem from './SparePartsItem';
 import EquipmentSelect from './EquipmentSelect';
 import './SpareParts.css';
@@ -11,7 +11,14 @@ import {spEvents} from './events';
 
 
 class SpareParts extends React.PureComponent {
-
+  
+  constructor(props) {
+    super(props);
+    // this.loadData();
+    // не надо запускать асинхронные или долгие операции из конструктора
+    // конструктор инициализирует только КЛАСС, это ещё не React-компонент
+    // конструктор должен быть лёгким и быстрым
+  }
   static propTypes = {
     
     spParts:PropTypes.arrayOf(
@@ -48,10 +55,59 @@ class SpareParts extends React.PureComponent {
     cardMode:1, //1 - режим просмотра
     editMode:1,
     equip:[],
-    equipmentSelected:''
+    equipmentSelected:'',
+    dataReady: false,
+    name: "???",
+    sp_Parts: [],
+    column_Name: [],
+  };
+//-------------------------------
+
+  fetchError = (errorMessage) => {
+    console.error(errorMessage);
   };
 
+  fetchSuccess = (loadedData) => {
+    console.log(loadedData);
+    this.setState({
+      dataReady:true,
+      column_Name:loadedData.nameArr,
+      sp_Parts: loadedData.spArr,
+      
+    });
+    console.log(column_Name)
+  };
+
+  loadData = () => {
+
+    isoFetch("http://localhost:3004", {
+        method: 'post',
+        headers: {
+            "Accept": "application/json",
+        },
+    })
+        .then( response => { // response - HTTP-ответ
+            if (!response.ok)
+                throw new Error("fetch error " + response.status); // дальше по цепочке пойдёт отвергнутый промис
+            else
+                return response.json(); // дальше по цепочке пойдёт промис с пришедшими по сети данными
+        })
+        .then( data => {
+            this.fetchSuccess(data); // передаём полезные данные в fetchSuccess, дальше по цепочке пойдёт успешный пустой промис
+        })
+        .catch( error => {
+            this.fetchError(error.message);
+        })
+    ;
+
+  };
+  //-------------------------------
+
+  
+
   componentDidMount = () => {
+    this.loadData();
+    console.log('это сработало')
     spEvents.addListener('SpClicked',this.spSelected);
     spEvents.addListener('SpDelete',this.spDelete);
     spEvents.addListener('SpEdit',this.spEdit);
@@ -174,8 +230,8 @@ setSelectedEq=(eo)=>{
 }
 
   render() {
-    console.log(this.props.columnName);
-    console.log(this.props.spParts);
+    if ( !this.state.dataReady )
+      return <div>загрузка данных...</div>;
     var cG=[];
     for (var a=0; a<this.props.columnName.length; a++ ) {
       var columnN=this.props.columnName[a];

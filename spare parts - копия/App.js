@@ -8,6 +8,8 @@ import { BrowserRouter } from 'react-router-dom';
 import PagesRouter from './pages/PagesRouter';
 import PagesLinks from './pages/PagesLinks';
 
+
+
 let spareParts=require('./spareParts.json');
 
 
