@@ -7,18 +7,19 @@ import EquipmentSelect from './EquipmentSelect';
 import './SpareParts.css';
 import SparePartsItemCard from './SparePartsItemCard';
 import {spEvents} from './events';
+import { transformFile } from 'babel-core';
 
 
 
 class SpareParts extends React.PureComponent {
   
-  constructor(props) {
+ /* constructor(props) {
     super(props);
     // this.loadData();
     // не надо запускать асинхронные или долгие операции из конструктора
     // конструктор инициализирует только КЛАСС, это ещё не React-компонент
     // конструктор должен быть лёгким и быстрым
-  }
+  }*/
   static propTypes = {
     
     spParts:PropTypes.arrayOf(
@@ -61,7 +62,7 @@ class SpareParts extends React.PureComponent {
     sp_Parts: [],
     column_Name: [],
   };
-//-------------------------------
+/*
 
   fetchError = (errorMessage) => {
     console.error(errorMessage);
@@ -101,12 +102,12 @@ class SpareParts extends React.PureComponent {
     ;
 
   };
-  //-------------------------------
+  */
 
   
 
   componentDidMount = () => {
-    this.loadData();
+  //this.loadData();
     console.log('это сработало')
     spEvents.addListener('SpClicked',this.spSelected);
     spEvents.addListener('SpDelete',this.spDelete);
@@ -154,20 +155,20 @@ class SpareParts extends React.PureComponent {
   let changed=false
   let changedSp=[]
     for (let i=0;i<k.length;i++){
-      if ((k[i].code==clSn.code)&&(k[i].articulCode==clSn.articulCode)&&((k[i].spName!=clSn.spName)||(k[i].quantity!=clSn.quantity)||(k[i].price!=clSn.price)||(k[i].priceNDS!=clSn.priceNDS)||(k[i].equipment!=clSn.equipment)||(k[i].urlSP!=clSn.urlSP))){
-
+      if ((k[i].code==clSn.code)&&(k[i].spName==clSn.spName)&&((k[i].articul!=clSn.articul)||(k[i].articulCode!=clSn.articulCode)||(k[i].quantity!=clSn.quantity)||(k[i].price!=clSn.price)||(k[i].equipment!=clSn.equipment)||(k[i].urlSP!=clSn.urlSP))){
+       
         let newSpData={...k[i]}
         newSpData.spName=clSn.spName
         newSpData.price=clSn.price
-        newSpData.priceNDS=clSn.priceNDS
-        
+        newSpData.articul=clSn.articul
+        newSpData.articulCode=clSn.articulCode
         newSpData.quantity=clSn.quantity
         newSpData.equipment=clSn.equipment
         newSpData.urlSP=clSn.urlSP
         changed=true
         k[i]=newSpData
         changedSp=[newSpData]
-        
+       
       }
       this.setState({cardMode:1})
       spEvents.emit('ButtonEnbled');
@@ -230,8 +231,8 @@ setSelectedEq=(eo)=>{
 }
 
   render() {
-    if ( !this.state.dataReady )
-      return <div>загрузка данных...</div>;
+    //if ( !this.state.dataReady )
+     // return <div>загрузка данных...</div>;
     var cG=[];
     for (var a=0; a<this.props.columnName.length; a++ ) {
       var columnN=this.props.columnName[a];

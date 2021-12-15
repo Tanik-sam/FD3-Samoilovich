@@ -27,9 +27,12 @@ state={
   classCard:'SparePartsItemCard'
 }
 clicked=(eo)=>{
+  if (this.state.saveMode){
 this.setState({classCard:'SparePartsItemCardHide'})
 setTimeout(this.defaultPosition,1000)
 
+  }
+ 
 
  }
 
@@ -38,7 +41,8 @@ setTimeout(this.defaultPosition,1000)
    defaultPosition=(eo)=>{
 
     spEvents.emit('SpDefault',false)
-    this.setState({saveMode:1}) 
+    this.setState({saveMode:1})
+    spEvents.emit('ButtonEnbled');
 
    }
 
@@ -48,8 +52,9 @@ setTimeout(this.defaultPosition,1000)
       this.setNewArticul ();
       this.setNewQuantity ();
       this.setNewPrice ();
-      let t={code:this.props.info.code, articulCode:this.props.info.articulCode,spName:this.newSpNameRef.value,articul:this.newArticulRef.value,price:this.newPriceRef.value, quantity:parseInt(this.newQuantityRef.value), urlSP:this.newUrlSPRef.value,}
-      console.log('t',t)
+      let t={code:this.props.info.code,spName:this.newSpNameRef.value,articul:this.newArticulRef.value,articulCode:this.newArticulCodeRef.value,quantity:parseInt(this.newQuantityRef.value),price:this.newPriceRef.value,equipmqnt: this.newEquipmentRef.value,urlSP:this.newUrlSPRef.value,}
+      this.setState({saveMode:1}) 
+      console.log(t)
       spEvents.emit('SpSave',t); 
   
   }
@@ -276,9 +281,9 @@ setTimeout(this.defaultPosition,1000)
     )   }
     else     {
     return (
-      <div className="SparePartsItemCard">
+      <div className={this.state.classCard}>
         <div className="SparePartsItemCardClose" ><img  onClick={this.clicked} src="../close.png" width={30} height={30} />  </div>
-         <img className='Img' src={this.props.info.urlSP} width={430} height={290}/> 
+         <img className='Img' src={this.props.info.urlSP} width={300} height={170}/> 
         <legend className="SparePartsName">{"Изменение карточки клиента"}</legend>
           <table className='itemData2'>
             <tbody>
