@@ -50,11 +50,12 @@ setTimeout(this.defaultPosition,1000)
  
       this.setNewSpName (); 
       this.setNewArticul ();
+      this.setNewArticulCode ();
       this.setNewQuantity ();
       this.setNewPrice ();
-      let t={code:this.props.info.code,spName:this.newSpNameRef.value,articul:this.newArticulRef.value,articulCode:this.newArticulCodeRef.value,quantity:parseInt(this.newQuantityRef.value),price:this.newPriceRef.value,equipmqnt: this.newEquipmentRef.value,urlSP:this.newUrlSPRef.value,}
+      this.setNewEquipment ();
+      let t={code:this.props.info.code,spName:this.newSpNameRef.value,articul:this.newArticulRef.value,articulCode:this.newArticulCodeRef.value,quantity:parseInt(this.newQuantityRef.value),price:parseInt(this.newPriceRef.value),equipment: this.newEquipmentRef.value,urlSP:this.newUrlSPRef.value,}
       this.setState({saveMode:1}) 
-      console.log(t)
       spEvents.emit('SpSave',t); 
   
   }
@@ -62,6 +63,7 @@ setTimeout(this.defaultPosition,1000)
    newSpNameRef = this.props.info.spName;
    newArticulRef = this.props.info.articul;
    newArticulCodeRef = this.props.info.articulCode;
+   
    newPriceRef = this.props.info.price;
    newQuantityRef = this.props.info.quantity;
    newEquipmentRef = this.props.info.equipment;
@@ -106,16 +108,18 @@ setTimeout(this.defaultPosition,1000)
    }
    //-----------------------------------------------------
   setNewArticulCodeRef = (ref) => {
-    this.newArticulRef=ref;
+    this.newArticulCodeRef=ref;
   };
 
   setNewArticulCode = () => {
-    if ( this.newArticulCodeRef ) { 
-      let newArticul=this.newArticulCodeRef.value;
+    if (this.newArticulCodeRef) { 
+      let newArticulCode=this.newArticulCodeRef.value;
         
     }
+    console.log (this.newArticulCodeRef.value)
   }; 
   checkArticulCodeValue=()=>{
+    
     if (this.newArticulCodeRef.value==''){
       this.setState({saveMode:0})  }
       else{
@@ -388,7 +392,7 @@ setTimeout(this.defaultPosition,1000)
                    <input className="CardButton" type='button' value='СОХРАНИТЬ' onClick={this.savePosition} disabled={this.state.saveMode==0} />   
                  </td>  
                  <td  className='itemData2'>
-                    <input className="CardButton" type='button' value='СБРОСИТЬ' onClick={this.defaultPosition} />   
+                    <input className="CardButton" type='button' value='СБРОСИТЬ' onClick={this.clicked} />   
                  </td>
               </tr>
         </tbody>

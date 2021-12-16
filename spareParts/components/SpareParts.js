@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import PropTypes from 'prop-types';
 
-import isoFetch from 'isomorphic-fetch';
+
 import SparePartsItem from './SparePartsItem';
 import EquipmentSelect from './EquipmentSelect';
 import './SpareParts.css';
@@ -11,14 +11,64 @@ import {spEvents} from './events';
 
 
 class SpareParts extends React.PureComponent {
-  
- /* constructor(props) {
+  //-------------------------------
+  constructor(props) {
     super(props);
     // this.loadData();
     // не надо запускать асинхронные или долгие операции из конструктора
     // конструктор инициализирует только КЛАСС, это ещё не React-компонент
     // конструктор должен быть лёгким и быстрым
-  }*/
+  }
+
+  componentDidMount() {
+    this.loadData();
+  }
+
+  state = {
+    dataReady: false,
+    name: "???",
+    sp_Parts: [],
+    column_Name: [],
+  };
+
+  fetchError = (errorMessage) => {
+    console.error(showStr);
+  };
+
+  fetchSuccess = (loadedData) => {
+    console.log(loadedData);
+    this.setState({
+      dataReady:true,
+      column_Name:loadedData.companyName,
+      sp_Parts: loadedData.clientsArr,
+    });
+  };
+
+  loadData = () => {
+
+    isoFetch("http://fe.it-academy.by/TestFetch.php", {
+        method: 'post',
+        headers: {
+            "Accept": "application/json",
+        },
+    })
+        .then( response => { // response - HTTP-ответ
+            if (!response.ok)
+                throw new Error("fetch error " + response.status); // дальше по цепочке пойдёт отвергнутый промис
+            else
+                return response.json(); // дальше по цепочке пойдёт промис с пришедшими по сети данными
+        })
+        .then( data => {
+            this.fetchSuccess(data); // передаём полезные данные в fetchSuccess, дальше по цепочке пойдёт успешный пустой промис
+        })
+        .catch( error => {
+            this.fetchError(error.message);
+        })
+    ;
+
+  };
+  //-------------------------------
+
   static propTypes = {
     
     spParts:PropTypes.arrayOf(
@@ -55,59 +105,10 @@ class SpareParts extends React.PureComponent {
     cardMode:1, //1 - режим просмотра
     editMode:1,
     equip:[],
-    equipmentSelected:'',
-    dataReady: false,
-    name: "???",
-    sp_Parts: [],
-    column_Name: [],
+    equipmentSelected:''
   };
-/*
-
-  fetchError = (errorMessage) => {
-    console.error(errorMessage);
-  };
-
-  fetchSuccess = (loadedData) => {
-    console.log(loadedData);
-    this.setState({
-      dataReady:true,
-      column_Name:loadedData.nameArr,
-      sp_Parts: loadedData.spArr,
-      
-    });
-    console.log(column_Name)
-  };
-
-  loadData = () => {
-
-    isoFetch("http://localhost:3004", {
-        method: 'post',
-        headers: {
-            "Accept": "application/json",
-        },
-    })
-        .then( response => { // response - HTTP-ответ
-            if (!response.ok)
-                throw new Error("fetch error " + response.status); // дальше по цепочке пойдёт отвергнутый промис
-            else
-                return response.json(); // дальше по цепочке пойдёт промис с пришедшими по сети данными
-        })
-        .then( data => {
-            this.fetchSuccess(data); // передаём полезные данные в fetchSuccess, дальше по цепочке пойдёт успешный пустой промис
-        })
-        .catch( error => {
-            this.fetchError(error.message);
-        })
-    ;
-
-  };
-  */
-
-  
 
   componentDidMount = () => {
-  //this.loadData();
-    console.log('это сработало')
     spEvents.addListener('SpClicked',this.spSelected);
     spEvents.addListener('SpDelete',this.spDelete);
     spEvents.addListener('SpEdit',this.spEdit);
@@ -136,7 +137,6 @@ class SpareParts extends React.PureComponent {
 
   buttonEnbled=()=>{
     this.setState({editMode:1})
-    this.setState({cardMode:1})
     }
   spDelete=(clDl)=>{
     function fff(v,i,a){return v.code!=clDl}
@@ -155,21 +155,20 @@ class SpareParts extends React.PureComponent {
   let changed=false
   let changedSp=[]
     for (let i=0;i<k.length;i++){
-      if ((k[i].code==clSn.code)&&(k[i].spName==clSn.spName)&&((k[i].articul!=clSn.articul)||(k[i].articulCode!=clSn.articulCode)||(k[i].quantity!=clSn.quantity)||(k[i].price!=clSn.price)||(k[i].equipment!=clSn.equipment)||(k[i].urlSP!=clSn.urlSP))){
-       
+      if ((k[i].code==clSn.code)&&(k[i].articulCode==clSn.articulCode)&&((k[i].spName!=clSn.spName)||(k[i].quantity!=clSn.quantity)||(k[i].price!=clSn.price)||(k[i].priceNDS!=clSn.priceNDS)||(k[i].equipment!=clSn.equipment)||(k[i].urlSP!=clSn.urlSP))){
+
         let newSpData={...k[i]}
         newSpData.spName=clSn.spName
         newSpData.price=clSn.price
-        newSpData.articul=clSn.articul
-        newSpData.articulCode=clSn.articulCode
-        console.log(clSn.articulCode)
+        newSpData.priceNDS=clSn.priceNDS
+        
         newSpData.quantity=clSn.quantity
         newSpData.equipment=clSn.equipment
         newSpData.urlSP=clSn.urlSP
         changed=true
         k[i]=newSpData
         changedSp=[newSpData]
-       
+        
       }
       this.setState({cardMode:1})
       spEvents.emit('ButtonEnbled');
@@ -228,13 +227,12 @@ blockedSp=()=>{
 
 setSelectedEq=(eo)=>{
   this.setState({equipmentSelected:eo.target.value})
-  spEvents.emit('SpEquipmentSelected',eo.target.value)
  
 }
 
   render() {
-    //if ( !this.state.dataReady )
-     // return <div>загрузка данных...</div>;
+    console.log(this.props.columnName);
+    console.log(this.props.spParts);
     var cG=[];
     for (var a=0; a<this.props.columnName.length; a++ ) {
       var columnN=this.props.columnName[a];
@@ -258,48 +256,38 @@ setSelectedEq=(eo)=>{
      }
 
      var eqFiltered=this.state.equipmentSelected
-     if (eqFiltered!='Оборудование на странице'){
+     if (eqFiltered!='Все оборудование'){
      if (eqFiltered){
-      function f3(v,i,a){return v.equipment.indexOf(eqFiltered)!=-1}
+      function f3(v,i,a){return v.equipment==eqFiltered}
       let spFiltered2=[...spFiltered]
       spFiltered=spFiltered2.filter(f3)
-      }
+      console.log(spFiltered)
+     }
     }
 
-      let kk=[...spFiltered] //отбираются уникальные строки с видом орудия для формирования выпадающего списка
-
-      let equipTypeItem=[]
-      let equipTypeItem0=[]
-          for (let i=0;i<kk.length;i++){
-          let o=[]
-          o=kk[i].equipment.split(',')
-          console.log(o)
-          for (let j=0;j<o.length;j++){
-            equipTypeItem0.push(o[j].trim())
-       }
-      }
-      equipTypeItem.push(equipTypeItem0[0])
-      for (let i=0;i<equipTypeItem0.length;i++){
+      let kk=[...spFiltered]
+      let equipType=[]
+      equipType.push(kk[0].equipment)
+      for (let i=0;i<kk.length;i++){
         let u=0;
-        if (equipTypeItem[i]!=equipTypeItem[0]){
+        if (kk[i].equipment!=kk[0].equipment){
           
-          for (let j=0;j<equipTypeItem.length; j++){
-            if (equipTypeItem[j]==equipTypeItem0[i]){u++;}
+          for (let j=0;j<equipType.length; j++){
+            if (equipType[j]==kk[i].equipment){u++;}
           }
-          if (u==0) {equipTypeItem.push(equipTypeItem0[i])}
+          if (u==0) {equipType.push(kk[i].equipment)}
       
         }
       }
-      equipTypeItem.sort();
-      equipTypeItem.unshift('Оборудование на странице')
-
+      equipType.sort();
+      equipType.unshift('Все оборудование')
      
     
 
     var spCode=spFiltered.map(sp =>
       <SparePartsItem key={sp.code} info={sp} selectedSparePartsId={this.state.selectedSparePartsId} />
     );
-    var eqSelect= equipTypeItem.map(sp =>
+    var eqSelect= equipType.map(sp =>
       <EquipmentSelect key={sp} eq={sp} />
       
     );
