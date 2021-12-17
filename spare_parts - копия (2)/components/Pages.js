@@ -6,7 +6,6 @@ import PagesRouter from '../pages/PagesRouter';
 import PagesLinks from '../pages/PagesLinks';
 import {spEvents} from './events';
 import isoFetch from 'isomorphic-fetch';
-import columnName from '../appData';
 
 class Pages extends React.PureComponent {
 
@@ -31,15 +30,17 @@ class Pages extends React.PureComponent {
     console.log(loadedData);
     this.setState({
       dataReady:true,
-      column_Name:loadedData})     
-     
-    
-      };
+      column_Name:loadedData.nameArr,
+      sp_Parts: loadedData.spArr,
+      
+    });
+    console.log(column_Name)
+  };
 
   loadData = () => {
 
-    isoFetch("http://localhost:3000/nameArr", {
-        method: 'GET',
+    isoFetch("http://fe.it-academy.by/EditSite.php?site=37299", {
+        method: 'POST',
         headers: {
             "Accept": "application/json",
         },
@@ -61,13 +62,9 @@ class Pages extends React.PureComponent {
   };
   
   componentDidMount = () => {
-    this.loadData();
-
-}
+    this.loadData();}
 
   render() {
-     if ( !this.state.dataReady )
-      return <div>загрузка данных...</div>;
  let spareParts=this.props.spareParts
   let pageTotal= parseInt(spareParts.length/10)+1
   let page=[]

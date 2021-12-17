@@ -183,7 +183,8 @@ setSelectedEq=(eo)=>{
 }
 
   render() {
-
+    //if ( !this.state.dataReady )
+     // return <div>загрузка данных...</div>;
     var cG=[];
     for (var a=0; a<this.props.columnName.length; a++ ) {
       var columnN=this.props.columnName[a];
