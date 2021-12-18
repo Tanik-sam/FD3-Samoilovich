@@ -27,8 +27,8 @@ class Pages extends React.PureComponent {
   fetchError = (errorMessage) => {
     console.error(errorMessage);
     this.setState({
-       spareParts:this.props.spareParts[0],
-       columnName:this.props.spareParts.slice(0)  
+      columnName:this.props.spareParts[0],
+      spareParts:this.props.spareParts.slice(0)  
     });
   };
 
