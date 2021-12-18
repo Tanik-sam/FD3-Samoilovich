@@ -4,9 +4,9 @@ import './Pages.css';
 import { BrowserRouter } from 'react-router-dom';
 import PagesRouter from '../pages/PagesRouter';
 import PagesLinks from '../pages/PagesLinks';
-import {spEvents} from './events';
+
 import isoFetch from 'isomorphic-fetch';
-import columnName from '../appData';
+
 
 class Pages extends React.PureComponent {
 
@@ -20,25 +20,32 @@ class Pages extends React.PureComponent {
     state = {
     dataReady: false,
     name: "???",
-    sp_Parts: [],
-    column_Name: [],
+    spareParts: [],
+    columnName: [],
+    dataL:{}
   };
   fetchError = (errorMessage) => {
     console.error(errorMessage);
+    this.setState({
+       spareParts:this.props.spareParts[0],
+       columnName:this.props.spareParts.slice(0)  
+    });
   };
 
   fetchSuccess = (loadedData) => {
     console.log(loadedData);
     this.setState({
       dataReady:true,
-      column_Name:loadedData})     
-     
-    
-      };
-
+      columnName:loadedData[0],
+      spareParts:loadedData.slice(0),  
+      dataL:loadedData
+    });
+    console.log(this.state.spareParts);
+    console.log(this.state.columnName);
+  }
   loadData = () => {
 
-    isoFetch("http://localhost:3000/nameArr", {
+    isoFetch("http://localhost:3000/spArr", {
         method: 'GET',
         headers: {
             "Accept": "application/json",
@@ -62,14 +69,14 @@ class Pages extends React.PureComponent {
   
   componentDidMount = () => {
     this.loadData();
-
+    
 }
 
   render() {
      if ( !this.state.dataReady )
       return <div>загрузка данных...</div>;
- let spareParts=this.props.spareParts
-  let pageTotal= parseInt(spareParts.length/10)+1
+   
+  let pageTotal= parseInt(this.state.spareParts.length/10)+1
   let page=[]
      for (let i=0;i<pageTotal; i++){
       page[i]=i+1

@@ -1,12 +1,14 @@
 import React from 'react';
 
 import SpareParts from '../components/SpareParts';
+ 
 import appData from '../appData';
 
 let spareParts=require('../spareParts.json')
 
 class Page_SpareParts extends React.PureComponent {
   
+ 
           
   render() {
     if (this.props.match.params.clid!='Все'){
@@ -28,4 +30,6 @@ class Page_SpareParts extends React.PureComponent {
 }
     
 export default Page_SpareParts;
+
+
     
