@@ -53,8 +53,9 @@ setTimeout(this.defaultPosition,1000)
       this.setNewArticulCode ();
       this.setNewQuantity ();
       this.setNewPrice ();
+      this.setNewJoint ();
       this.setNewEquipment ();
-      let t={code:this.props.info.code,spName:this.newSpNameRef.value,articul:this.newArticulRef.value,articulCode:this.newArticulCodeRef.value,quantity:parseInt(this.newQuantityRef.value),price:parseInt(this.newPriceRef.value),equipment: this.newEquipmentRef.value,urlSP:this.newUrlSPRef.value,}
+      let t={code:this.props.info.code,spName:this.newSpNameRef.value,articul:this.newArticulRef.value,articulCode:this.newArticulCodeRef.value,quantity:parseInt(this.newQuantityRef.value),price:parseFloat(this.newPriceRef.value),joint: this.newJointRef.value,equipment: this.newEquipmentRef.value,urlSP:this.newUrlSPRef.value,}
       this.setState({saveMode:1}) 
       spEvents.emit('SpSave',t); 
   
@@ -163,6 +164,25 @@ setTimeout(this.defaultPosition,1000)
       }
     }
     //-----------------------------------------------------
+  
+      setNewJointRef = (ref) => {
+        this.newJointRef=ref;
+      };
+    
+      setNewJoint = () => {
+        if ( this.newJointRef) { 
+          let newJoint=this.newJointRef.value;
+         
+        }
+      }; 
+      checkJointValue=()=>{
+        if (this.newJointRef.value==''){
+          this.setState({saveMode:0}) }
+          else{
+          this.setState({saveMode:1}) 
+          }
+        }
+      //-----------------------------------------------------
   setNewEquipmentRef = (ref) => {
     this.newEquipmentRef=ref;
   };
@@ -218,7 +238,7 @@ setTimeout(this.defaultPosition,1000)
              
               <tr>
                 <td className='itemData'>
-                  {this.props.nameRow[1].text}
+                  {this.props.nameRow.articul}
                 </td>
                 <td  className='itemData'>
                   {this.props.info.articul}
@@ -226,7 +246,7 @@ setTimeout(this.defaultPosition,1000)
                 </tr>
                 <tr>
                 <td className='itemData'>
-                  {this.props.nameRow[2].text}
+                  {this.props.nameRow.articulCode}
                 </td>
                 <td  className='itemData'>
                   {this.props.info.articulCode}
@@ -235,7 +255,7 @@ setTimeout(this.defaultPosition,1000)
               </tr> 
               <tr>
                 <td className='itemData'>
-                  {this.props.nameRow[4].text}
+                  {this.props.nameRow.price}
                 </td>
                 <td  className='itemData'>
                   {this.props.info.price}
@@ -243,7 +263,7 @@ setTimeout(this.defaultPosition,1000)
               </tr> 
               <tr>
                 <td className='itemData'>
-                  {this.props.nameRow[5].text}
+                  {this.props.nameRow.joint}
                 </td>
                 <td  className='itemData'>
                   {this.props.info.joint}
@@ -251,7 +271,7 @@ setTimeout(this.defaultPosition,1000)
               </tr> 
               <tr>
                 <td className='itemData'>
-                  {this.props.nameRow[3].text}
+                  {this.props.nameRow.quantity}
                 </td>
                 <td  className='itemData'>
                   {this.props.info.quantity}
@@ -259,7 +279,7 @@ setTimeout(this.defaultPosition,1000)
               </tr> 
               <tr>
                 <td className='itemData'>
-                {this.props.nameRow[7].text}
+                Статус
                 </td>
           
               <td className={this.props.info.quantity >0?"StatusActive":"StatusBlocked"}>{this.props.info.quantity >0?"в наличии":"нет в наличии"}
@@ -268,7 +288,7 @@ setTimeout(this.defaultPosition,1000)
               </tr> 
               <tr>
                 <td className='itemData'>
-                  {this.props.nameRow[6].text}
+                  {this.props.equipment}
                 </td>
                 <td  className='itemData'>
                   {this.props.info.equipment}
@@ -294,7 +314,7 @@ setTimeout(this.defaultPosition,1000)
          
               <tr className='itemData2'>
                 <td className='itemData2'>
-                  {this.props.nameRow[0].text}
+                  {this.props.nameRow.spName}
                 </td>
                 <td className='itemData2'>      
                 {this.props.info.spName}
@@ -306,7 +326,7 @@ setTimeout(this.defaultPosition,1000)
               </tr>
               <tr>
                 <td className='itemData2'>
-                  {this.props.nameRow[1].text}
+                  {this.props.nameRow.articul}
                 </td>
                 <td className='itemData2'>
                 {this.props.info.articul}
@@ -318,7 +338,7 @@ setTimeout(this.defaultPosition,1000)
               </tr>
               <tr>
                 <td className='itemData2'>
-                  {this.props.nameRow[2].text}
+                  {this.props.nameRow.articulCode}
                 </td>
                 <td className='itemData2'>
                 {this.props.info.articulCode}
@@ -326,11 +346,22 @@ setTimeout(this.defaultPosition,1000)
                 <td className='itemData2'>
                   <input className='itemData2' type="text" defaultValue={this.props.info.articulCode} ref={this.setNewArticulCodeRef} onBlur={this.checkArticulCodeValue}/>
                 </td>
-              
+                <tr>
+                <td className='itemData2'>
+                  {this.props.nameRow.quantity}
+                </td>
+                <td  className='itemData2'>
+                  {this.props.info.quantity}
+                </td>  
+                <td className='itemData2'>
+                  <input className='itemData2' type="text" defaultValue={this.props.info.quantity} ref={this.setNewQuantityRef} onBlur={this.checkQuantityValue}/>
+                </td>
+               
+              </tr> 
               </tr>
               <tr>
                 <td className='itemData2'>
-                  {this.props.nameRow[4].text}
+                  {this.props.nameRow.price}
                 </td>
                 <td  className='itemData2'>
                 {this.props.info.price}
@@ -342,19 +373,20 @@ setTimeout(this.defaultPosition,1000)
               </tr> 
               <tr>
                 <td className='itemData2'>
-                  {this.props.nameRow[3].text}
+                  {this.props.nameRow.joint}
                 </td>
                 <td  className='itemData2'>
-                  {this.props.info.quantity}
+                {this.props.info.joint}
                 </td>  
                 <td className='itemData2'>
-                  <input className='itemData2' type="text" defaultValue={this.props.info.quantity} ref={this.setNewQuantityRef} onBlur={this.checkQuantityValue}/>
+                  <input className='itemData2' type="text" defaultValue={this.props.info.joint} ref={this.setNewJointRef} onBlur={this.checkJointValue}/>
                 </td>
                
               </tr> 
+              
               <tr>
                 <td className='itemData2'>
-                {this.props.nameRow[7].text}
+                Статуc
                 </td>
                 <td className={this.props.info.quantity>0?"StatusActive":"StatusBlocked"}>{this.props.info.quantity>0?"в наличии":"нет в наличии"}
               </td>
@@ -364,7 +396,7 @@ setTimeout(this.defaultPosition,1000)
               </tr> 
               <tr>
                 <td className='itemData2'>
-                  {this.props.nameRow[6].text}
+                  {this.props.nameRow.equipment}
                 </td>
                 <td  className='itemData2'>
                   {this.props.info.equipment}
