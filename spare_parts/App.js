@@ -6,6 +6,7 @@ import Pages from './components/Pages';
 
 
 let spareParts=require('./spareParts.json');
+global.dataLoadedGlob=[]
 
 ReactDOM.render(
   

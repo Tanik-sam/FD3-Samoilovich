@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import PagesRouter from '../pages/PagesRouter';
 import PagesLinks from '../pages/PagesLinks';
 
+
 import isoFetch from 'isomorphic-fetch';
 
 
@@ -22,13 +23,13 @@ class Pages extends React.PureComponent {
     name: "???",
     spareParts: [],
     columnName: [],
-    dataL:{}
+ 
   };
   fetchError = (errorMessage) => {
     console.error(errorMessage);
     this.setState({
       columnName:this.props.spareParts[0],
-      spareParts:this.props.spareParts.slice(0)  
+      spareParts:this.props.spareParts.slice(1)  
     });
   };
 
@@ -38,10 +39,7 @@ class Pages extends React.PureComponent {
       dataReady:true,
       columnName:loadedData[0],
       spareParts:loadedData.slice(0),  
-      dataL:loadedData
-    });
-    console.log(this.state.spareParts);
-    console.log(this.state.columnName);
+      });
   }
   loadData = () => {
 
@@ -98,3 +96,5 @@ class Pages extends React.PureComponent {
     }
   }
 export default Pages;
+
+

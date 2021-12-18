@@ -78,10 +78,10 @@ class SparePartsItem extends React.PureComponent {
       <td className="StatusActiveName">{this.state.info.spName}</td>
       <td className="StatusActive">{this.state.info.articul}</td>
       <td className="StatusActive">{this.state.info.articulCode}</td>
+      <td className="StatusActive">{this.state.info.quantity}</td>
       <td className="StatusActive">{this.state.info.price}</td>
       <td className="StatusActive">{this.state.info.joint}</td>
       <td className="StatusActive">{this.state.info.equipment}</td>
-      <td className="StatusActive">{this.state.info.quantity}</td>
       <td className={this.state.info.quantity>0?"StatusActive":"StatusBlocked"}>{this.state.info.quantity>0?"в наличии":"нет в наличии"}</td>
       <td className="StatusActive"><input className="inTable" type='button' value='Редактировать' onClick={this.editRow} disabled={this.state.editMode==0}/></td>   
       <td className="StatusActive"><input className="inTable" type='button' data={'del'+this.props.info.code} value='Удалить' onClick={this.deleteRow} disabled={this.state.editMode==0}/> </td>   

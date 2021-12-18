@@ -184,12 +184,6 @@ setSelectedEq=(eo)=>{
 
   render() {
 
-    var cG=[];
-    for (var a=0; a<this.props.columnName.length; a++ ) {
-      var columnN=this.props.columnName[a];
-      let cGs = <th className='ColumnN' key={columnN.code}>  {columnN.text}</th>
-      cG.push(cGs);
-    }
 
     console.log("SpareParts render");
     console.log(this.state.spPartsEdt);
@@ -269,7 +263,19 @@ setSelectedEq=(eo)=>{
         <div className='SparePartsItem'>
           <table>
             <tbody>
-        <tr className="SparePartsItemEven">{cG}</tr> 
+        <tr className="SparePartsItemEven">
+        <th className='ColumnN'>  {this.props.columnName.code}</th>
+        <th className='ColumnN'>  {this.props.columnName.spName}</th>
+        <th className='ColumnN'>  {this.props.columnName.articul}</th>
+        <th className='ColumnN'>  {this.props.columnName.articulCode}</th>
+        <th className='ColumnN'>  {this.props.columnName.quantity}</th>
+        <th className='ColumnN'>  {this.props.columnName.price}</th>
+        <th className='ColumnN'>  {this.props.columnName.joint}</th>  
+        <th className='ColumnN'>  {this.props.columnName.equipment}</th>
+        <th className='ColumnN'>Наличие</th> 
+        <th className='ColumnN'>Редактировать</th> 
+        <th className='ColumnN'>Удалить</th>  
+          </tr> 
           {spCode}
           </tbody>
           </table>

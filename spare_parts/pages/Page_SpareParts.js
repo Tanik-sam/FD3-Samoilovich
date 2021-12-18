@@ -1,31 +1,28 @@
 import React from 'react';
 
 import SpareParts from '../components/SpareParts';
- 
-import appData from '../appData';
-
-let sParts=require('../spareParts.json')
+let sp=require('../spareParts.json')
 
 class Page_SpareParts extends React.PureComponent {
-  state={
-    columnName:sParts[0],
-    spareParts:sParts.slice(0) 
-  }
+
  
-          
   render() {
+   let columnName=sp[0]
+   console.log(columnName)
+   let spareParts=sp.slice(1) 
     if (this.props.match.params.clid!='Все'){
+    
     var pageNmb=(parseInt(this.props.match.params.clid)-1)*10;
-    var pgs=this.state.spareParts
+    var pgs=spareParts
     var pages=pgs.slice(pageNmb,pageNmb+10)
     }
     else{
-      pages=this.state.spareParts
+      pages=spareParts
     }
-    
+
     return (
       <SpareParts
-      spParts={pages} columnName={this.state.columnName}
+      spParts={pages} columnName={columnName}
       />
     );
     
