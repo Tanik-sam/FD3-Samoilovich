@@ -21,7 +21,7 @@ class SpareParts extends React.PureComponent {
         articulCode: PropTypes.string.isRequired,
         quantity:PropTypes.number.isRequired,
         price: PropTypes.number.isRequired,
-        priceNDS: PropTypes.number.isRequired,
+        joint: PropTypes.string.isRequired,
         equipment: PropTypes.string.isRequired,
         urlSP: PropTypes.string.isRequired,
 
@@ -38,7 +38,7 @@ class SpareParts extends React.PureComponent {
     quantity:this.props.quantity,
     status:  this.props.quantity>0?true:false,
     price:this.props.price,
-    priceNDS:this.props.priceNDS,
+    joint:this.props.joint,
     equipment:this.props.equipment,
     spPartsEdt: this.props.spParts.slice(),
     filtered:0, //0--все, 1 -активные, 2- заблокированные
@@ -142,7 +142,7 @@ class SpareParts extends React.PureComponent {
     var ll=[...this.state.spPartsEdt];
     var llll=ll.map(v=>v.code)
     let maxId = Math.max.apply(Math, llll) 
-    var nn={code:(maxId+1),spName:"",articul:"",quantity:0,status:false,price:0, priceNDS:0, equipment:"",urlSP:""}
+    var nn={code:(maxId+1),spName:"",articul:"",quantity:0,status:false,price:0, joint:0, equipment:"",urlSP:""}
     
     ll=[...ll,nn]
     this.setState({spPartsEdt:ll})

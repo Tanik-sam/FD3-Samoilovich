@@ -15,7 +15,7 @@ class SparePartsItem extends React.PureComponent {
       articulCode: PropTypes.string.isRequired,
       quantity:PropTypes.number.isRequired,
       price: PropTypes.number.isRequired,
-      priceNDS: PropTypes.number.isRequired,
+      joint: PropTypes.string.isRequired,
       equipment: PropTypes.string.isRequired,
       ht:0
       
@@ -79,7 +79,7 @@ class SparePartsItem extends React.PureComponent {
       <td className="StatusActive">{this.state.info.articul}</td>
       <td className="StatusActive">{this.state.info.articulCode}</td>
       <td className="StatusActive">{this.state.info.price}</td>
-      <td className="StatusActive">{this.state.info.priceNDS}</td>
+      <td className="StatusActive">{this.state.info.joint}</td>
       <td className="StatusActive">{this.state.info.equipment}</td>
       <td className="StatusActive">{this.state.info.quantity}</td>
       <td className={this.state.info.quantity>0?"StatusActive":"StatusBlocked"}>{this.state.info.quantity>0?"в наличии":"нет в наличии"}</td>

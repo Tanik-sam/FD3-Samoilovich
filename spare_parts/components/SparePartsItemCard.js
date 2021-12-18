@@ -15,7 +15,7 @@ class SparePartsItemCard extends React.Component {
       articulCode: PropTypes.string.isRequired,
       quantity:PropTypes.number.isRequired,
       price: PropTypes.number.isRequired,
-      priceNDS: PropTypes.number.isRequired,
+      joint: PropTypes.string.isRequired,
       equipment: PropTypes.string.isRequired,
       urlSP: PropTypes.string.isRequired,
       
@@ -246,7 +246,7 @@ setTimeout(this.defaultPosition,1000)
                   {this.props.nameRow[5].text}
                 </td>
                 <td  className='itemData'>
-                  {this.props.info.priceNDS}
+                  {this.props.info.joint}
                 </td>  
               </tr> 
               <tr>
