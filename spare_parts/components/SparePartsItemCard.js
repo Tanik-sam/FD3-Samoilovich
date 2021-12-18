@@ -288,7 +288,7 @@ setTimeout(this.defaultPosition,1000)
               </tr> 
               <tr>
                 <td className='itemData'>
-                  {this.props.equipment}
+                  {this.props.nameRow.equipment}
                 </td>
                 <td  className='itemData'>
                   {this.props.info.equipment}
