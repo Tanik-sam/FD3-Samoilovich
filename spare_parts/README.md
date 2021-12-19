@@ -36,4 +36,8 @@ npm json-server --watch sParts.json
 
 npm run builddev
 
+### 3. Запуск тестов
+
+npm test
+
 
