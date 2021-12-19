@@ -1,15 +1,13 @@
 ﻿import React from 'react';
+import {parts} from '../globalData'
 import ReactDOM from 'react-dom';
 import './Pages.css';
 import { BrowserRouter } from 'react-router-dom';
 import PagesRouter from '../pages/PagesRouter';
 import PagesLinks from '../pages/PagesLinks';
-import { parts } from  '../globalData'
-
-
 import isoFetch from 'isomorphic-fetch';
 
-console.log(parts)
+
 class Pages extends React.PureComponent {
 
  constructor(props) {
@@ -35,14 +33,12 @@ class Pages extends React.PureComponent {
   };
 
   fetchSuccess = (loadedData) => {
-    console.log(loadedData);
     this.setState({
       dataReady:true,
       columnName:loadedData[0],
       spareParts:loadedData.slice(0),  
       });
-      //parts=loadedData
-      //console.log(parts)
+      parts.push(loadedData)
   }
   loadData = () => {
 
@@ -74,6 +70,7 @@ class Pages extends React.PureComponent {
 }
 
   render() {
+    console.log("Pages render");
      if ( !this.state.dataReady )
       return <div>загрузка данных...</div>;
    
@@ -98,6 +95,8 @@ class Pages extends React.PureComponent {
 );
     }
   }
+
 export default Pages;
+export {parts}
 
 

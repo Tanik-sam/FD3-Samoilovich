@@ -40,17 +40,14 @@ class SparePartsItem extends React.PureComponent {
   this.setState({editMode:1})
   }
   componentWillReceiveProps = (newProps) => {
-    console.log("SparePartsItem code="+this.props.info.code+" componentWillReceiveProps");
     this.setState({info:newProps.info});
   };
 
    setSelectedSp=(eo)=>{
      spEvents.emit('SpClicked',this.props.info.code);
-     console.log('emited',this.props.info.code)
    }
    editRow=(eo) =>{
     spEvents.emit('SpEdit',this.props.info.code);
-    console.log('SpEdit',this.props.info.code)
     this.setState({editMode:0});
    }
    deleteRow=(eo) =>{

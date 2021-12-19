@@ -117,7 +117,6 @@ setTimeout(this.defaultPosition,1000)
       let newArticulCode=this.newArticulCodeRef.value;
         
     }
-    console.log (this.newArticulCodeRef.value)
   }; 
   checkArticulCodeValue=()=>{
     
@@ -223,7 +222,7 @@ setTimeout(this.defaultPosition,1000)
 
   render() {
 
-    
+    console.log("SparePartsItemCard render");
     if (this.props.cardMode==1){
 
     return (

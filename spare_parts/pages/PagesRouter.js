@@ -9,10 +9,9 @@ class PagesRouter extends React.Component {
           
   render() {
     let pathPage="/"+this.props.pageNum+"/:clid"
-    console.log(this.props.pageNum)
     return (
       <div>
-        <Route path={pathPage} component={Page_SpareParts} />
+        <Route path={pathPage} component={Page_SpareParts}  />
 
       </div>
     );

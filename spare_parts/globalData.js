@@ -1,8 +1,6 @@
-"use strict";
+﻿"use strict";
 
 
-    var parts=null;
+let parts=[]
 
-
-
-export {parts};
+export{parts}

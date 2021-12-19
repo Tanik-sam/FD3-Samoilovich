@@ -1,0 +1,18 @@
+﻿.EquipmentSort
+
+{
+   
+  background: -moz-linear-gradient(#f5f2c8, #BDB76B, #f5f2c8);
+  background: -webkit-gradient(linear, 0 0, 0  100%, from(#f5f2c8), to(#f5f2c8), color-stop(0.5, #BDB76B));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00BBD6', endColorstr='#EBFFFF');
+  padding: 3px 7px;
+  color: #333;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 30px;
+  border: 1px solid #485f38;
+  padding: 8px 8px;
+  margin: 8px 8px;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}  

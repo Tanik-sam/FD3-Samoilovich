@@ -1,14 +1,15 @@
 import React from 'react';
-
+import {parts} from '../globalData'
 import SpareParts from '../components/SpareParts';
 let sp=require('../spareParts.json')
-
+let k=parts
 class Page_SpareParts extends React.PureComponent {
-
+  
  
   render() {
+    console.log (k[0])
    let columnName=sp[0]
-   console.log(columnName)
+   
    let spareParts=sp.slice(1) 
     if (this.props.match.params.clid!='Все'){
     

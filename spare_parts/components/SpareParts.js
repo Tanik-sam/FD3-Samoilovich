@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 import SparePartsItem from './SparePartsItem';
 import EquipmentSelect from './EquipmentSelect';
+import EquipmentSort from './EquipmentSort';
 import './SpareParts.css';
 import SparePartsItemCard from './SparePartsItemCard';
 import {spEvents} from './events';
@@ -41,21 +42,18 @@ class SpareParts extends React.PureComponent {
     joint:this.props.joint,
     equipment:this.props.equipment,
     spPartsEdt: this.props.spParts.slice(),
-    filtered:0, //0--все, 1 -активные, 2- заблокированные
     selectedSparePartsId: null,
     cardShown: [],
     cardMode:1, //1 - режим просмотра
     editMode:1,
     equip:[],
     equipmentSelected:'',
+    equipmentSorted:'',
     dataReady: false,
     name: "???",
     sp_Parts: [],
     column_Name: [],
   };
-
-
-  
 
   componentDidMount = () => {
     spEvents.addListener('SpClicked',this.spSelected);
@@ -64,8 +62,7 @@ class SpareParts extends React.PureComponent {
     spEvents.addListener('SpSave',this.spSave);
     spEvents.addListener('SpDefault',this.spDefault);
     spEvents.addListener('ButtonEnbled',this.buttonEnbled)
-    
-    
+  
   };
 
   componentWillUnmount = () => {
@@ -80,7 +77,6 @@ class SpareParts extends React.PureComponent {
 
   eqClicked=(eq)=>{
     this.setState({equipmentSelected:eq})
-    console.log ('this.state.equipmentSelected',this.state.equipmentSelected)
   }
 
 
@@ -112,7 +108,6 @@ class SpareParts extends React.PureComponent {
         newSpData.price=clSn.price
         newSpData.articul=clSn.articul
         newSpData.articulCode=clSn.articulCode
-        console.log(clSn.articulCode)
         newSpData.quantity=clSn.quantity
         newSpData.equipment=clSn.equipment
         newSpData.urlSP=clSn.urlSP
@@ -152,54 +147,56 @@ class SpareParts extends React.PureComponent {
     this.setState({cardMode:2})
   }
   spSelected=(clId)=>{
-    console.log (clId)
-    
+   
     this.setState({selectedSparePartsId: clId} ); 
     function ffff(v,i,a){return v.code==clId }
     let cl=[...this.state.spPartsEdt]; 
     let cll=cl.filter(ffff); 
     this.setState ({cardShown:cll})
     
-   
-    }
+   }
 
-allSp=()=>{
-  this.setState({filtered:0}) //0--все, 1 -активные, 2- заблокированные
-  this.setState ({cardShown:[]})
-}
-activeSp=()=>{
-  this.setState({filtered:1}) //0--все, 1 -активные, 2- заблокированные
-  this.setState ({cardShown:[]})
-}
-blockedSp=()=>{
-  this.setState({filtered:2}) //0--все, 1 -активные, 2- заблокированные
-  this.setState ({cardShown:[]})
-}
 
 setSelectedEq=(eo)=>{
   this.setState({equipmentSelected:eo.target.value})
-  spEvents.emit('SpEquipmentSelected',eo.target.value)
- 
+  this.setState ({cardShown:[]})
 }
+setSortEq=(eo)=>{
+  this.setState({equipmentSorted:eo.target.value})
+  this.setState ({cardShown:[]})
+} 
 
   render() {
 
-
     console.log("SpareParts render");
-    console.log(this.state.spPartsEdt);
-
+    //--------------------------------------------------------------------сортировка 
+    let sortArr=['Сброс сортировки','Сортировать по названию','Сортировать по артикулу','Сортировать по узлу']
     var spFiltered=this.state.spPartsEdt
-    if (this.state.filtered==1){let spActive=[...this.state.spPartsEdt]; 
-      function f1(v,i){if (v.spName<i.spName) return -1;if (v.spName>i.spName) return 1;return 0; }
-      spFiltered=spActive.sort(f1);
-      }
-      else {
-      if (this.state.filtered==2){let spBlocked=[...this.state.spPartsEdt]; 
-        function f2(v,i){if (v.articulCode<i.articulCode) return -1;if (v.articulCode>i.articulCode) return 1;return 0; }
-        spFiltered=spBlocked.sort(f2);
-        }
+    if (this.state.equipmentSorted){
+    switch (this.state.equipmentSorted){
+       case 'Сортировать по названию':
+        let spSortName=[...this.state.spPartsEdt]; 
+        spFiltered=spSortName.sort(s1);
+       break;
+       case 'Сортировать по артикулу':
+        let spSortArticul=[...this.state.spPartsEdt]; 
+        spFiltered=spSortArticul.sort(s2);
+       break;
+       case 'Сортировать по узлу':
+        let spSortJoint=[...this.state.spPartsEdt]; 
+        spFiltered=spSortJoint.sort(s3);
+       break;
      }
+    
+       function s1(v,i){if (v.spName<i.spName) return -1;if (v.spName>i.spName) return 1;return 0; }
+       function s2(v,i){if (v.articulCode<i.articulCode) return -1;if (v.articulCode>i.articulCode) return 1;return 0; }
+       function s3(v,i){if (v.joint<i.joint) return -1;if (v.joint>i.joint) return 1;return 0; }
+    }
+   //----------------------------------------------------------------------сортировка_end
 
+   //----------------------------------------------------------------------фильтрация
+    
+    if (this.state.equipmentSelected){
      var eqFiltered=this.state.equipmentSelected
      if (eqFiltered!='Оборудование на странице'){
      if (eqFiltered){
@@ -208,15 +205,13 @@ setSelectedEq=(eo)=>{
       spFiltered=spFiltered2.filter(f3)
       }
     }
-
+  }
       let kk=[...spFiltered] //отбираются уникальные строки с видом орудия для формирования выпадающего списка
-
       let equipTypeItem=[]
       let equipTypeItem0=[]
           for (let i=0;i<kk.length;i++){
           let o=[]
           o=kk[i].equipment.split(',')
-          console.log(o)
           for (let j=0;j<o.length;j++){
             equipTypeItem0.push(o[j].trim())
        }
@@ -235,27 +230,30 @@ setSelectedEq=(eo)=>{
       }
       equipTypeItem.sort();
       equipTypeItem.unshift('Оборудование на странице')
-
-     
-    
-
+   //----------------------------------------------------------------------фильтрация_end
+  
     var spCode=spFiltered.map(sp =>
       <SparePartsItem key={sp.code} info={sp} selectedSparePartsId={this.state.selectedSparePartsId} />
     );
+
     var eqSelect= equipTypeItem.map(sp =>
-      <EquipmentSelect key={sp} eq={sp} />
+      <EquipmentSelect key={sp+'k'} eq={sp} />
       
     );
- 
- 
+    let sortItem=sortArr
+    var eqSort= sortItem.map(sE =>
+      <EquipmentSort key={sE} eqS={sE} />
+      
+    );
+  
     if (this.state.cardShown!=[]) {var spSlctd=this.state.cardShown.map(v=>
       <SparePartsItemCard  key={v.code} info={v} cardMode={this.state.cardMode}
       nameRow={this.props.columnName} selectedSparePartsId={this.selectedSparePartsId}/>)}
     return (
       <div className='SpareParts2'>
-        <input className='notTable' data='all' type="button" value="Сброс сортировки" onClick={this.allSp}  />
-        <input className='notTable' data='active' type="button" value="Сортировать по названию" onClick={this.activeSp}  />
-        <input className='notTable' data='blocked' type="button" value="Сортировать по артикулу" onClick={this.blockedSp}  />
+        <select className="EquipmentSort" onChange={this.setSortEq}>
+        {eqSort}
+        </select>
         <select className="EquipmentSelect" onChange={this.setSelectedEq}>
         {eqSelect}
         </select>
