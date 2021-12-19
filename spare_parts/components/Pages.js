@@ -41,8 +41,8 @@ class Pages extends React.PureComponent {
       columnName:loadedData[0],
       spareParts:loadedData.slice(0),  
       });
-      parts=loadedData
-      console.log(parts)
+      //parts=loadedData
+      //console.log(parts)
   }
   loadData = () => {
 
