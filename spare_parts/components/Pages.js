@@ -4,11 +4,12 @@ import './Pages.css';
 import { BrowserRouter } from 'react-router-dom';
 import PagesRouter from '../pages/PagesRouter';
 import PagesLinks from '../pages/PagesLinks';
+import { parts } from  '../globalData'
 
 
 import isoFetch from 'isomorphic-fetch';
 
-
+console.log(parts)
 class Pages extends React.PureComponent {
 
  constructor(props) {
@@ -40,6 +41,8 @@ class Pages extends React.PureComponent {
       columnName:loadedData[0],
       spareParts:loadedData.slice(0),  
       });
+      parts=loadedData
+      console.log(parts)
   }
   loadData = () => {
 
