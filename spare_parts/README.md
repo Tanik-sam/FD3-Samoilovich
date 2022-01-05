@@ -30,7 +30,7 @@
 
 ### 1. Запуск json-server
 
-npm json-server --watch sParts.json
+json-server --watch sParts.json
 
 ### 2. Запуск сборки
 
