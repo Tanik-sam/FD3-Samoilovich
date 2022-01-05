@@ -25,6 +25,9 @@
   border-color: silver;
    
 }
+.SparePartsItem td{
+  width: min-content;
+}
 
 
 .SparePartsName

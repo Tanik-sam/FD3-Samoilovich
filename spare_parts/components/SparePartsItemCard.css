@@ -84,11 +84,11 @@
 {
   background:  #c97aee;
  }
-table td{
-  width:200px;
+table td {
+  width: 200px;
   text-align:center;
-  padding: 6px 6px;
-  font-size: large;
+  padding: 4px 4px;
+  font-size: medium;
   font-family: Verdana, Geneva, Tahoma, sans-serif; 
 
 }

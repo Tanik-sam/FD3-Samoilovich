@@ -64,21 +64,22 @@
  }
  .StatusActiveName
  {text-align:center;
-  padding: 7px 7px;
-  font-size: large;
+  padding: 4px 4px;
+  font-size: medium;
   font-family: Verdana, Geneva, Tahoma, sans-serif; 
-  font-weight: bold;
+  /*font-weight: bold;*/
   color:rgb(45, 66, 38);
   }
 
- td{
-  
+ td .SparePartsItemEven{
    text-align:center;
-   padding: 8px 8px;
-   font-size: large;
+   padding: 4px 4px;
+   font-size: medium;
    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+   width:min-content;
+  }
 
- }
+ 
  input.inTable{
    background: -moz-linear-gradient(#D0ECF4, #5BC9E1, #D0ECF4);
    background: -webkit-gradient(linear, 0 0, 0  100%, from(#D0ECF4), to(#D0ECF4), color-stop(0.5, #5BC9E1));
