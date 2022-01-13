@@ -74,17 +74,14 @@
 }
 .SparePartsItemCard .itemData
 {
- 
  background:  #7c7e7b;
  color:white;
-
-
+}
+.SparePartsItemCard .itemData2 td
+{
+ max-width: 300px;
 }
 
-.SparePartsItemCard.itemData2
-{
-  background:  #c97aee;
- }
 table td {
   width: 213px;
   text-align:center;

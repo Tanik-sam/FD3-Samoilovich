@@ -345,6 +345,7 @@ setTimeout(this.defaultPosition,1000)
                 <td className='itemData2'>
                   <input className='itemData2' type="text" defaultValue={this.props.info.articulCode} ref={this.setNewArticulCodeRef} onBlur={this.checkArticulCodeValue}/>
                 </td>
+                </tr>
                 <tr>
                 <td className='itemData2'>
                   {this.props.nameRow.quantity}
@@ -357,7 +358,7 @@ setTimeout(this.defaultPosition,1000)
                 </td>
                
               </tr> 
-              </tr>
+              
               <tr>
                 <td className='itemData2'>
                   {this.props.nameRow.price}
