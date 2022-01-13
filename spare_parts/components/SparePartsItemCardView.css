@@ -1,0 +1,99 @@
+﻿.Img{
+  -webkit-clip-path: inset(0px round 20px);
+          clip-path: inset(0px round 20px);
+ }
+ div.SparePartsItemCardView{
+  max-width: 280px;
+  float:left;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 10px;
+  height: 330px;
+  border: solid #667 1px;
+  border-radius: 30px;
+  padding: 12px 12px;
+  width:fit-content;
+  box-sizing: border-box;
+    box-shadow:  0 0 20px rgba(112, 128, 144, 0.8);
+    transition: opacity 1s, height 1s;
+    background: #7c7e7ba9;
+    border-color: silver;
+       
+ } 
+ .SparePartsItemCardNmb{
+  position: absolute;
+  z-index: 10;
+  color:#667;
+  padding: 4px 6px;
+  font-size: 0.9rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;  
+ }
+.SparePartsItemCardView .itemCard
+{
+ background:  transparent;
+ color:white;
+ font-size: small;
+ max-width: 250px;
+ padding: 0;
+ text-align: left;
+ vertical-align: top;
+}
+.SparePartsItemCardView .itemCardName
+{
+ background:  transparent;
+ color:white;
+ font-size: 0.7em;
+ max-width: 250px;
+ padding: 0px 0px;
+ text-align: center;
+}
+
+.SpItemChosenCard
+{
+  max-width: 280px;
+  float:left;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 4px;
+  height: 360px;
+  border: solid #667 1px;
+  border-radius: 30px;
+  padding: 12px 12px;
+  width:fit-content;
+  box-sizing: border-box;
+  box-shadow:  0 0 30px rgb(75, 86, 97);
+  background:  #686767;
+  
+  color: white;
+  transition: 0.5s;
+  border-color: #686767;
+}
+.SpItemChosenCard .itemCard{
+  text-align: left;
+  vertical-align: top;
+  font-size: 0.8rem;
+  font-weight: bolder;
+}
+
+.SparePartsItemCardView:hover
+{
+  background:   #BDB76B;
+  border: 1px  #BDB76B;
+}
+
+  @media all and (max-width: 400px) {
+    td .SparePartsItemCardView{ 
+        font-size: small;
+    };
+    input.notTable{
+      font-size: small;
+    };
+    input.inTable{
+      font-size: small;
+    };
+
+  }

@@ -1,18 +1,21 @@
-﻿ 
+﻿div .tableView{
+  display: block;
+}
+div .tableViewNone{
+  display: none;
+}
 .SpareParts
 {
   border: solid rgb(45, 66, 38) 1px;
   border-radius: 30px;
   padding: 3px 5px;
-  
     background-color: #FFFFFF;
     background-image: url(../Rabe_Agri_logo_transp_big.png);
     background-repeat: repeat;
     background-position: right center;
     border: 1px groove #BDB76B;
     box-sizing: border-box;
-
-   text-align:center;
+    text-align:center;
 }
 
 
@@ -23,7 +26,6 @@
   padding: 3px 5px;
   background: #cccccc;
   border-color: silver;
-   
 }
 .SparePartsItem td{
   width: min-content;
@@ -32,8 +34,8 @@
 
 .SparePartsName
 {
-  padding: 7px 7px;
-  font-size: large;
+  padding: 6px 6px;
+  font-size: medium;
   font-family: Verdana, Geneva, Tahoma, sans-serif; 
   font-weight: bold;
   color:rgb(45, 66, 38);
@@ -41,27 +43,29 @@
 
 .SparePartsItem
 {
-  padding: 10px 0px;
-  
-  
+  padding: 4px 0px;
+  overflow-x: auto;
 }
 
 th {
   color:rgb(45, 66, 38);
-  
   text-align:center;
-  padding: 8px 8px;
-  font-size: large;
-  font-family: Verdana, Geneva, Tahoma, sans-serif; 
-  
+  padding: 2px 2px;
+  font-size: 0.9rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;  
+  max-width:200px;
 }
 tr
 {
   background: linear-gradient(45deg, #b1e092 #c97aee);
-  
 }
 hr{
   border-color:  rgb(166, 166, 190);
-  border-width:thin
+  border-width:1px;
   
+}
+div.flexDiv{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }

@@ -5,6 +5,7 @@ import EquipmentSelect from './EquipmentSelect';
 import EquipmentSort from './EquipmentSort';
 import './SpareParts.css';
 import SparePartsItemCard from './SparePartsItemCard';
+import SparePartsItemCardView from './SparePartsItemCardView';
 import {spEvents} from './events';
 
 
@@ -53,6 +54,10 @@ class SpareParts extends React.PureComponent {
     name: "???",
     sp_Parts: [],
     column_Name: [],
+    viewTable: "Карточки",
+    tView2: "tableViewNone",
+    tView: "tableView"
+
   };
 
   componentDidMount = () => {
@@ -165,6 +170,17 @@ setSortEq=(eo)=>{
   this.setState({equipmentSorted:eo.target.value})
   this.setState ({cardShown:[]})
 } 
+tableView=()=>{
+    if (this.state.viewTable=="Таблица"){
+        this.setState({tView:"tableView"});
+        this.setState({tView2:"tableViewNone"});
+        this.setState({viewTable:"Карточки"})
+  }
+    else{this.setState({viewTable:"Таблица"})
+         this.setState({tView:"tableViewNone"})
+         this.setState({tView2:"tableView"});
+}
+}
 
   render() {
 
@@ -231,9 +247,13 @@ setSortEq=(eo)=>{
       equipTypeItem.sort();
       equipTypeItem.unshift('Оборудование на странице')
    //----------------------------------------------------------------------фильтрация_end
-  
+    
     var spCode=spFiltered.map(sp =>
       <SparePartsItem key={sp.code} info={sp} selectedSparePartsId={this.state.selectedSparePartsId} />
+    );
+    
+    var spCode2=spFiltered.map(sp =>
+      <SparePartsItemCardView key={sp.code} info={sp} nameRow={this.props.columnName} selectedSparePartsId={this.state.selectedSparePartsId} />
     );
 
     var eqSelect= equipTypeItem.map(sp =>
@@ -251,6 +271,7 @@ setSortEq=(eo)=>{
       nameRow={this.props.columnName} selectedSparePartsId={this.selectedSparePartsId}/>)}
     return (
       <div className='SpareParts2'>
+          <input className="inTable" data='view' type="button" value={this.state.viewTable} onClick={this.tableView} disabled={this.state.editMode==0} />
         <select className="EquipmentSort" onChange={this.setSortEq}>
         {eqSort}
         </select>
@@ -259,6 +280,7 @@ setSortEq=(eo)=>{
         </select>
         <hr/>
         <div className='SparePartsItem'>
+          <div className={this.state.tView}>
           <table>
             <tbody>
         <tr className="SparePartsItemEven">
@@ -277,6 +299,12 @@ setSortEq=(eo)=>{
           {spCode}
           </tbody>
           </table>
+          </div>
+          <div className={this.state.tView2}>
+          <div className='flexDiv'>
+          {spCode2}
+          </div>
+          </div>
         </div>
         <input className="inTable" data='add' type="button" value="Добавить позицию" onClick={this.addSp} disabled={this.state.editMode==0} />
       
