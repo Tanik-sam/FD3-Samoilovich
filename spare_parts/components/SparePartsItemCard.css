@@ -1,5 +1,5 @@
 ﻿div.SparePartsItemCardHide{
-  position: absolute;
+  position: fixed;
   z-index: 101;
   top: 0;
   right: 0;
@@ -26,7 +26,7 @@
  
 }
  div.SparePartsItemCard{
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
