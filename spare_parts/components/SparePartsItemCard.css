@@ -22,9 +22,12 @@
   opacity: 0%;
   height: 1px;
   overflow: hidden;
-  
- 
+   
 }
+div.SparePartsItemCardHide .close{
+  display:none;
+}
+
  div.SparePartsItemCard{
   position: fixed;
   top: 0;
@@ -48,22 +51,38 @@
    
  } 
 
-.SparePartsItemCardClose{
-  position: absolute;
-  top: 10;
-  z-index: 99; 
-  right: 10; 
-  float:right;
-  height: 30px;
-  width:30px;
-  border-radius: 50%;
-  
-}
-.SparePartsItemCardClose :hover{
 
-  box-shadow:  0 0 8px rgba(112, 128, 144, 0.8);
-  border-radius: 50%;
-}
+  .SparePartsItemCard .close  {
+    position: absolute;
+    z-index: 103;
+    right: 18px;
+    top: 17px;
+    width: 28px;
+    height: 28px;
+    opacity: 0.6;
+    border: solid #667 2px;
+    border-radius: 50%;
+  }
+  .close:hover {
+    opacity: 1;
+    box-shadow:  0 0 8px rgba(112, 128, 144, 0.8);
+  }
+  .close:before, .close:after {
+    position: absolute;
+    left: 13px;
+    top: 2px;
+    content: ' ';
+    height: 22px;
+    width: 2px;
+    background-color: #667;
+  }
+  .close:before {
+    transform: rotate(45deg);
+  }
+  .close:after {
+    transform: rotate(-45deg);
+  }
+
 
 .SparePartsItemCard
 {
