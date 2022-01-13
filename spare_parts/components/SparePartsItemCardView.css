@@ -22,7 +22,7 @@
     border-color: silver;
        
  } 
- .SparePartsItemCardNmb{
+ .SparePartsItemCardView .SparePartsItemCardNmb,.SpItemChosenCard .SparePartsItemCardNmb{
   position: absolute;
   z-index: 10;
   color:#667;
@@ -32,6 +32,7 @@
  }
 .SparePartsItemCardView .itemCard
 {
+ 
  background:  transparent;
  color:white;
  font-size: small;
