@@ -14,7 +14,7 @@ class SpareParts extends React.PureComponent {
   
  
   static propTypes = {
-    
+    adm:PropTypes.bool.isRequired,
     spParts:PropTypes.arrayOf(
       PropTypes.shape({
         code: PropTypes.number.isRequired,
@@ -183,7 +183,7 @@ tableView=()=>{
 }
 
   render() {
-
+    console.log(this.props.adm)
     console.log("SpareParts render");
     //--------------------------------------------------------------------сортировка 
     let sortArr=['Сброс сортировки','Сортировать по названию','Сортировать по артикулу','Сортировать по узлу']
@@ -249,7 +249,7 @@ tableView=()=>{
    //----------------------------------------------------------------------фильтрация_end
     
     var spCode=spFiltered.map(sp =>
-      <SparePartsItem key={sp.code} info={sp} selectedSparePartsId={this.state.selectedSparePartsId} />
+      <SparePartsItem key={sp.code} info={sp} selectedSparePartsId={this.state.selectedSparePartsId} adm={this.props.adm}/>
     );
     
     var spCode2=spFiltered.map(sp =>
@@ -269,6 +269,36 @@ tableView=()=>{
     if (this.state.cardShown!=[]) {var spSlctd=this.state.cardShown.map(v=>
       <SparePartsItemCard  key={v.code} info={v} cardMode={this.state.cardMode}
       nameRow={this.props.columnName} selectedSparePartsId={this.selectedSparePartsId}/>)}
+    let adminAdd=<div></div>
+    let adminMode=<tr className="SparePartsItemEven">
+    <th className='ColumnN'>  {this.props.columnName.code}</th>
+    <th className='ColumnN'>  {this.props.columnName.spName}</th>
+    <th className='ColumnN'>  {this.props.columnName.articul}</th>
+    <th className='ColumnN'>  {this.props.columnName.articulCode}</th>
+    <th className='ColumnN'>  {this.props.columnName.quantity}</th>
+    <th className='ColumnN'>  {this.props.columnName.price}</th>
+    <th className='ColumnN'>  {this.props.columnName.joint}</th>  
+    <th className='ColumnN'>  {this.props.columnName.equipment}</th>
+    <th className='ColumnN'>Наличие</th> 
+      </tr> 
+
+    if (this.props.adm==true){
+     adminAdd=<input className="inTable" data='add' type="button" value="Добавить позицию" onClick={this.addSp} disabled={this.state.editMode==0} />
+     adminMode=<tr className="SparePartsItemEven">
+    <th className='ColumnN'>  {this.props.columnName.code}</th>
+    <th className='ColumnN'>  {this.props.columnName.spName}</th>
+    <th className='ColumnN'>  {this.props.columnName.articul}</th>
+    <th className='ColumnN'>  {this.props.columnName.articulCode}</th>
+    <th className='ColumnN'>  {this.props.columnName.quantity}</th>
+    <th className='ColumnN'>  {this.props.columnName.price}</th>
+    <th className='ColumnN'>  {this.props.columnName.joint}</th>  
+    <th className='ColumnN'>  {this.props.columnName.equipment}</th>
+    <th className='ColumnN'>Наличие</th> 
+    <th className='ColumnN'>Редактировать</th> 
+    <th className='ColumnN'>Удалить</th>  
+  </tr> 
+    }
+    
     return (
       <div className='SpareParts2'>
           <input className="inTable" data='view' type="button" value={this.state.viewTable} onClick={this.tableView} disabled={this.state.editMode==0} />
@@ -283,19 +313,7 @@ tableView=()=>{
           <div className={this.state.tView}>
           <table>
             <tbody>
-        <tr className="SparePartsItemEven">
-        <th className='ColumnN'>  {this.props.columnName.code}</th>
-        <th className='ColumnN'>  {this.props.columnName.spName}</th>
-        <th className='ColumnN'>  {this.props.columnName.articul}</th>
-        <th className='ColumnN'>  {this.props.columnName.articulCode}</th>
-        <th className='ColumnN'>  {this.props.columnName.quantity}</th>
-        <th className='ColumnN'>  {this.props.columnName.price}</th>
-        <th className='ColumnN'>  {this.props.columnName.joint}</th>  
-        <th className='ColumnN'>  {this.props.columnName.equipment}</th>
-        <th className='ColumnN'>Наличие</th> 
-        <th className='ColumnN'>Редактировать</th> 
-        <th className='ColumnN'>Удалить</th>  
-          </tr> 
+          {adminMode}
           {spCode}
           </tbody>
           </table>
@@ -306,8 +324,7 @@ tableView=()=>{
           </div>
           </div>
         </div>
-        <input className="inTable" data='add' type="button" value="Добавить позицию" onClick={this.addSp} disabled={this.state.editMode==0} />
-      
+        {adminAdd}
         {spSlctd}
         
       </div>

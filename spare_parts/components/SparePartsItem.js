@@ -68,7 +68,7 @@ class SparePartsItem extends React.PureComponent {
     
     if (this.props.selectedSparePartsId==this.props.info.code) {classSp="SpItemChosen"} else if (this.props.info.code%2==0) {classSp="SparePartsItemEven"} else {classSp="SparePartsItemOdd"}
     if (this.state.ht==1) {classSp="SparePartsItemClose"} 
-
+    if (this.props.adm==true){
     return (
       <tr className={classSp} onClick={this.setSelectedSp}  >
       <td className="StatusActiveName">{this.state.info.code}</td>
@@ -84,7 +84,23 @@ class SparePartsItem extends React.PureComponent {
       <td className="StatusActive"><input className="inTable" type='button' data={'del'+this.props.info.code} value='Удалить' onClick={this.deleteRow} disabled={this.state.editMode==0}/> </td>   
       </tr>
     )        
-  }
+   }
+   else{
+    return (
+      <tr className={classSp} onClick={this.setSelectedSp}  >
+      <td className="StatusActiveName">{this.state.info.code}</td>
+      <td className="StatusActiveName">{this.state.info.spName}</td>
+      <td className="StatusActive">{this.state.info.articul}</td>
+      <td className="StatusActive">{this.state.info.articulCode}</td>
+      <td className="StatusActive">{this.state.info.quantity}</td>
+      <td className="StatusActive">{this.state.info.price}</td>
+      <td className="StatusActive">{this.state.info.joint}</td>
+      <td className="StatusActive">{this.state.info.equipment}</td>
+      <td className={this.state.info.quantity>0?"StatusActive":"StatusBlocked"}>{this.state.info.quantity>0?"в наличии":"нет в наличии"}</td>
+      </tr>
+    )        
+   }
+}
 
 }
 

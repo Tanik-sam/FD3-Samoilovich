@@ -80,8 +80,10 @@ class Pages extends React.PureComponent {
       page[i]=i+1
   }  
   page.push('Все')
+  var page1=[...page]
+  page1.push('admin')
   var linkSheet=page.map(p=><PagesLinks   key={p+'l'} pageNum={p}/>)
-  var routeSheet=page.map(p=><PagesRouter key={p+'p'} pageNum={p}/>)
+  var routeSheet=page1.map(p=><PagesRouter key={p+'p'} pageNum={p}/>)
 
     return (
   <BrowserRouter>
