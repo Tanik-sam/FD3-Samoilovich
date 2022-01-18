@@ -9,9 +9,9 @@ json-server --watch movieArray.json
 npm run builddev
 # Login & Create accaunt
 
-*Name*: any set of  latin letters and numbers
-*E-mail*: '***@***.***'
-*Password*: 123456789
-*Confirm password*: the same as *Password*
+- ***Name***: any set of  latin letters and numbers.
+- ***E-mail***: '***@***.***'.
+- ***Password***: '123456789'.
+- ***Confirm password***: the same as ***Password***.
 
 
