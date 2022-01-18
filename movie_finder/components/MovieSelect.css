@@ -1,0 +1,23 @@
+﻿.MovieSelect
+{
+   
+  background: white;
+ width:100%;
+  
+  color: #333;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 30px;
+  border: 1px solid #485f38;
+  padding: 16px 6px;
+  margin: 4px 4px;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}  
+@media all and (max-width: 400px) {
+  .option{ 
+      font-size: small;
+      overflow:hidden;
+  };
+}
