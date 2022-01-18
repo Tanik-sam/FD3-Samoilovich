@@ -14,4 +14,6 @@ npm run builddev
 - ***Password***: '123456789'.
 - ***Confirm password***: the same as ***Password***.
 
+Created on the React Native (without Redux + Redux-saga + Firebase). The application doesn't login and registrate via Google + Facebook+ Firebase.
+
 
