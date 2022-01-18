@@ -3,15 +3,16 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .Form{
-margin:6px;
+
 background: #f2f2f2;
 text-align:center;
 } 
 .Form h2{
-    padding: 6px 6px;
+    padding: 40px 6px 20px 6px;
     font-size: 2 rem;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color:#183274;
+    margin: 0;
 }
 .Form .form-group{
     font-size: 1rem;
