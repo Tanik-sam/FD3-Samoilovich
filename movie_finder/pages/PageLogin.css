@@ -66,7 +66,7 @@ button {
   }
   
   button:hover {
-  width: 100%;
+  width: 96%;
     border: none;
     padding: 6px 6px;
     margin: 4px;
@@ -79,6 +79,15 @@ button.btnSignIn{
     background-color:#2e63e5;
     color: white;
 }
+button.btnSignIn1{
+    display: none;
+}
+button.btnSignIn:disabled{
+    margin-top: 50px;
+    background-color:#516db3;
+    color: rgb(172, 169, 169);    
+}
+
 button.btnSignInF{
     
     background-color:#e6eaf4;

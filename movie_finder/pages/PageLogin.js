@@ -50,13 +50,13 @@ class PageLogin extends React.PureComponent {
         }
   }
   validateFieldName=()=>{
-    let value= this.state.valueE
+    let value= this.state.valueN
     if ((value.match(/[\d\w/]/))&&(value!='')){
         this.setState({nameValid: true,
                       nameError:''})
     }
     else {
-        this.setState({emailError: "INCORRECT NAME!"})
+        this.setState({nameError: "INCORRECT NAME!"})
     }
   }
   validateFieldPassword=()=>{
@@ -86,11 +86,24 @@ class PageLogin extends React.PureComponent {
   
   render () {
     let movies=moviesArr 
-       
+    let btn='btnSignIn'
+    let btn1='btnSignIn1'
     let formValid=false;
-    if (this.state.passwordValid==true && this.state.emailValid==true&& this.state.nameValid==true&& this.state.passwordValid2==true){
-        formValid=true
+    if (this.props.match.params.clid=='create'){
+        if (this.state.passwordValid==true && this.state.emailValid==true&& this.state.nameValid==true&& this.state.passwordValid2==true){
+            formValid=true
+            btn='btnSignIn1'
+            btn1='btnSignIn'
+        }
+   }
+    if (this.props.match.params.clid=='login'){
+      if (this.state.passwordValid==true && this.state.emailValid==true){
+          formValid=true
+          btn='btnSignIn1'
+          btn1='btnSignIn'
+      }
     }
+
  switch (this.props.match.params.clid){
  case 'login':
   return (<form className="Form">
@@ -111,8 +124,10 @@ class PageLogin extends React.PureComponent {
      </div>
      <span>{this.state.passwordError}</span>
    </div>
-   
-       <button type="submit" className="btnSignIn" disabled={!formValid} onClick={this.onclickBtn}>
+   <button type="submit" className={btn} disabled={!formValid} onClick={this.onclickBtn}>
+       Sign in
+       </button>
+       <button type="submit" className={btn1} disabled={!formValid} onClick={this.onclickBtn}>
        <NavLink to={"/"+'main'+"/"+'main'} className="PageLink3" activeClassName="ActivePageLink3"> Sign in</NavLink>
        </button>
    <button type="submit" className="btnSignInF" disabled={!formValid} onClick={this.onclickBtn}>
@@ -134,7 +149,7 @@ class PageLogin extends React.PureComponent {
        <div className="form-group">
            <div className="pass-em-group">
                <div className='mail'>  <img src="../user_icon.png" width={30}/></div>
-               <input className="form-group-input" type="name" placeholder="Name"  value={this.state.valueE} onChange={this.handleUserInputN} onBlur={this.validateFieldName}/>
+               <input className="form-group-input" type="name" placeholder="Name"  value={this.state.valueN} onChange={this.handleUserInputN} onBlur={this.validateFieldName}/>
             </div>
             <span>{this.state.nameError}</span>
        </div>
@@ -155,14 +170,17 @@ class PageLogin extends React.PureComponent {
        <div className="form-group">
          <div className="pass-em-group">
                <div className='password'>  <img src="../password_icon.png" width={30}/></div>
-         <input className="form-group-input" type="password"  placeholder="Confirm password" value={this.state.valueP2} onChange={this.handleUserInputP} onBlur={this.validateFieldPassword2} />
+         <input className="form-group-input" type="password"  placeholder="Confirm password" value={this.state.valueP2} onChange={this.handleUserInputP2} onBlur={this.validateFieldPassword2} />
          </div>
          <span>{this.state.passwordError}</span>
        </div>
-       <NavLink to={"/"+'main'+"/"+'main'} className="PageLink3" activeClassName="ActivePageLink3">
-       <button type="submit" className="btnSignIn" disabled={!formValid} onClick={this.onclickBtn}>
+      
+       <button type="submit" className={btn} disabled={!formValid} onClick={this.onclickBtn}>
        Sign in
-       </button></NavLink>
+       </button>
+       <button type="submit" className={btn1} disabled={!formValid} onClick={this.onclickBtn}>
+       <NavLink to={"/"+'main'+"/"+'main'} className="PageLink3" activeClassName="ActivePageLink3"> Sign in</NavLink>
+       </button>
        <button type="submit" className="btnSignInF" disabled={!formValid} onClick={this.onclickBtn}>
        Sign in with Facebook
        </button>
@@ -193,7 +211,7 @@ A legitimate terms-of-service agreement is legally binding and may be subject to
     }
     for (let i=0;i<movies.length;i++){
     if (this.props.match.params.clid==movies[i].show.id){
-      console.log(movies[i].show.id)
+      
       return(
         <MoviePageDetail key={movies[i].show.id} info={movies[i]}/>
       )
