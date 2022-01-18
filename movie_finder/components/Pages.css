@@ -3,7 +3,7 @@ display: none;
 }
 .MenuImage{
     background-image: url(/menu_icon.png);
-    position:absolute;
+    position:fixed;
     opacity: 0.4;
     text-align: right;
     left:10;
@@ -15,7 +15,7 @@ display: none;
 .MenuOpen{
     background: #e6e5ed;
     opacity: 0.6;
-    position:absolute;
+    position:fixed;
     text-align: right;
     left:10;
     right: 20px;
