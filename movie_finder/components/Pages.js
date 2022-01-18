@@ -8,6 +8,7 @@ import isoFetch from 'isomorphic-fetch';
 
 
 class Pages extends React.PureComponent {
+  
 
  constructor(props) {
     super(props);
@@ -20,6 +21,7 @@ class Pages extends React.PureComponent {
     dataReady: false,
     name: "???",
     movies: [],
+    menuClassName:'Menu',
    
   };
   fetchError = (errorMessage) => {
@@ -63,6 +65,15 @@ class Pages extends React.PureComponent {
     this.loadData();
     
 }
+menuClicked=()=>{
+  if(this.state.menuClassName=="Menu"){
+      this.setState({menuClassName:'MenuOpen'})
+  }
+  else{
+    this.setState({menuClassName:'Menu'})  
+  }
+}
+
 
   render() {
     console.log("Pages render");
@@ -70,21 +81,23 @@ class Pages extends React.PureComponent {
       return <div>загрузка данных...</div>;
   
       let movie=this.state.movies
-  let page=['login', 'create', 'main','movie','terms']
+  let page=['login', 'create', 'main','terms']
+  let page1=['login', 'create', 'main','terms']
   for (let i=0;i<movie.length;i++){
     page[i+5]=movie[i].show.id
   }
- 
 
-  var linkSheet=page.map(p=><PagesLinks   key={p+'l'} pageNum={p}/>)
+  var linkSheet=page1.map(p=><PagesLinks   key={p+'l'} pageNum={p}/>)
   var routeSheet=page.map(p=><PagesRouter key={p+'p'} pageNum={p}/>)
 
     return (
   <BrowserRouter>
   <div className='MoviePages'>
       {routeSheet}
+      <div className='MenuImage' onClick={this.menuClicked}> </div>
+      <div className={this.state.menuClassName}>
       {linkSheet}
-      
+      </div>
   </div>
    </BrowserRouter>
  

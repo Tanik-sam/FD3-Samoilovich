@@ -8,7 +8,7 @@ let movies=require('./movies.json');
 
 ReactDOM.render(
   
-  <Pages className='MoviePages' spareParts={movies}/>
+  <Pages className='MoviePages' />
 
   , document.getElementById('container') 
  

@@ -199,12 +199,7 @@ A legitimate terms-of-service agreement is legally binding and may be subject to
       )
     }
   }
-  if (this.props.match.params.clid==975){
-    console.log(975)
-    return(
-      <MoviePageDetail key={975} info={movies[0]}/>
-    )
-  }
+
   }
 }
     

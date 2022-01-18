@@ -7,10 +7,10 @@ import './PagesLinks.css';
 class PagesLinks extends React.Component {
           
   render() {
-    
+
     return (
       
-      <NavLink to={"/"+this.props.pageNum+"/"+this.props.pageNum} className="PageLink" activeClassName="ActivePageLink">{this.props.pageNum}</NavLink>
+      <NavLink to={"/"+this.props.pageNum+"/"+this.props.pageNum} className="PageLinkMenu" activeClassName="ActivePageLinkMenu">{this.props.pageNum}</NavLink>
       
     );
     
