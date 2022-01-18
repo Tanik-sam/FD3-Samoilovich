@@ -1,19 +1,6 @@
 
 
-.Terms.PageLink2 {
 
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: rgb(196, 157, 50);
-    margin-right: 10px;
-    margin-left: 10px;
-    font-size: 0.9 rem;
-}
-.Terms.ActivePageLink2 {
-    font-weight: bold;
-    color:rgb(211, 166, 41);
-    font-size: 0.9 rem;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
 
 a:-webkit-any-link {
     
@@ -44,4 +31,18 @@ a:-webkit-any-link {
     text-decoration: none;
     max-width: 60px;
 
+}
+.PageLink2 {
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(196, 157, 50);
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 0.9 rem;
+}
+.ActivePageLink2 {
+    font-weight: bold;
+    color:rgb(211, 166, 41);
+    font-size: 0.9 rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

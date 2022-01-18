@@ -7,12 +7,9 @@
   box-shadow:  0 0 20px 0 rgba(112, 128, 144, 0.8);
   box-sizing: border-box;
   text-align: center;
-  justify-content: center;
+  
   font-family:  'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  display:flex;
-  flex-wrap: nowrap;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  
 }
 .Close  {
   font-weight: bold;   
@@ -20,13 +17,14 @@
   color:white;
   opacity: 1;
   justify-self: start;
+  float: left;
 }
 .Nav{
 text-decoration: none;
 }
 .Detail{
   font-weight: bold;
-  text-align: center;   
+  text-align: center;
   color:white;
   font-size: 2.8rem ;
 }
