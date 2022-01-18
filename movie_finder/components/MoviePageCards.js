@@ -5,25 +5,7 @@ import {movieEvents} from './events';
 import { NavLink } from 'react-router-dom';
 class MoviePageCards extends React.PureComponent {
 
- 
-/*  static propTypes = {
-    info:PropTypes.shape({
-      
-      id:PropTypes.number.isRequired,
-      spName: PropTypes.string.isRequired,
-      articul: PropTypes.string.isRequired,
-      articulCode: PropTypes.string.isRequired,
-      quantity:PropTypes.number.isRequired,
-      price: PropTypes.number.isRequired,
-      joint: PropTypes.string.isRequired,
-      equipment: PropTypes.string.isRequired,
-      urlSP: PropTypes.string.isRequired,
-      ht:0
-      
-      
-    }),
-  };*/
- 
+
 
 
   state = {

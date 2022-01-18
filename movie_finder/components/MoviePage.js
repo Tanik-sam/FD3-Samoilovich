@@ -8,35 +8,35 @@ import MoviePageDetail from './MoviePageDetail';
 class MoviePage extends React.PureComponent {
   
  
-  /*static propTypes = {
+ /* static propTypes = {
     movies:PropTypes.arrayOf(
       PropTypes.shape({
         score: PropTypes.number.isRequired,
         show: PropTypes.objectOf(
           PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          url :PropTypes.string.isRequired,
-          name :PropTypes.string.isRequired,
-          type :PropTypes.string.isRequired,
-          language :PropTypes.string.isRequired,
-          genres :PropTypes.array.isRequired,
-          status :PropTypes.string.isRequired,
-          runtime :PropTypes.number.isRequired,
-          averageRuntime :PropTypes.number.isRequired,
-          premiered :PropTypes.string.isRequired,
-          ended :PropTypes.string.isRequired,
-          officialSite :PropTypes.string.isRequired,
-          schedule :PropTypes.object.isRequired,
-          rating :PropTypes.object.isRequired,
-          weight :PropTypes.number.isRequired,
-          network :PropTypes.object.isRequired,
-          webChannel :PropTypes.string.isRequired,
-          dvdCountry :PropTypes.string.isRequired,
-          externals :PropTypes.object.isRequired,
-          image : PropTypes.object.isRequired,
-          summary :PropTypes.string.isRequired,
-          updated :PropTypes.number.isRequired,
           _links : PropTypes.object.isRequired,
+          averageRuntime :PropTypes.number.isRequired,
+          dvdCountry :PropTypes.string.isRequired,
+          ended :PropTypes.string.isRequired,
+          externals :PropTypes.object.isRequired,
+          genres :PropTypes.array.isRequired,
+          id: PropTypes.number.isRequired,
+          image : PropTypes.object.isRequired,
+          language :PropTypes.string.isRequired,
+          name :PropTypes.string.isRequired,
+          network :PropTypes.object.isRequired,
+          officialSite :PropTypes.string.isRequired,
+          premiered :PropTypes.string.isRequired,
+          rating :PropTypes.object.isRequired,
+          runtime :PropTypes.number.isRequired,
+          schedule :PropTypes.object.isRequired,
+          status :PropTypes.string.isRequired,
+          summary :PropTypes.string.isRequired,       
+          type :PropTypes.string.isRequired,
+          updated :PropTypes.number.isRequired,
+          url :PropTypes.string.isRequired,
+          webChannel :PropTypes.string.isRequired,
+          weight :PropTypes.number.isRequired,
         }),
       )}))
    };*/

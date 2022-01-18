@@ -5,22 +5,7 @@ import {movieEvents} from './events';
 import { NavLink } from 'react-router-dom';
 class MoviePageDetail extends React.Component {
 
- /* static propTypes = {
-    info:PropTypes.shape({
-      
-      code:PropTypes.number.isRequired,
-      spName: PropTypes.string.isRequired,
-      articul: PropTypes.string.isRequired,
-      articulCode: PropTypes.string.isRequired,
-      quantity:PropTypes.number.isRequired,
-      price: PropTypes.number.isRequired,
-      joint: PropTypes.string.isRequired,
-      equipment: PropTypes.string.isRequired,
-      urlSP: PropTypes.string.isRequired,
-      
-    })
-  }*/
-   
+  
 
   render() {
 
