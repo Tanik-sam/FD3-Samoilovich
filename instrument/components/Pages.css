@@ -1,0 +1,12 @@
+﻿  
+.Links {display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;}
+.Cat {
+    display: inline-block;
+}
+
+.openCat{
+    display: block;
+}
+.closeCat{display: none;}

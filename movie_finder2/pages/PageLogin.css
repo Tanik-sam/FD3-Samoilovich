@@ -1,0 +1,124 @@
+﻿.Routing{
+    text-align:center;   
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.Form{
+
+background: #f2f2f2;
+text-align:center;
+} 
+.Form h2{
+    padding: 40px 6px 20px 6px;
+    font-size: 2 rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color:#183274;
+    margin: 0;
+}
+.Form .form-group{
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+div.mail, div.password{
+    border-right: solid 1px #b9b9b9;
+    height: 50px;
+   padding-bottom: 15px;
+    width: 15%;
+    text-align: center;
+    
+}
+
+.form-group img{
+    padding-top: 16px;
+}
+.pass-em-group{
+    border: solid 1px #b9b9b9;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    width:95%;
+    text-align: center;
+    background-color: white;
+     
+    margin-bottom: 20px;
+}
+input.form-group-input{
+    width:85%;
+    height: 50px;
+    padding: 9px;
+    border: none;
+    
+}
+input::placeholder{
+    font-size: 1rem;
+    padding-left: 6px;
+}
+button {
+    width: 95%;
+    border: none;
+    padding: 6px;
+    margin: 4px;
+    height: 50px;
+    font-size: 1rem;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  button:hover {
+  width: 96%;
+    border: none;
+    padding: 6px 6px;
+    margin: 4px;
+    font-size: 1rem;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-shadow:  0 0 10px rgba(112, 128, 144, 0.8);
+    }
+button.btnSignIn{
+    margin-top: 50px;
+    background-color:#2e63e5;
+    color: white;
+}
+button.btnSignIn1{
+    display: none;
+}
+button.btnSignIn:disabled{
+    margin-top: 50px;
+    background-color:#516db3;
+    color: rgb(172, 169, 169);    
+}
+
+button.btnSignInF{
+    
+    background-color:#e6eaf4;
+    color: #5672b0;
+}
+button.btnSignInG{
+    background-color:#f5e7ea;
+    color: #e05950
+}
+.CreateAcc{
+    color:  #537ce7;
+    font-size: 1rem;
+    padding: 50px 10px 150px 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+}
+.Terms{
+    padding: 50px 10px 150px 10px;
+    color:  #5d6069;
+    font-size: 0.9rem !important;
+    padding: 50px 10px 150px 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+     
+}
+
+.form-group span{
+    color:red;
+    font-size: small;
+}
+.FormLogo{
+    padding:50px 20px 10px 20px;
+    max-width:100px;
+};
+

@@ -1,0 +1,63 @@
+﻿
+.SelectionMovie1{
+  width:100%;
+  position:fixed;
+  background: #36cdef;
+  padding: 50px 20px 10px 10px;
+  box-shadow:  0 0 20px 0 rgba(112, 128, 144, 0.8);
+  box-sizing: border-box;
+  text-align: center;
+  
+  font-family:  'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  
+}
+.Close  {
+  font-weight: bold;   
+  font-size: 2.8rem ;
+  color:white;
+  opacity: 1;
+  justify-self: start;
+  float: left;
+}
+.Nav{
+text-decoration: none;
+}
+.Detail{
+  font-weight: bold;
+  text-align: center;
+  color:white;
+  font-size: 2.8rem ;
+}
+ .itemData{
+  text-align: left;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+  .Close:hover {
+    
+    text-shadow:  0 0 8px rgba(112, 128, 144, 0.8);
+    opacity: 0.6;
+  }
+ .Fill{
+  padding-top: 180px;
+ }
+ 
+
+td.MovieName{
+  background:  transparent;
+  color:rgb(7, 1, 1);
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding:14px;
+  text-align: center;
+  font-family:  'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+td.Summary{
+  padding:4px;
+  text-align: justify;
+  font-size: 1rem;
+  font-weight: normal;
+}
+

@@ -1,0 +1,27 @@
+﻿.Catalog{
+  color:rgb(45, 66, 38);
+  text-align:left;
+  float:left;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;  
+  width: 500px;
+}
+ 
+.CatalogChosen{
+   background:  #929292;
+    font-weight: bolder;
+    color: white;
+    transition: 1s;
+    border-color: silver;
+  
+}
+.Catalog:hover{
+  color:rgb(159, 171, 177);
+  cursor: pointer;
+}
+
+  @media all and (max-width: 400px) {
+    div{
+        font-size: small;
+    };
+   
+  }

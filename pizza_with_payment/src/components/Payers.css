@@ -1,0 +1,21 @@
+.Guests {
+  font-family: sans-serif;
+  text-align: left;
+}
+.greenClass {
+  color: green;
+  font-weight: bold;
+}
+
+.PaidButton {
+  padding: 8px 40px;
+  margin: 8px 10px;
+  font-weight: bold;
+  box-shadow: 1px 1px 4px #6b0304;
+  background-color: #d8a55e;
+}
+.Guests_payment {
+  font-family: sans-serif;
+  text-align: center;
+  font-weight: bolder;
+}

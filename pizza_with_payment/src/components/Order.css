@@ -1,0 +1,15 @@
+.TableHeader {
+  max-width: 60px;
+  padding: 0 30px 0 0;
+  text-align: center;
+}
+.Header span {
+  font-family: sans-serif;
+  font-size: larger;
+  color: #6b0304;
+}
+.Total {
+  text-decoration: underline;
+  font-weight: bolder;
+  color: #6b0304;
+}

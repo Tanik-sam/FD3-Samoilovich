@@ -1,0 +1,74 @@
+﻿ 
+ .Img{
+  border-radius: 10px; /* Радиус скругления */
+  border: 1px solid #7c7e7ba9; /* Параметры рамки */
+  box-shadow:  0 0 20px rgba(112, 128, 144, 0.8);
+  transition: opacity 1s, height 1s;
+  border-color: silver;
+  margin: 10px;
+ }
+ .Img:hover{
+  border-radius: 10px; /* Радиус скругления */
+  border: 1px solid #7c7e7ba9; /* Параметры рамки */
+  transition: opacity 1s, height 1s;
+  border-color: silver;
+  box-shadow:  0 0 40px rgba(19, 21, 24);
+  margin: 10px;
+ }
+
+ div.MoviePageCards{
+  max-width: 200px;
+  float:left;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width:fit-content;
+  box-sizing: border-box;
+
+       
+ } 
+ .MoviePageCards.MoviePageCardsNmb,.MoviePageCardsChosen.MoviePageCardsNmb{
+  position: absolute;
+  z-index: 10;
+  color:#667;
+  padding: 2px 2px;
+  font-size: 0.9rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;  
+ }
+  
+div.itemCardName
+{
+ background:  transparent;
+ color:rgb(7, 1, 1);
+ font-size: 1.6rem;
+ text-transform: uppercase;
+ font-weight: bold;
+ max-width: 200px;
+ padding: 0px 0px;
+ text-align: center;
+ font-family:  'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.MoviePageCardsChosen
+{
+  max-width: 200px;
+  float:left;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width:fit-content;
+  box-sizing: border-box;
+  box-shadow:  0 0 30px rgb(75, 86, 97);
+ 
+}
+
+
+
+  @media all and (max-width: 400px) {
+    div{
+        font-size: small;
+    };
+   
+  }

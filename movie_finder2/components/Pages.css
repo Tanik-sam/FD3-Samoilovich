@@ -1,0 +1,29 @@
+﻿.Menu{
+display: none;
+}
+.MenuImage{
+    background-image: url(/menu_icon.png);
+    position:fixed;
+    opacity: 0.4;
+    text-align: right;
+    left:10;
+    right: 20px;
+    top:10px;
+    width: 40px;
+    height: 40px;
+}
+.MenuOpen{
+    background: #e6e5ed;
+    opacity: 0.6;
+    position:fixed;
+    text-align: right;
+    left:10;
+    right: 20px;
+    top:50px;
+    text-decoration: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: end;
+    
+}

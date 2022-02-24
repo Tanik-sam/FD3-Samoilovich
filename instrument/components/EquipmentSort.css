@@ -1,0 +1,28 @@
+﻿.EquipmentSort
+
+{
+   
+  background: -moz-linear-gradient(#f5f2c8, #BDB76B, #f5f2c8);
+  background: -webkit-gradient(linear, 0 0, 0  100%, from(#f5f2c8), to(#f5f2c8), color-stop(0.5, #BDB76B));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00BBD6', endColorstr='#EBFFFF');
+   
+  color: #333;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 30px;
+  border: 1px solid #485f38;
+  padding: 4px 6px;
+  margin: 4px 4px;
+  font-size: 0.9rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}  
+@media all and (max-width: 400px) {
+  .EquipmentSort option{ 
+      font-size: small;
+      overflow:hidden;
+  };
+  .EquipmentSort select{ 
+    font-size: small;
+    overflow:hidden;
+};
+}

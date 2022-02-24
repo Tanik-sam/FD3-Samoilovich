@@ -1,0 +1,15 @@
+.PageLink {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;  
+    color: #667;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 1.2rem;
+    display: inline;
+}
+
+.ActivePageLink {
+    font-weight: bold;
+    color:#667;
+    font-size: 1.2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;  
+}

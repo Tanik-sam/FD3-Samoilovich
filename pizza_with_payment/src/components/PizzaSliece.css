@@ -1,0 +1,48 @@
+.main {
+  text-align: center;
+}
+.pizzaBorder {
+  margin: auto;
+  width: 360px;
+  height: 360px;
+  border: 15px solid #d8a55e;
+  border-radius: 50%;
+  background: #6b0304;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.pizzaSliece {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  --value: 0%;
+  background: conic-gradient(#6b0304 var(--value), transparent 0);
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+}
+
+.pizzaPiece {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  --value: 0%;
+  background: conic-gradient(#eec58c var(--value), transparent 0);
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
+  animation-duration: 1s;
+  transition: 1s;
+}
+
+.pizzaIngridients {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  animation-duration: 1s;
+  transition: 1s;
+}
+
+span {
+  font-weight: bolder;
+  color: #6b0304;
+}

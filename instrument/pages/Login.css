@@ -1,0 +1,90 @@
+﻿.Routing{
+    text-align:center;   
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+}
+.Form{
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+margin:10px;
+padding:20px;
+width:min-content;
+border: 1px groove #BDB76B;
+box-shadow:  0 0 20px rgba(112, 128, 144, 0.8);
+transition: opacity 1s, height 1s;
+background: #7c7e7ba9;
+
+border-radius: 30px;
+box-sizing: border-box;
+text-align:center;
+} 
+.Form h2{
+    padding: 6px 6px;
+    font-size: medium;
+    font-weight: bold;
+    color:rgb(45, 66, 38);
+}
+.Form .form-group{
+    font-size: 0.9rem;
+    padding: 6px 6px;
+}
+.form-group-label{
+    padding: 4px;
+    margin: 4px;
+}
+input.form-group-input{
+    border-radius: 30px;
+    border: 1px solid #667;
+    padding: 4px 6px;
+    margin: 4px 4px;
+}
+
+button.form-group-btn{
+    background: -moz-linear-gradient(#D0ECF4, #5BC9E1, #D0ECF4);
+    background: -webkit-gradient(linear, 0 0, 0  100%, from(#D0ECF4), to(#D0ECF4), color-stop(0.5, #5BC9E1));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00BBD6', endColorstr='#EBFFFF');
+    color: #333;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 30px;
+    border: 1px solid #667;
+    padding: 4px 6px;
+    margin: 4px 4px;
+    font-size: 0.9rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  button.form-group-btn:disabled{
+    background: -moz-linear-gradient(#D0ECF4, #a4d0da, #D0ECF4);
+    background: -webkit-gradient(linear, 0 0, 0  100%, from(#D0ECF4), to(#D0ECF4), color-stop(0.5, #a4d0da));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00BBD6', endColorstr='#EBFFFF');
+    color: #333;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 30px;
+    border: 1px solid #667;
+    color:rgb(109, 108, 108);
+    padding: 4px 6px;
+    margin: 4px 4px;
+    font-size: 0.9rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  button.form-group-btn:hover {
+    background: -moz-linear-gradient(#D0ECF4, #5BC9E1, #D0ECF4);
+    background: -webkit-gradient(linear, 0 0, 0  100%, from(#D0ECF4), to(#D0ECF4), color-stop(0.5, #5BC9E1));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00BBD6', endColorstr='#EBFFFF');
+    color: #333;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 30px;
+    border: 1px solid #667;
+    padding: 4px 6px;
+    margin: 4px 4px;
+    font-size: 0.9rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-shadow:  0 0 10px rgba(112, 128, 144, 0.8);
+    }
+
+.form-group span{
+    color:red;
+}

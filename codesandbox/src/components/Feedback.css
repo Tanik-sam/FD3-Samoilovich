@@ -1,0 +1,159 @@
+.ItemCard {
+  position: absolute;
+  padding: 40px;
+  border: grey;
+  border-radius: 10px;
+  max-width: 450px;
+  background-color: rgb(168, 167, 167);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 2px 2px 6px rgb(61, 59, 59);
+  transition: opacity 1s, height 1s;
+  opacity: 90%;
+  height: 400px;
+}
+.ItemCardHide {
+  position: absolute;
+  padding: 40px;
+  border: grey;
+  border-radius: 10px;
+  max-width: 450px;
+  background-color: rgb(168, 167, 167);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 2px 2px 6px rgb(61, 59, 59);
+  opacity: 0%;
+  height: 1px;
+  overflow: hidden;
+}
+div.ItemCardHide .close {
+  display: none;
+}
+
+span {
+  color: red;
+}
+.Feedback {
+  color: rgb(88, 68, 17);
+  max-width: 300px;
+  margin-right: 20px;
+}
+.Feedback-true {
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgb(218, 166, 35);
+  border-radius: 50%;
+}
+.Feedback-true:before {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  content: "✔️";
+}
+
+.CardButton {
+  padding: 10px 40px;
+  margin: 20px 10px;
+  font-weight: bold;
+  box-shadow: 1px 1px 4px rgb(61, 59, 59);
+}
+/* rating*/
+.rating-area {
+  overflow: hidden;
+  margin: 0 40px 0 0;
+  padding: 0 0 20px 0;
+}
+.rating-area:not(:checked) > input {
+  display: none;
+}
+.rating-area:not(:checked) > label {
+  float: right;
+  width: 42px;
+  padding: 0;
+  cursor: pointer;
+  font-size: 32px;
+  line-height: 32px;
+  color: lightgrey;
+  text-shadow: 1px 1px #bbb;
+}
+.rating-area:not(:checked) > label:before {
+  content: "★";
+}
+.rating-area > input:checked ~ label {
+  color: gold;
+  text-shadow: 1px 1px 4px rgb(61, 59, 59);
+}
+.rating-area:not(:checked) > label:hover,
+.rating-area:not(:checked) > label:hover ~ label {
+  color: gold;
+}
+.rating-area > input:checked + label:hover,
+.rating-area > input:checked + label:hover ~ label,
+.rating-area > input:checked ~ label:hover,
+.rating-area > input:checked ~ label:hover ~ label,
+.rating-area > label:hover ~ input:checked ~ label {
+  color: gold;
+  text-shadow: 1px 1px 6px rgb(170, 130, 27);
+}
+.rate-area > label:active {
+  position: relative;
+}
+
+/*rating result*/
+.rating-result {
+  width: 265px;
+  margin: 0 auto;
+}
+.rating-result span {
+  padding: 0;
+  font-size: 32px;
+  margin: 0 3px;
+  line-height: 1;
+  color: lightgrey;
+  text-shadow: 1px 1px #bbb;
+}
+.rating-result > span:before {
+  content: "★";
+}
+.rating-result > span.active {
+  color: gold;
+  text-shadow: 1px 1px 4px rgb(61, 59, 59);
+}
+
+.close {
+  position: absolute;
+  z-index: 103;
+  right: 8px;
+  top: 8px;
+  width: 27px;
+  height: 27px;
+  opacity: 0.6;
+  border: solid #667 2px;
+  border-radius: 50%;
+}
+.close:hover {
+  opacity: 1;
+  box-shadow: 0 0 8px rgba(112, 128, 144, 0.8);
+}
+.close:before,
+.close:after {
+  position: absolute;
+  left: 13px;
+  top: 2px;
+  content: " ";
+  height: 22px;
+  width: 2px;
+  background-color: #667;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+a:-webkit-any-link {
+  cursor: pointer;
+  text-decoration: none;
+}

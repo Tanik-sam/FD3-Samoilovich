@@ -1,0 +1,11 @@
+.Guests {
+  font-family: sans-serif;
+}
+.greenClass {
+  color: green;
+  font-weight: bold;
+}
+.GuestClicked {
+  cursor: pointer;
+  box-shadow: 2px 2px 6px rgb(61, 59, 59);
+}

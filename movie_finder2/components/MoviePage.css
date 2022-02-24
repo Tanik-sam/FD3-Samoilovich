@@ -1,0 +1,18 @@
+﻿div.flexDiv{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background: #e6e5ed;
+  padding-top: 180px;
+}
+div.SelectionMovie{
+  
+  width:100%;
+  position:fixed;
+  background: #36cdef;
+  padding: 50px 20px 10px 10px;
+  box-shadow:  0 0 20px 0 rgba(112, 128, 144, 0.8);
+  box-sizing: border-box;
+  text-align: center;
+ font-family:  'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

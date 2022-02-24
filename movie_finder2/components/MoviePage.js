@@ -71,7 +71,7 @@ setSelectedMovie=(eo)=>{
       }
     }
   }
-      let kk=[...movieFiltered] 
+      let kk=[...movieFiltered] //отбираются уникальные строки с видом орудия для формирования выпадающего списка
        
       let movItem=[]
       
